@@ -224,7 +224,7 @@ footer {
 .whatsapp-flotante {
     position: fixed;
     right: 24px;
-    bottom: 104px;
+    bottom: 48px;
     z-index: 40;
     display: flex;
     justify-content: center;
