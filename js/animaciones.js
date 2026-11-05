@@ -65,7 +65,7 @@ document.addEventListener("DOMContentLoaded", function () {
             document.body.classList.add("saliendo");
             setTimeout(function () {
                 window.location.href = destino.href;
-            }, 150);
+            }, 300);
         });
 
         // si vuelve con el botón "atrás", la página no queda en blanco

@@ -209,11 +209,11 @@ footer {
 }
 
 .js body.entra {
-    animation: pagina-entra 0.25s ease backwards;
+    animation: pagina-entra 0.5s ease backwards;
 }
 
 .js body {
-    transition: opacity 0.15s ease;
+    transition: opacity 0.3s ease;
 }
 
 .js body.saliendo {
