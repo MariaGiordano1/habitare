@@ -1,0 +1,368 @@
+
+:root {
+    --soft-white: #fffdfc;
+    --brown: #6F5439;
+    --mostaza: #c9a227;
+    --black: #101010;
+    --alto-header: 80px;
+}
+
+* {
+    box-sizing: border-box;
+}
+
+body,
+h1,
+h2,
+h3,
+h4,
+p,
+ul {
+    margin: 0;
+}
+
+body {
+    background-color: var(--soft-white);
+    color: var(--brown);
+    font-family: 'Poppins', sans-serif;
+    line-height: 1.2;
+}
+
+ul {
+    padding: 0;
+    list-style: none;
+}
+
+img {
+    max-width: 100%;
+    display: block;
+}
+
+a {
+    color: inherit;
+    text-decoration: none;
+}
+
+button,
+input,
+select,
+textarea {
+    font: inherit;
+}
+
+.container {
+    width: min(90%, 1200px);
+    margin: 0 auto;
+}
+
+header {
+    position: sticky;
+    top: 0;
+    z-index: 50;
+    background-color: var(--soft-white);
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.08);
+}
+
+nav {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 20px 40px;
+}
+
+.logo {
+    padding: 8px 0;
+    font-size: 20px;
+    font-weight: 300;
+    letter-spacing: 0.04em;
+}
+
+.menu {
+    display: flex;
+    gap: 32px;
+    font-size: 13px;
+    font-weight: 500;
+    text-transform: uppercase;
+}
+
+/* zona de toque más cómoda en el menú */
+.menu a {
+    display: inline-block;
+    padding: 10px 0;
+}
+
+.menu a:hover {
+    border-bottom: 1px solid #6F5439;
+}
+
+footer {
+    background-color: var(--soft-white);
+    color: var(--brown);
+    padding: 64px 48px 32px 48px;
+    display: flex;
+    flex-direction: column;
+    gap: 70px;
+}
+
+.footer-logo {
+    text-transform: uppercase;
+    font-size: 73px;
+    font-weight: 300;
+    letter-spacing: 0.04em;
+}
+
+.footer-info {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    font-size: 10px;
+    letter-spacing: 1.4px;
+    text-transform: uppercase;
+}
+
+.redes {
+    display: flex;
+    gap: 0.9em;
+}
+
+.redes li + li::before {
+    content: "·";
+    margin-right: 0.9em;
+}
+
+/* Oculto a la vista, pero lo leen los lectores de pantalla */
+.sr-only {
+    position: absolute;
+    width: 1px;
+    height: 1px;
+    padding: 0;
+    margin: -1px;
+    overflow: hidden;
+    clip: rect(0, 0, 0, 0);
+    white-space: nowrap;
+    border: 0;
+}
+
+/* Tablet */
+@media (max-width: 1199.98px) {
+    footer {
+        padding: 56px 40px 32px 40px;
+    }
+}
+
+/* Celular */
+@media (max-width: 809.98px) {
+    footer {
+        padding: 48px 24px 32px 24px;
+        gap: 48px;
+    }
+
+    .footer-logo {
+        font-size: 44px;
+    }
+
+    .footer-info {
+        flex-direction: column;
+        text-align: center;
+    }
+}
+
+/* ===== Animaciones al scrollear (las activa js/animaciones.js) ===== */
+.js .reveal {
+    opacity: 0;
+    transform: translateY(28px);
+    transition: opacity 0.6s cubic-bezier(0.2, 0.6, 0.2, 1), transform 0.6s cubic-bezier(0.2, 0.6, 0.2, 1);
+}
+
+.js .reveal.visible {
+    opacity: 1;
+    transform: none;
+}
+
+/* fotos de ambiente: además de aparecer, se acomodan con un zoom suave */
+.js .ambiente img.reveal {
+    transform: scale(1.08);
+    transition-duration: 0.9s;
+}
+
+.js .ambiente img.reveal.visible {
+    transform: none;
+}
+
+@media (prefers-reduced-motion: reduce) {
+    .js .reveal,
+    .js .ambiente img.reveal {
+        opacity: 1;
+        transform: none;
+        transition: none;
+    }
+}
+
+/* ===== Transición entre páginas ===== */
+@keyframes pagina-entra {
+    from {
+        opacity: 0;
+    }
+    to {
+        opacity: 1;
+    }
+}
+
+.js body.entra {
+    animation: pagina-entra 0.25s ease backwards;
+}
+
+.js body {
+    transition: opacity 0.15s ease;
+}
+
+.js body.saliendo {
+    opacity: 0;
+}
+
+/* ===== Botón flotante de WhatsApp (en todas las páginas) ===== */
+.whatsapp-flotante {
+    position: fixed;
+    right: 24px;
+    bottom: 104px;
+    z-index: 40;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 56px;
+    height: 56px;
+    border-radius: 50%;
+    background-color: var(--brown);
+    color: var(--soft-white);
+    box-shadow: 0 8px 24px rgba(55, 35, 19, 0.28);
+    transition: background-color 0.25s ease, color 0.25s ease;
+}
+
+.whatsapp-flotante:hover,
+.whatsapp-flotante:focus-visible {
+    background-color: var(--soft-white);
+    color: var(--brown);
+}
+
+/* globo de viñeta: esquinas redondeadas y colita que apunta al botón */
+.whatsapp-burbuja {
+    position: absolute;
+    right: calc(100% + 16px);
+    bottom: 4px;
+    padding: 15px 24px;
+    border-radius: 22px;
+    background-color: var(--soft-white);
+    color: var(--brown);
+    box-shadow: 0 8px 24px rgba(55, 35, 19, 0.2);
+    font-size: 13px;
+    font-weight: 600;
+    letter-spacing: 0.14em;
+    text-transform: uppercase;
+    white-space: nowrap;
+    opacity: 0;
+    visibility: hidden;
+    transform: scale(0.6);
+    transform-origin: right bottom;
+    transition: opacity 0.25s ease, transform 0.3s cubic-bezier(.3,1.4,.5,1), visibility 0.3s;
+    pointer-events: none;
+}
+
+/* la colita de la viñeta */
+.whatsapp-burbuja::after {
+    content: "";
+    position: absolute;
+    right: -12px;
+    bottom: 8px;
+    width: 22px;
+    height: 20px;
+    background-color: var(--soft-white);
+    clip-path: polygon(0 0, 100% 100%, 0 100%);
+}
+
+.whatsapp-flotante:hover .whatsapp-burbuja,
+.whatsapp-flotante:focus-visible .whatsapp-burbuja {
+    opacity: 1;
+    visibility: visible;
+    transform: none;
+}
+
+/* ===== Menú hamburguesa (solo celular) ===== */
+.menu-boton {
+    display: none;
+}
+
+@media (max-width: 809.98px) {
+    nav {
+        padding: 18px 24px;
+    }
+
+    .menu-boton {
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        gap: 6px;
+        width: 44px;
+        height: 44px;
+        margin-right: -10px;
+        padding: 0 10px;
+        border: 0;
+        background: none;
+        cursor: pointer;
+    }
+
+    .menu-boton span {
+        display: block;
+        height: 1.5px;
+        background-color: var(--brown);
+        transition: transform 0.35s ease, opacity 0.25s ease;
+    }
+
+    /* las tres rayitas se convierten en una X */
+    header.menu-abierto .menu-boton span:nth-child(1) {
+        transform: translateY(7.5px) rotate(45deg);
+    }
+
+    header.menu-abierto .menu-boton span:nth-child(2) {
+        opacity: 0;
+    }
+
+    header.menu-abierto .menu-boton span:nth-child(3) {
+        transform: translateY(-7.5px) rotate(-45deg);
+    }
+
+    /* el menú baja debajo de la barra */
+    .menu {
+        position: absolute;
+        top: 100%;
+        left: 0;
+        right: 0;
+        flex-direction: column;
+        gap: 0;
+        padding: 8px 24px 24px;
+        background-color: var(--soft-white);
+        box-shadow: 0 14px 24px rgba(55, 35, 19, 0.12);
+        opacity: 0;
+        visibility: hidden;
+        transform: translateY(-8px);
+        transition: opacity 0.3s ease, transform 0.3s ease, visibility 0.3s;
+    }
+
+    header.menu-abierto .menu {
+        opacity: 1;
+        visibility: visible;
+        transform: none;
+    }
+
+    .menu a {
+        display: block;
+        padding: 18px 0;
+        border-bottom: 1px solid rgba(111, 84, 57, 0.2);
+        font-size: 17px;
+        font-weight: 400;
+        letter-spacing: 0.1em;
+    }
+
+    .menu li:last-child a {
+        border-bottom: 0;
+    }
+}

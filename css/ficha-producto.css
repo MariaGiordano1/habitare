@@ -1,0 +1,372 @@
+.ficha {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 64px;
+    padding: 48px 40px 96px 40px;
+    align-items: start;
+}
+
+/* ===== Galería: miniaturas a la izquierda, foto principal a la derecha ===== */
+.ficha-galeria {
+    display: flex;
+    flex-direction: row-reverse; /* el HTML trae primero la foto grande; así las miniaturas quedan a la izquierda */
+    align-items: flex-start;
+    gap: 12px;
+}
+
+/* todas las fotos principales tienen el mismo tamaño */
+.foto-principal {
+    flex: 1;
+    min-width: 0;
+    aspect-ratio: 1 / 1;
+    object-fit: cover;
+    background-color: #f1ebe4;
+    transition: opacity 0.35s ease;
+}
+
+/* fundido al cambiar de foto */
+.foto-principal.cambiando {
+    opacity: 0;
+}
+
+.miniaturas {
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+    width: 88px;
+    flex-shrink: 0;
+}
+
+/* si no quedó ninguna miniatura, no ocupa lugar */
+.miniaturas:empty {
+    display: none;
+}
+
+.miniaturas button {
+    padding: 0;
+    border: 1px solid transparent;
+    background: none;
+    cursor: pointer;
+    opacity: 0.6;
+    transition: opacity 0.2s ease, border-color 0.2s ease;
+}
+
+.miniaturas button:hover,
+.miniaturas button.activo {
+    opacity: 1;
+}
+
+.miniaturas button.activo {
+    border-color: var(--brown);
+}
+
+.miniaturas img {
+    width: 100%;
+    aspect-ratio: 1 / 1;
+    object-fit: cover;
+    background-color: #f1ebe4;
+}
+
+/* ===== Información ===== */
+.ficha-info {
+    display: flex;
+    flex-direction: column;
+    gap: 28px;
+}
+
+/* categoría con una línea adelante, como en el banner del inicio */
+.categoria {
+    display: flex;
+    align-items: center;
+    gap: 14px;
+    font-size: 11px;
+    font-weight: 500;
+    letter-spacing: 2px;
+    text-transform: uppercase;
+    color: var(--mostaza);
+}
+
+.categoria::before {
+    content: "";
+    width: 40px;
+    height: 1px;
+    background-color: var(--mostaza);
+}
+
+.ficha-info h1 {
+    margin-top: -12px;
+    font-family: "Inter", sans-serif;
+    font-size: 56px;
+    font-weight: 300;
+    line-height: 1.05;
+    letter-spacing: -0.03em;
+}
+
+/* la frase del producto, destacada */
+.descripcion {
+    padding-left: 20px;
+    border-left: 2px solid var(--mostaza);
+    font-family: "Inter", sans-serif;
+    font-size: 19px;
+    font-weight: 300;
+    line-height: 1.5;
+    color: rgba(80, 66, 52, 0.9);
+}
+
+/* ===== Medidas destacadas ===== */
+.medidas {
+    display: flex;
+    flex-direction: column;
+    gap: 14px;
+    padding: 24px 28px;
+    background-color: #f6f1ea;
+}
+
+.medidas[hidden] {
+    display: none;
+}
+
+.medidas ul {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+}
+
+.medidas li {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: baseline;
+    gap: 6px 14px;
+}
+
+.medida-valor {
+    font-family: "Inter", sans-serif;
+    font-size: 26px;
+    font-weight: 300;
+    letter-spacing: -0.02em;
+}
+
+.medida-personas {
+    font-size: 13px;
+    color: var(--mostaza);
+}
+
+/* ===== Datos: en dos columnas ===== */
+.specs {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    column-gap: 32px;
+}
+
+.specs li {
+    display: flex;
+    flex-direction: column;
+    gap: 6px;
+    padding: 16px 0;
+    border-top: 1px solid rgba(111, 84, 57, 0.25);
+}
+
+.spec-titulo {
+    font-size: 11px;
+    font-weight: 500;
+    letter-spacing: 1.2px;
+    text-transform: uppercase;
+    color: var(--mostaza);
+}
+
+.spec-valor {
+    font-size: 14px;
+    line-height: 1.4;
+}
+
+/* ===== Combina con ===== */
+.combina {
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+}
+
+.combina[hidden] {
+    display: none;
+}
+
+.combina ul {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 12px;
+}
+
+.combina a {
+    display: flex;
+    align-items: center;
+    gap: 14px;
+    padding: 8px 20px 8px 8px;
+    border: 1px solid rgba(111, 84, 57, 0.3);
+    font-size: 14px;
+    transition: border-color 0.3s ease, background-color 0.3s ease;
+}
+
+.combina a:hover {
+    border-color: var(--brown);
+    background-color: #f6f1ea;
+}
+
+.combina img {
+    width: 56px;
+    height: 56px;
+    object-fit: cover;
+    background-color: #f1ebe4;
+}
+
+.boton-consulta {
+    margin-top: 4px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 54px;
+    border-bottom: 1px solid var(--brown);
+    font-size: 14px;
+    font-weight: 600;
+    letter-spacing: 1.5px;
+    text-transform: uppercase;
+    background-image: linear-gradient(var(--brown), var(--brown));
+    background-repeat: no-repeat;
+    background-position: bottom;
+    background-size: 100% 0;
+    transition: background-size 0.3s ease, color 0.3s ease;
+}
+
+.boton-consulta:hover {
+    background-size: 100% 100%;
+    color: var(--soft-white);
+}
+
+/* "Stock inmediato" dentro de los datos */
+.spec-stock {
+    font-weight: 600;
+}
+
+/* ===== Colores de la silla ===== */
+.colores {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    gap: 12px;
+}
+
+.colores p {
+    width: 100%;
+    font-size: 14px;
+}
+
+.colores button {
+    width: 44px;
+    height: 44px;
+    border: 3px solid var(--soft-white);
+    border-radius: 50%;
+    background-size: cover;
+    background-position: center;
+    box-shadow: 0 0 0 1px rgba(111, 84, 57, 0.35);
+    cursor: pointer;
+    transition: box-shadow 0.25s ease, transform 0.25s ease;
+}
+
+.colores button:hover {
+    transform: scale(1.06);
+}
+
+.colores button.activo {
+    box-shadow: 0 0 0 1.5px var(--brown);
+}
+
+.colores[hidden] {
+    display: none;
+}
+
+/* ===== Entrada suave de la ficha ===== */
+@keyframes ficha-aparece {
+    from {
+        opacity: 0;
+        transform: translateY(20px);
+    }
+    to {
+        opacity: 1;
+        transform: none;
+    }
+}
+
+.js .ficha-galeria,
+.js .ficha-info > * {
+    animation: ficha-aparece 0.9s cubic-bezier(0.2, 0.6, 0.2, 1) both;
+}
+
+.js .ficha-info > :nth-child(2) { animation-delay: 0.08s; }
+.js .ficha-info > :nth-child(3) { animation-delay: 0.16s; }
+.js .ficha-info > :nth-child(4) { animation-delay: 0.24s; }
+.js .ficha-info > :nth-child(5) { animation-delay: 0.32s; }
+.js .ficha-info > :nth-child(6) { animation-delay: 0.4s; }
+.js .ficha-info > :nth-child(n+7) { animation-delay: 0.48s; }
+
+@media (prefers-reduced-motion: reduce) {
+    .js .ficha-galeria,
+    .js .ficha-info > * {
+        animation: none;
+    }
+}
+
+/* ===== Tablet ===== */
+@media (max-width: 1199.98px) {
+    .ficha {
+        grid-template-columns: 1fr;
+        gap: 40px;
+        padding: 32px 40px 72px 40px;
+    }
+
+    /* miniaturas debajo de la foto principal */
+    .ficha-galeria {
+        flex-direction: column;
+    }
+
+    .miniaturas {
+        flex-direction: row;
+        width: 100%;
+    }
+
+    .miniaturas button {
+        width: 88px;
+    }
+}
+
+/* ===== Celular ===== */
+@media (max-width: 809.98px) {
+    .ficha {
+        padding: 24px 24px 64px 24px;
+        gap: 32px;
+    }
+
+    .ficha-info h1 {
+        font-size: 38px;
+    }
+
+    .descripcion {
+        font-size: 17px;
+    }
+
+    .specs {
+        grid-template-columns: 1fr;
+    }
+
+    .combina ul,
+    .combina li,
+    .combina a {
+        width: 100%;
+    }
+
+    .combina ul {
+        flex-direction: column;
+    }
+
+    .medida-valor {
+        font-size: 22px;
+    }
+}

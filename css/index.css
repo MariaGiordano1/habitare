@@ -1,0 +1,472 @@
+/* ===== 1. Hero (carrusel) ===== */
+.hero {
+    position: relative;
+    height: 860px;
+    overflow: hidden;
+    touch-action: pan-y; /* el scroll vertical sigue andando; el de costado lo maneja el carrusel */
+    user-select: none;
+}
+
+.slide {
+    position: absolute;
+    inset: 0;
+    opacity: 0;
+    visibility: hidden;
+    transition: opacity 0.9s ease, visibility 0.9s;
+}
+
+.slide.activo {
+    opacity: 1;
+    visibility: visible;
+}
+
+.slide img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    transform: scale(1.06);
+    transition: transform 7s ease-out;
+}
+
+/* zoom lento en la foto activa */
+.slide.activo img {
+    transform: scale(1);
+}
+
+/* velo oscuro para que el texto se lea */
+.slide::after {
+    content: "";
+    position: absolute;
+    inset: 0;
+    background: linear-gradient(180deg, rgba(55, 35, 19, 0.2) 0%, rgba(55, 35, 19, 0.38) 35%, rgba(55, 35, 19, 0.82) 100%);
+}
+
+.slide-texto {
+    position: absolute;
+    left: 40px;
+    bottom: 110px;
+    z-index: 1;
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 20px;
+    max-width: 820px;
+    color: var(--soft-white);
+}
+
+/* cada parte del texto aparece una atrás de otra */
+.slide-etiqueta,
+.slide-titulo,
+.slide-link {
+    opacity: 0;
+    transform: translateY(24px);
+    transition: opacity 0.6s ease, transform 0.6s ease, background-size 0.3s ease, color 0.3s ease;
+}
+
+.slide.activo .slide-etiqueta {
+    opacity: 1;
+    transform: none;
+    transition-delay: 0.1s;
+}
+
+.slide.activo .slide-titulo {
+    opacity: 1;
+    transform: none;
+    transition-delay: 0.2s;
+}
+
+.slide.activo .slide-link {
+    opacity: 1;
+    transform: none;
+    /* el retraso de 0,3 s es solo para la entrada; el efecto al pasar el mouse es inmediato */
+    transition: opacity 0.6s ease 0.3s, transform 0.6s ease 0.3s, background-size 0.3s ease, color 0.3s ease;
+}
+
+.slide-etiqueta {
+    display: flex;
+    align-items: center;
+    gap: 16px;
+    font-family: "Inter", sans-serif;
+    font-size: 12px;
+    letter-spacing: 0.24em;
+    text-transform: uppercase;
+}
+
+.slide-etiqueta::before {
+    content: "";
+    width: 48px;
+    height: 1px;
+    background-color: var(--soft-white);
+}
+
+.slide-titulo {
+    font-family: "Inter", sans-serif;
+    font-size: 92px;
+    font-weight: 300;
+    line-height: 1.05;
+    letter-spacing: -0.03em;
+}
+
+.slide-titulo em {
+    font-weight: 300;
+}
+
+/* mismo efecto que el botón del formulario: el color sube desde abajo al pasar el mouse */
+.slide-link {
+    position: relative;
+    padding: 16px 30px;
+    border: 0;
+    border-bottom: 1px solid var(--soft-white);
+    font-size: 13px;
+    font-weight: 600;
+    letter-spacing: 0.16em;
+    text-transform: uppercase;
+    background-image: linear-gradient(var(--soft-white), var(--soft-white));
+    background-repeat: no-repeat;
+    background-position: bottom;
+    background-size: 100% 0;
+}
+
+.slide-link:hover {
+    background-size: 100% 100%;
+    color: var(--brown);
+}
+
+/* el título del tercer banner se extiende más a lo ancho */
+.slide-texto-ancho {
+    max-width: 1100px;
+}
+
+/* ampliamos la zona donde el dedo "pega" en el botón, sin que se vea distinto */
+.boton-cta::before {
+    content: "";
+    position: absolute;
+    inset: -14px -10px;
+}
+
+/* flechas y puntitos */
+.carrusel-controles {
+    position: absolute;
+    left: 50%;
+    bottom: 32px;
+    z-index: 2;
+    display: flex;
+    align-items: center;
+    gap: 20px;
+    transform: translateX(-50%);
+}
+
+.flecha {
+    padding: 10px 14px;
+    border: none;
+    background: none;
+    font-size: 28px;
+    line-height: 1;
+    color: var(--soft-white);
+    cursor: pointer;
+    opacity: 0.8;
+    transition: opacity 0.2s ease;
+}
+
+.flecha:hover {
+    opacity: 1;
+}
+
+.puntos {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+}
+
+.punto {
+    position: relative;
+    width: 8px;
+    height: 8px;
+    padding: 0;
+    border: none;
+    border-radius: 4px;
+    background-color: rgba(255, 253, 252, 0.5);
+    cursor: pointer;
+    transition: width 0.3s ease, background-color 0.3s ease;
+}
+
+.punto::before {
+    content: "";
+    position: absolute;
+    inset: -14px -6px;
+}
+
+.punto.activo {
+    width: 28px;
+    background-color: var(--soft-white);
+}
+
+/* ===== 2. Distribuidor + categorías ===== */
+.distribuidor {
+    display: flex;
+    flex-direction: column;
+    gap: 40px;
+    padding: 63px 40px;
+}
+
+.distribuidor-texto {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 8px;
+    padding: 0 0 38px 0;
+    text-align: center;
+}
+
+.distribuidor .etiqueta {
+    font-size: 22px;
+    color: rgba(112, 87, 57, 0.79);
+}
+
+.marca {
+    font-size: 52px;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+    line-height: 1.12;
+}
+
+/* 6 columnas: cada tarjeta ocupa 2 */
+.categorias {
+    display: grid;
+    grid-template-columns: repeat(6, 1fr);
+    gap: 40px 20px;
+}
+
+.categorias li {
+    grid-column: span 2;
+}
+
+/* las 2 de abajo: mismo tamaño que las de arriba, centradas */
+.categorias li:nth-child(4) {
+    grid-column: 2 / span 2;
+}
+
+.categorias li:nth-child(5) {
+    grid-column: 4 / span 2;
+}
+
+.categoria-tarjeta {
+    display: flex;
+    flex-direction: column;
+}
+
+.categoria-foto {
+    overflow: hidden;
+}
+
+.categoria-foto img {
+    transition: transform 0.9s cubic-bezier(0.2, 0.6, 0.2, 1);
+}
+
+@media (hover: hover) {
+    .categoria-tarjeta:hover .categoria-foto img {
+        transform: scale(1.05);
+    }
+}
+
+.categoria-tarjeta img {
+    width: 100%;
+    aspect-ratio: 3 / 4;
+    object-fit: cover;
+    background-color: #f6f3ee;
+}
+
+.categoria-tarjeta span {
+    padding: 43px 0 12px 0;
+    border-bottom: 1px solid rgba(111, 84, 57, 0.3);
+    font-size: 24px;
+    letter-spacing: 0.06em;
+    line-height: 1;
+    text-transform: uppercase;
+    color: #33261f;
+    transition: padding-left 0.3s ease;
+}
+
+.categoria-tarjeta:hover span {
+    padding-left: 12px;
+}
+
+/* ===== 3. Ambientes (se van apilando al hacer scroll) ===== */
+.ambiente {
+    position: sticky;
+    top: var(--alto-header, 80px); /* debajo de la barra fija */
+    height: 760px;
+    overflow: hidden;
+}
+
+.ambiente img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+}
+
+.ambiente::after {
+    content: "";
+    position: absolute;
+    inset: 0;
+    background: linear-gradient(180deg, rgba(55, 35, 19, 0.15) 0%, rgba(55, 35, 19, 0.7) 100%);
+}
+
+/* ===== 4. Llamado a contacto ===== */
+.cta {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 20px;
+    padding: 96px 40px;
+    text-align: center;
+    background-color: var(--brown);
+    color: var(--soft-white);
+    position: relative;
+    z-index: 1;
+}
+
+.cta .etiqueta {
+    font-family: "Inter", sans-serif;
+    font-size: 12px;
+    letter-spacing: 0.24em;
+    text-transform: uppercase;
+}
+
+.cta h2 {
+    max-width: 640px;
+    font-family: "Inter", sans-serif;
+    font-size: 36px;
+    font-weight: 300;
+    line-height: 1.15;
+    letter-spacing: -0.02em;
+    text-transform: uppercase;
+}
+
+.boton-cta {
+    position: relative;
+    padding-bottom: 6px;
+    border-bottom: 1px solid var(--soft-white);
+    font-family: "Inter", sans-serif;
+    font-size: 13px;
+    font-weight: 500;
+    letter-spacing: 0.16em;
+    text-transform: uppercase;
+}
+
+.boton-cta:hover {
+    opacity: 0.7;
+}
+
+/* ===== Tablet ===== */
+@media (max-width: 1199.98px) {
+    .hero {
+        height: 620px;
+    }
+
+    .slide-titulo {
+        font-size: 68px;
+    }
+
+    .categorias {
+        grid-template-columns: repeat(2, 1fr);
+    }
+
+    .categorias li,
+    .categorias li:nth-child(4),
+    .categorias li:nth-child(5) {
+        grid-column: span 1;
+    }
+
+    /* la última queda sola: del mismo ancho, centrada */
+    .categorias li:last-child {
+        grid-column: 1 / -1;
+        width: calc(50% - 10px);
+        justify-self: center;
+    }
+
+
+    .ambiente {
+        height: 560px;
+    }
+}
+
+/* ===== Celular ===== */
+@media (max-width: 809.98px) {
+    .hero {
+        height: 640px;
+    }
+
+    .slide-texto {
+        left: 24px;
+        right: 24px;
+        bottom: 72px;
+    }
+
+    /* botón más chico */
+    .slide-link {
+        padding: 12px 30px;
+        font-size: 12px;
+    }
+
+    /* en celular se pasa con el dedo: sin flechas y puntitos más chicos */
+    .flecha {
+        display: none;
+    }
+
+    .carrusel-controles {
+        bottom: 28px;
+    }
+
+    .punto {
+        width: 6px;
+        height: 6px;
+    }
+
+    .punto.activo {
+        width: 18px;
+    }
+
+    .slide-titulo {
+        font-size: 46px;
+    }
+
+    .distribuidor {
+        padding: 48px 24px;
+    }
+
+    .distribuidor .etiqueta {
+        font-size: 18px;
+    }
+
+    .marca {
+        font-size: 36px;
+    }
+
+    .categorias {
+        grid-template-columns: 1fr;
+    }
+
+    .categorias li:last-child {
+        grid-column: span 1;
+        width: auto;
+    }
+
+
+    .categoria-tarjeta span {
+        padding-top: 24px;
+        font-size: 20px;
+    }
+
+    .ambiente {
+        height: 440px;
+    }
+
+    .cta {
+        padding: 72px 24px;
+    }
+
+    .cta h2 {
+        font-size: 28px;
+    }
+}
