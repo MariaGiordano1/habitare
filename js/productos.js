@@ -36,7 +36,7 @@ const productos = [
         "specs": [
             [
                 "Terminación de la mesa",
-                "Permite colocar diferentes piedras"
+                "Permite colocar diferentes piedras (no incluidas)"
             ],
             [
                 "Medidas (m)",
@@ -287,7 +287,7 @@ const productos = [
         "specs": [
             [
                 "Terminación de la mesa",
-                "Permite colocar diferentes piedras"
+                "Permite colocar diferentes piedras (no incluidas)"
             ],
             [
                 "Medidas (m)",
