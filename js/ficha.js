@@ -29,23 +29,36 @@ if (producto) {
     }
 
     // Fotos que están en la carpeta pero no se muestran (para volver a mostrarla, sacala de la lista)
-    const fotosOcultas = ["mesa-stella-para-marmol-3", "banqueta-gisele-3", "silla-allure-3"];
+    const fotosOcultas = ["mesa-stella-para-marmol-3", "banqueta-gisele-3", "silla-allure-3", "silla-elise", "silla-jolie-3"];
 
-    // Muestra las fotos de un grupo: base.jpg, base-2.jpg, base-3.jpg.
-    // Si alguna foto no existe, su miniatura se borra sola.
-    function mostrarFotos(base, conFundido) {
+    // Las fotos de un grupo: base.jpg, base-2.jpg, base-3.jpg, base-4.jpg
+    function nombresDeBase(base) {
+        return ["", "-2", "-3", "-4"].map(function (sufijo) {
+            return base + sufijo;
+        });
+    }
+
+    // Muestra una lista de fotos (nombres de archivo sin carpeta ni .jpg).
+    // La primera visible es la grande. Si alguna no existe, su miniatura se borra sola.
+    function mostrarFotos(nombres, conFundido) {
+        const visibles = nombres.filter(function (n) {
+            return fotosOcultas.indexOf(n) === -1;
+        });
         miniaturas.innerHTML = "";
+        if (visibles.length === 0) return;
+        const ruta = function (n) {
+            return "img/productos/" + n + ".jpg";
+        };
         if (conFundido) {
-            cambiarFoto("img/productos/" + base + ".jpg");
+            cambiarFoto(ruta(visibles[0]));
         } else {
-            imgPrincipal.src = "img/productos/" + base + ".jpg";
+            imgPrincipal.src = ruta(visibles[0]);
         }
-        ["", "-2", "-3", "-4"].forEach(function (sufijo) {
-            if (fotosOcultas.indexOf(base + sufijo) !== -1) return;
+        visibles.forEach(function (nombre, i) {
             const boton = document.createElement("button");
             const foto = document.createElement("img");
-            foto.src = "img/productos/" + base + sufijo + ".jpg";
-            foto.alt = producto.nombre + " vista " + (sufijo === "" ? "1" : sufijo.slice(1));
+            foto.src = ruta(nombre);
+            foto.alt = producto.nombre + " vista " + (i + 1);
             foto.addEventListener("error", function () {
                 boton.remove();
             });
@@ -56,7 +69,7 @@ if (producto) {
                 });
                 boton.classList.add("activo");
             });
-            if (sufijo === "") boton.classList.add("activo");
+            if (i === 0) boton.classList.add("activo");
             boton.append(foto);
             miniaturas.append(boton);
         });
@@ -114,6 +127,13 @@ if (producto) {
         contenedorColores.hidden = false;
         const etiquetaColor = document.createElement("p");
         contenedorColores.append(etiquetaColor);
+        // Cada color puede tener "fotos" (lista de archivos) o "archivo" (grupo base, base-2...).
+        // Si todavía no tiene fotos, se avisa y quedan las del color anterior.
+        const tieneFotos = function (color) {
+            return !!(color.fotos || color.archivo);
+        };
+        let inicial = producto.colores.findIndex(tieneFotos);
+        if (inicial < 0) inicial = 0;
         producto.colores.forEach(function (color, i) {
             const boton = document.createElement("button");
             boton.title = color.nombre;
@@ -127,14 +147,15 @@ if (producto) {
                     b.classList.remove("activo");
                 });
                 boton.classList.add("activo");
-                etiquetaColor.textContent = "Color: " + color.nombre;
-                mostrarFotos(color.archivo, true);
+                etiquetaColor.textContent = "Color: " + color.nombre + (tieneFotos(color) ? "" : " (foto próximamente)");
+                if (color.fotos) mostrarFotos(color.fotos, true);
+                else if (color.archivo) mostrarFotos(nombresDeBase(color.archivo), true);
             });
             contenedorColores.append(boton);
-            if (i === 0) boton.click();
+            if (i === inicial) boton.click();
         });
     } else {
-        mostrarFotos(producto.id);
+        mostrarFotos(nombresDeBase(producto.id));
     }
 
     document.getElementById("producto-categoria").textContent = producto.etiqueta;
@@ -247,8 +268,13 @@ function mostrarCombinaciones() {
         const base = otro.colores && otro.colores[0].fondo ? otro.colores[0].archivo : otro.id;
         foto.src = "img/productos/" + base + ".jpg";
         foto.alt = "";
+        // marco de tamaño fijo; "zoomMiniatura" acerca las fotos donde el producto se ve chico
+        const marco = document.createElement("span");
+        marco.className = "combina-foto";
+        if (otro.zoomMiniatura) foto.style.transform = "scale(" + otro.zoomMiniatura + ")";
+        marco.append(foto);
         nombre.textContent = otro.nombre;
-        enlace.append(foto, nombre);
+        enlace.append(marco, nombre);
         item.append(enlace);
         lista.append(item);
     });

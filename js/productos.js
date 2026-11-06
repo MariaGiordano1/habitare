@@ -89,6 +89,7 @@ const productos = [
     {
         "id": "mesa-giulia",
         "combina": ["silla-elise", "silla-sophia", "silla-gisele"],
+        "zoomMiniatura": 1.5,
         "categoria": "mesas",
         "etiqueta": "Mesas",
         "nombre": "Mesa Giulia",
@@ -314,6 +315,7 @@ const productos = [
     {
         "id": "mesa-adriana",
         "combina": ["silla-aike", "silla-sophia", "silla-jolie", "silla-elise"],
+        "zoomMiniatura": 1.5,
         "categoria": "mesas",
         "etiqueta": "Mesas",
         "nombre": "Mesa Adriana",
@@ -456,7 +458,9 @@ const productos = [
         "nombre": "Silla Jolie",
         "descripcion": "Creada para ser la protagonista del salón: asiento y respaldo acolchados, combina comodidad y elegancia.",
         "colores": [
-            { "nombre": "Almendra · Beige 1029", "archivo": "silla-jolie", "muestra": "img/telas/tela-beige-1029.jpg" }
+            { "nombre": "Almendra · Beige 1029", "archivo": "silla-jolie", "muestra": "img/telas/tela-beige-1029.jpg" },
+            { "nombre": "Almendra · Klee Gray 1032", "muestra": "img/telas/tela-gris-1032.jpg" },
+            { "nombre": "Ébano · Beige 1029", "muestra": "img/telas/tela-beige-1029.jpg" }
         ],
         "specs": [
             [
@@ -484,6 +488,8 @@ const productos = [
         "nombre": "Silla Gisele",
         "descripcion": "Una silla elegante por sus líneas curvas, esbeltas patas redondeadas y respaldo circular.",
         "colores": [
+            { "nombre": "Almendra · Beige 1029", "muestra": "img/telas/tela-beige-1029.jpg" },
+            { "nombre": "Almendra · Klee Gray 1032", "muestra": "img/telas/tela-gris-1032.jpg" },
             { "nombre": "Ébano · Beige 1029", "archivo": "silla-gisele", "muestra": "img/telas/tela-beige-1029.jpg" }
         ],
         "specs": [
@@ -512,8 +518,8 @@ const productos = [
         "nombre": "Silla Aike",
         "descripcion": "Líneas refinadas, formas suaves con bordes redondeados para llevar una expresión de comodidad y belleza.",
         "colores": [
-            { "nombre": "Beige 1029", "archivo": "silla-aike-beige", "muestra": "img/telas/tela-beige-1029.jpg" },
-            { "nombre": "Klee Gray 1032", "archivo": "silla-aike-gris", "muestra": "img/telas/tela-gris-1032.jpg" }
+            { "nombre": "Beige 1029", "fotos": ["silla-aike", "silla-aike-beige-3"], "muestra": "img/telas/tela-beige-1029.jpg" },
+            { "nombre": "Klee Gray 1032", "fotos": ["silla-aike-2", "silla-aike-gris-3", "silla-aike-3"], "muestra": "img/telas/tela-gris-1032.jpg" }
         ],
         "specs": [
             [

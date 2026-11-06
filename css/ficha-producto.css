@@ -299,11 +299,20 @@
     background-color: #f6f1ea;
 }
 
+.combina-foto {
+    display: block;
+    width: 56px;
+    height: 56px;
+    flex-shrink: 0;
+    overflow: hidden;
+    background-color: #f1ebe4;
+}
+
 .combina img {
+    display: block;
     width: 56px;
     height: 56px;
     object-fit: cover;
-    background-color: #f1ebe4;
 }
 
 .boton-consulta {
