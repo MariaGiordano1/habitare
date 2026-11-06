@@ -66,6 +66,10 @@ function filtrar(categoria, conAnimacion) {
         }
     });
     panelAbierto(false);
+    // el filtro queda anotado en la dirección (catalogo.html?categoria=mesas):
+    // así, al volver atrás desde una ficha, la página vuelve con el mismo filtro
+    const direccion = categoria === "todos" ? window.location.pathname : "?categoria=" + categoria;
+    history.replaceState(null, "", direccion);
     if (categoria === categoriaActual) return;
     categoriaActual = categoria;
 
