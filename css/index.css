@@ -433,7 +433,7 @@
 
     /* en celular puede ocupar más de una línea y se lee más grande */
     .marca {
-        font-size: 16px;
+        font-size: 20px;
         white-space: normal;
         line-height: 1.5;
     }
