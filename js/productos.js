@@ -3,7 +3,7 @@
 const productos = [
     {
         "id": "mesa-stella",
-        "combina": "silla-allure",
+        "combina": ["silla-allure", "silla-elise", "silla-gisele"],
         "categoria": "mesas",
         "etiqueta": "Mesas",
         "nombre": "Mesa Stella",
@@ -62,7 +62,7 @@ const productos = [
     },
     {
         "id": "mesa-stella-drink",
-        "combina": "poltrona-gisele",
+        "combina": ["poltrona-gisele"],
         "categoria": "mesas",
         "etiqueta": "Mesas",
         "nombre": "Mesa Stella Drink",
@@ -88,7 +88,7 @@ const productos = [
     },
     {
         "id": "mesa-giulia",
-        "combina": "silla-elise",
+        "combina": ["silla-elise", "silla-sophia", "silla-gisele"],
         "categoria": "mesas",
         "etiqueta": "Mesas",
         "nombre": "Mesa Giulia",
@@ -114,7 +114,7 @@ const productos = [
     },
     {
         "id": "mesa-ornella",
-        "combina": "silla-sophia",
+        "combina": ["silla-sophia", "silla-jolie", "silla-gisele", "silla-margot"],
         "categoria": "mesas",
         "etiqueta": "Mesas",
         "nombre": "Mesa Ornella",
@@ -140,7 +140,7 @@ const productos = [
     },
     {
         "id": "mesa-ornella-polimero",
-        "combina": "silla-sophia",
+        "combina": ["silla-sophia", "silla-gisele", "silla-jolie"],
         "categoria": "mesas",
         "etiqueta": "Mesas",
         "nombre": "Mesa Ornella polímero",
@@ -166,7 +166,7 @@ const productos = [
     },
     {
         "id": "mesa-folha",
-        "combina": "silla-sophia",
+        "combina": ["silla-sophia", "silla-gisele", "silla-margot"],
         "categoria": "mesas",
         "etiqueta": "Mesas",
         "nombre": "Mesa Folha",
@@ -192,7 +192,7 @@ const productos = [
     },
     {
         "id": "mesa-agora-almendra",
-        "combina": "silla-sophia",
+        "combina": ["silla-sophia", "silla-elise", "silla-jolie", "silla-aike", "silla-margot"],
         "categoria": "mesas",
         "etiqueta": "Mesas",
         "nombre": "Mesa Ágora almendra",
@@ -218,7 +218,7 @@ const productos = [
     },
     {
         "id": "mesa-agora-ebano",
-        "combina": "silla-jolie",
+        "combina": ["silla-jolie", "silla-gisele", "silla-margot"],
         "categoria": "mesas",
         "etiqueta": "Mesas",
         "nombre": "Mesa Ágora ébano",
@@ -244,8 +244,8 @@ const productos = [
     },
     {
         "id": "mesa-adriana-slim",
+        "combina": ["silla-sophia", "silla-aike"],
         "oculto": true,
-        "combina": "silla-sophia",
         "categoria": "mesas",
         "etiqueta": "Mesas",
         "nombre": "Mesa Adriana Slim",
@@ -271,7 +271,7 @@ const productos = [
     },
     {
         "id": "mesa-allegra-almendra",
-        "combina": "silla-gisele",
+        "combina": ["silla-gisele"],
         "categoria": "mesas",
         "etiqueta": "Mesas",
         "nombre": "Mesa Allegra almendra",
@@ -297,7 +297,7 @@ const productos = [
     },
     {
         "id": "mesa-allegra-ebano",
-        "combina": "silla-gisele",
+        "combina": ["silla-gisele", "silla-jolie", "silla-sophia"],
         "categoria": "mesas",
         "etiqueta": "Mesas",
         "nombre": "Mesa Allegra ébano",
@@ -356,7 +356,7 @@ const productos = [
     },
     {
         "id": "mesa-adriana",
-        "combina": "silla-aike",
+        "combina": ["silla-aike", "silla-sophia", "silla-jolie", "silla-elise"],
         "categoria": "mesas",
         "etiqueta": "Mesas",
         "nombre": "Mesa Adriana",
@@ -382,8 +382,8 @@ const productos = [
     },
     {
         "id": "mesa-adriana-vidrio-titanium",
+        "combina": ["silla-jolie"],
         "oculto": true,
-        "combina": "silla-jolie",
         "categoria": "mesas",
         "etiqueta": "Mesas",
         "nombre": "Mesa Adriana vidrio titanium",
@@ -667,7 +667,7 @@ const productos = [
     },
     {
         "id": "poltrona-nest",
-        "combina": "puff-nest",
+        "combina": ["puff-nest"],
         "categoria": "poltronas",
         "etiqueta": "Poltronas",
         "nombre": "Poltrona Nest",
@@ -768,6 +768,7 @@ const productos = [
     },
     {
         "id": "mesa-de-centro-y-puff-harmonie",
+        "combina": ["poltrona-dolphin-giratoria", "poltrona-bubble-con-reposapies"],
         "categoria": "complementos",
         "etiqueta": "Complementos",
         "nombre": "Mesa de centro y puff Harmonie",
@@ -793,6 +794,7 @@ const productos = [
     },
     {
         "id": "mesitas-laterales-minion",
+        "combina": ["poltrona-bubble-con-reposapies", "poltrona-dolphin-giratoria"],
         "categoria": "complementos",
         "etiqueta": "Complementos",
         "nombre": "Mesitas laterales Minion",

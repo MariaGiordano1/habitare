@@ -207,19 +207,25 @@ function mostrarMedidas(spec) {
     contenedor.hidden = false;
 }
 
-// "Combina con": la silla de cada mesa (según la lista de precios) y, al revés,
-// las mesas de cada silla. Arma un enlace por cada producto que combina.
+// "Combina con": los productos que se llevan bien con este. Cada producto trae una lista
+// (campo `combina` en productos.js) y además aparecen los que lo nombran a él en su lista.
 function mostrarCombinaciones() {
-    let otros = [];
-    if (producto.combina) {
-        otros = productos.filter(function (p) {
-            return p.id === producto.combina;
-        });
-    } else {
-        otros = productos.filter(function (p) {
-            return p.combina === producto.id && !p.oculto;
-        });
+    function listaDe(p) {
+        return [].concat(p.combina || []);
     }
+    const ids = listaDe(producto);
+    productos.forEach(function (p) {
+        if (listaDe(p).indexOf(producto.id) !== -1 && ids.indexOf(p.id) === -1) ids.push(p.id);
+    });
+    const otros = ids
+        .map(function (id) {
+            return productos.find(function (p) {
+                return p.id === id;
+            });
+        })
+        .filter(function (p) {
+            return p && !p.oculto;
+        });
     if (otros.length === 0) return;
     const lista = document.getElementById("producto-combina-lista");
     otros.forEach(function (otro) {
