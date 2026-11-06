@@ -325,6 +325,15 @@
     /* miniaturas debajo de la foto principal */
     .ficha-galeria {
         flex-direction: column;
+        align-items: stretch;
+    }
+
+    /* foto siempre cuadrada, sin depender de cómo el navegador reparte el alto */
+    .foto-principal {
+        flex: none;
+        width: 100%;
+        height: auto;
+        aspect-ratio: 1 / 1;
     }
 
     .miniaturas {
