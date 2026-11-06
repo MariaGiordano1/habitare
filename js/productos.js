@@ -547,7 +547,8 @@ const productos = [
         "nombre": "Silla Margot",
         "descripcion": "Es una silla extremadamente elegante. El diseño y la calidad reflejan el distinguido diseño italiano. La reedición de un clásico.",
         "colores": [
-            { "nombre": "Beige 1029", "archivo": "silla-margot", "muestra": "img/telas/tela-beige-1029.jpg" }
+            { "nombre": "Beige 1029", "archivo": "silla-margot", "muestra": "img/telas/tela-beige-1029.jpg" },
+            { "nombre": "Klee Gray 1032", "fotos": ["silla-margot-gris"], "muestra": "img/telas/tela-gris-1032.jpg" }
         ],
         "specs": [
             [
