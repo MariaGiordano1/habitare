@@ -218,13 +218,9 @@
     text-align: center;
 }
 
-.distribuidor .etiqueta {
-    font-size: 22px;
-    color: rgba(112, 87, 57, 0.79);
-}
-
 .marca {
-    font-size: 52px;
+    font-size: clamp(10px, 2.55vw, 34px);
+    white-space: nowrap;
     letter-spacing: 0.08em;
     text-transform: uppercase;
     line-height: 1.12;
@@ -433,14 +429,6 @@
 
     .distribuidor {
         padding: 48px 24px;
-    }
-
-    .distribuidor .etiqueta {
-        font-size: 18px;
-    }
-
-    .marca {
-        font-size: 36px;
     }
 
     .categorias {
