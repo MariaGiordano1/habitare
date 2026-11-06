@@ -83,6 +83,18 @@ form {
     gap: 18px;
 }
 
+/* el campo "rubro" aparece con un fundido suave */
+.campo-rubro:not([hidden]) {
+    animation: aparece 0.35s ease;
+}
+
+@keyframes aparece {
+    from {
+        opacity: 0;
+        transform: translateY(-6px);
+    }
+}
+
 input[type="text"],
 input[type="email"],
 input[type="tel"],
