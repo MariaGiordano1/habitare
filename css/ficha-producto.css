@@ -15,13 +15,63 @@
 }
 
 /* todas las fotos principales tienen el mismo tamaño */
-.foto-principal {
+.foto-marco {
+    position: relative;
     flex: 1;
     min-width: 0;
+    touch-action: pan-y; /* el scroll vertical sigue andando; el de costado lo maneja el deslizar */
+    user-select: none;
+}
+
+.foto-principal {
+    display: block;
+    width: 100%;
     aspect-ratio: 1 / 1;
     object-fit: cover;
     background-color: #f1ebe4;
     transition: opacity 0.35s ease;
+}
+
+/* flechas para pasar de foto (solo en pantalla de computadora) */
+.foto-flecha {
+    position: absolute;
+    top: 50%;
+    display: none;
+    justify-content: center;
+    align-items: center;
+    width: 48px;
+    height: 48px;
+    padding: 0;
+    border: 0;
+    border-radius: 50%;
+    background-color: rgba(255, 253, 252, 0.85);
+    color: var(--brown);
+    cursor: pointer;
+    transform: translateY(-50%);
+    transition: background-color 0.25s ease, opacity 0.25s ease;
+}
+
+.foto-flecha:hover {
+    background-color: var(--soft-white);
+}
+
+.foto-flecha-anterior {
+    left: 16px;
+}
+
+.foto-flecha-siguiente {
+    right: 16px;
+}
+
+@media (min-width: 1200px) {
+    .foto-flecha {
+        display: flex;
+    }
+
+    /* con una sola foto no hacen falta */
+    .foto-marco.sin-flechas .foto-flecha {
+        display: none;
+    }
 }
 
 /* fundido al cambiar de foto */
@@ -329,8 +379,12 @@
     }
 
     /* foto siempre cuadrada, sin depender de cómo el navegador reparte el alto */
-    .foto-principal {
+    .foto-marco {
         flex: none;
+        width: 100%;
+    }
+
+    .foto-principal {
         width: 100%;
         height: auto;
         aspect-ratio: 1 / 1;

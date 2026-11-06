@@ -58,6 +58,52 @@ if (producto) {
         });
     }
 
+    // ---- Pasar de foto: flechas (computadora) y deslizar con el dedo o el mouse ----
+    const marco = document.getElementById("foto-marco");
+
+    function irA(paso) {
+        const botones = Array.from(miniaturas.querySelectorAll("button"));
+        if (botones.length < 2) return;
+        let actual = botones.findIndex(function (b) {
+            return b.classList.contains("activo");
+        });
+        if (actual < 0) actual = 0;
+        botones[(actual + paso + botones.length) % botones.length].click();
+    }
+
+    document.getElementById("foto-anterior").addEventListener("click", function () {
+        irA(-1);
+    });
+    document.getElementById("foto-siguiente").addEventListener("click", function () {
+        irA(1);
+    });
+
+    // las flechas se esconden si quedó una sola foto
+    new MutationObserver(function () {
+        marco.classList.toggle("sin-flechas", miniaturas.querySelectorAll("button").length < 2);
+    }).observe(miniaturas, { childList: true });
+
+    let inicioX = null;
+    let inicioY = null;
+    marco.addEventListener("pointerdown", function (evento) {
+        if (evento.target.closest(".foto-flecha")) return;
+        inicioX = evento.clientX;
+        inicioY = evento.clientY;
+    });
+    marco.addEventListener("pointerup", function (evento) {
+        if (inicioX === null) return;
+        const dx = evento.clientX - inicioX;
+        const dy = evento.clientY - inicioY;
+        inicioX = null;
+        // un deslizamiento de costado, no un scroll vertical ni un toque
+        if (Math.abs(dx) > 40 && Math.abs(dx) > Math.abs(dy)) {
+            irA(dx < 0 ? 1 : -1);
+        }
+    });
+    marco.addEventListener("pointercancel", function () {
+        inicioX = null;
+    });
+
     // Colores: solo las sillas con varios colores (producto.colores).
     const contenedorColores = document.getElementById("producto-colores");
     if (producto.colores) {
