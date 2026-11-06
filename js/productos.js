@@ -143,12 +143,13 @@ const productos = [
         "combina": ["silla-sophia", "silla-gisele", "silla-jolie"],
         "categoria": "mesas",
         "etiqueta": "Mesas",
-        "nombre": "Mesa Ornella polímero",
+        "nombre": "Mesa Ornella PP",
+        "subtitulo": "imitación mármol",
         "descripcion": "Una verdadera obra de arte que invita a la convivencia, aporta elegancia y sofisticación.",
         "specs": [
             [
                 "Terminación de la mesa",
-                "Placa de Polímero Nero Black o Rochedo"
+                "Placa de PP Nero Black o Rochedo"
             ],
             [
                 "Medidas (m)",

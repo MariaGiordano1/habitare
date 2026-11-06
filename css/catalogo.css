@@ -93,6 +93,16 @@
     line-height: 1.2;
 }
 
+/* aclaración chiquita al lado del nombre (ej. "imitación mármol") */
+.tarjeta h2 small {
+    font-family: "Poppins", sans-serif;
+    font-size: 13px;
+    font-weight: 400;
+    letter-spacing: 0.02em;
+    color: var(--mostaza);
+    white-space: nowrap;
+}
+
 /* la foto es un enlace a la ficha */
 .foto-link {
     display: block;

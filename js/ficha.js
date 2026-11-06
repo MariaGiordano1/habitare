@@ -144,7 +144,14 @@ if (producto) {
     miga.textContent = "\u2190 Volver a " + producto.etiqueta;
     miga.href = "catalogo.html?categoria=" + producto.categoria;
     document.getElementById("migas").hidden = false;
-    document.getElementById("producto-nombre").textContent = producto.nombre;
+    const titulo = document.getElementById("producto-nombre");
+    titulo.textContent = producto.nombre;
+    // aclaración chiquita al lado del nombre (campo "subtitulo", ej. imitación mármol)
+    if (producto.subtitulo) {
+        const chico = document.createElement("small");
+        chico.textContent = producto.subtitulo;
+        titulo.append(" ", chico);
+    }
     // el botón lleva al formulario con el producto ya nombrado en el mensaje
     document.getElementById("boton-consulta").href = "contacto.html?producto=" + encodeURIComponent(producto.nombre);
     document.getElementById("producto-descripcion").textContent = producto.descripcion;
