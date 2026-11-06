@@ -74,7 +74,7 @@ const productos = [
             ],
             [
                 "Medidas (m)",
-                "1,35 x 1,15, altura 0,65 (5 personas)"
+                "1,35 x 1,15, altura 0,69 (4 personas)"
             ],
             [
                 "Terminación de la base",
@@ -100,7 +100,7 @@ const productos = [
             ],
             [
                 "Medidas (m)",
-                "1,80 x 1,00 (6 personas)"
+                "1,80 x 1,10 (6 personas)"
             ],
             [
                 "Terminación de las patas",
@@ -126,7 +126,7 @@ const productos = [
             ],
             [
                 "Medidas (m)",
-                "2,00 x 1,10 (8 personas) y 2,50 x 1,20 (8-10 personas)"
+                "2,00 x 1,10 (8 personas) y 2,50 x 1,20 (8 personas)"
             ],
             [
                 "Terminación de las patas",
@@ -152,7 +152,7 @@ const productos = [
             ],
             [
                 "Medidas (m)",
-                "2,00 x 1,10 (8 personas) y 2,50 x 1,20 (8-10 personas)"
+                "2,00 x 1,10 (8 personas) y 2,50 x 1,20 (8 personas)"
             ],
             [
                 "Terminación de las patas",
@@ -191,50 +191,28 @@ const productos = [
         ]
     },
     {
-        "id": "mesa-agora-almendra",
-        "combina": ["silla-sophia", "silla-elise", "silla-jolie", "silla-aike", "silla-margot"],
+        "id": "mesa-agora",
+        "combina": ["silla-sophia", "silla-elise", "silla-jolie", "silla-aike", "silla-margot", "silla-gisele"],
         "categoria": "mesas",
         "etiqueta": "Mesas",
-        "nombre": "Mesa Ágora almendra",
+        "nombre": "Mesa Ágora",
         "descripcion": "Nuevo estándar del lujo contemporáneo: presencia escultural para espacios que hablan de éxito y serenidad.",
+        "colores": [
+            { "nombre": "Almendra", "archivo": "mesa-agora-almendra", "fondo": "#D8C6AA" },
+            { "nombre": "Ébano", "archivo": "mesa-agora-ebano", "fondo": "#2E2622" }
+        ],
         "specs": [
             [
                 "Terminación de la mesa",
-                "Laca antimancha - Tono almendra"
+                "Laca antimancha - Tono almendra o ébano"
             ],
             [
                 "Medidas (m)",
-                "1,60 x 1,60 (8 personas)"
+                "1,60 x 1,60 (6 personas)"
             ],
             [
                 "Terminación de la base",
-                "Laca tono almendra"
-            ],
-            [
-                "Estructura de la base",
-                "Multilaminado enchapado Roble"
-            ]
-        ]
-    },
-    {
-        "id": "mesa-agora-ebano",
-        "combina": ["silla-jolie", "silla-gisele", "silla-margot"],
-        "categoria": "mesas",
-        "etiqueta": "Mesas",
-        "nombre": "Mesa Ágora ébano",
-        "descripcion": "El equilibrio entre la distinción escultural y la cordialidad de un encuentro genuino.",
-        "specs": [
-            [
-                "Terminación de la mesa",
-                "Laca antimancha - Tono ébano"
-            ],
-            [
-                "Medidas (m)",
-                "1,60 x 1,60 (8 personas)"
-            ],
-            [
-                "Terminación de la base",
-                "Laca tono ébano"
+                "Laca tono almendra o ébano"
             ],
             [
                 "Estructura de la base",
@@ -257,7 +235,7 @@ const productos = [
             ],
             [
                 "Medidas (m)",
-                "2,20 x 1,10 y 2,50 x 1,20 (8-10 personas)"
+                "2,20 x 1,10 (8 personas) y 2,50 x 1,20 (8 personas)"
             ],
             [
                 "Terminación de la base",
@@ -270,50 +248,28 @@ const productos = [
         ]
     },
     {
-        "id": "mesa-allegra-almendra",
-        "combina": ["silla-gisele"],
-        "categoria": "mesas",
-        "etiqueta": "Mesas",
-        "nombre": "Mesa Allegra almendra",
-        "descripcion": "El mayor exponente del diseño orgánico minimalista, por su geometría de notable belleza, aporta ligereza y refinamiento.",
-        "specs": [
-            [
-                "Terminación de la mesa",
-                "Laca antimancha - Tono almendra"
-            ],
-            [
-                "Medidas (m)",
-                "2,50 x 1,30 (8-9 personas)"
-            ],
-            [
-                "Terminación de la base",
-                "Gris Titanium - Almendra - Ébano"
-            ],
-            [
-                "Estructura de la base",
-                "Multilaminado enchapado Roble"
-            ]
-        ]
-    },
-    {
-        "id": "mesa-allegra-ebano",
+        "id": "mesa-allegra",
         "combina": ["silla-gisele", "silla-jolie", "silla-sophia"],
         "categoria": "mesas",
         "etiqueta": "Mesas",
-        "nombre": "Mesa Allegra ébano",
+        "nombre": "Mesa Allegra",
         "descripcion": "El mayor exponente del diseño orgánico minimalista, por su geometría de notable belleza, aporta ligereza y refinamiento.",
+        "colores": [
+            { "nombre": "Almendra", "archivo": "mesa-allegra-almendra", "fondo": "#D8C6AA" },
+            { "nombre": "Ébano", "archivo": "mesa-allegra-ebano", "fondo": "#2E2622" }
+        ],
         "specs": [
             [
                 "Terminación de la mesa",
-                "Laca antimancha - Tono ébano"
+                "Laca antimancha - Tono almendra o ébano"
             ],
             [
                 "Medidas (m)",
-                "2,50 x 1,30 (8-9 personas)"
+                "2,50 x 1,30 (8 personas)"
             ],
             [
                 "Terminación de la base",
-                "Laca tono ébano"
+                "Laca tono almendra o ébano"
             ],
             [
                 "Estructura de la base",
@@ -334,7 +290,7 @@ const productos = [
             ],
             [
                 "Medidas (m)",
-                "2,50 x 1,30 (8-9 personas)"
+                "2,50 x 1,30 (8 personas)"
             ],
             [
                 "Terminación de la base",
@@ -368,7 +324,7 @@ const productos = [
             ],
             [
                 "Medidas (m)",
-                "3,00 x 1,30 (10 personas) y 3,60 x 1,35 (14 personas)"
+                "3,00 x 1,30 (10-12 personas) y 3,60 x 1,35 (12-14 personas)"
             ],
             [
                 "Terminación de las bases",

@@ -108,7 +108,7 @@ if (producto) {
         inicioX = null;
     });
 
-    // Colores: solo las sillas con varios colores (producto.colores).
+    // Colores: productos con varios colores (producto.colores).
     const contenedorColores = document.getElementById("producto-colores");
     if (producto.colores) {
         contenedorColores.hidden = false;
@@ -119,7 +119,9 @@ if (producto) {
             boton.title = color.nombre;
             boton.setAttribute("aria-label", "Color " + color.nombre);
             // La muestra es la foto de la tela del catálogo.
-            boton.style.backgroundImage = "url(" + color.muestra + ")";
+            // (en las mesas la muestra es un color liso: "fondo")
+            if (color.fondo) boton.style.backgroundColor = color.fondo;
+            else boton.style.backgroundImage = "url(" + color.muestra + ")";
             boton.addEventListener("click", function () {
                 contenedorColores.querySelectorAll("button").forEach(function (b) {
                     b.classList.remove("activo");
@@ -234,7 +236,9 @@ function mostrarCombinaciones() {
         const foto = document.createElement("img");
         const nombre = document.createElement("span");
         enlace.href = "ficha-producto.html?id=" + otro.id;
-        foto.src = "img/productos/" + otro.id + ".jpg";
+        // si tiene varios colores y no hay foto con su nombre, usa la del primer color
+        const base = otro.colores && otro.colores[0].fondo ? otro.colores[0].archivo : otro.id;
+        foto.src = "img/productos/" + base + ".jpg";
         foto.alt = "";
         nombre.textContent = otro.nombre;
         enlace.append(foto, nombre);
