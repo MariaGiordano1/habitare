@@ -40,7 +40,7 @@ if (producto) {
         } else {
             imgPrincipal.src = "img/productos/" + base + ".jpg";
         }
-        ["", "-2", "-3"].forEach(function (sufijo) {
+        ["", "-2", "-3", "-4"].forEach(function (sufijo) {
             if (fotosOcultas.indexOf(base + sufijo) !== -1) return;
             const boton = document.createElement("button");
             const foto = document.createElement("img");

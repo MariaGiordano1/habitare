@@ -369,6 +369,9 @@ const productos = [
         "etiqueta": "Sillas",
         "nombre": "Silla Allure",
         "descripcion": "Con un lenguaje contemporáneo y minimalista, pero a la vez elegante y sensual.",
+        "colores": [
+            { "nombre": "Beige 1029", "archivo": "silla-allure", "muestra": "img/telas/tela-beige-1029.jpg" }
+        ],
         "specs": [
             [
                 "Tejido - Material",
@@ -394,6 +397,9 @@ const productos = [
         "etiqueta": "Sillas",
         "nombre": "Silla Elise",
         "descripcion": "Combina comodidad, solidez y elegancia atemporal. Notable comodidad por su respaldo ergonómico en arco.",
+        "colores": [
+            { "nombre": "Beige 1029", "archivo": "silla-elise", "muestra": "img/telas/tela-beige-1029.jpg" }
+        ],
         "specs": [
             [
                 "Tejido - Material",
@@ -448,6 +454,9 @@ const productos = [
         "etiqueta": "Sillas",
         "nombre": "Silla Jolie",
         "descripcion": "Creada para ser la protagonista del salón: asiento y respaldo acolchados, combina comodidad y elegancia.",
+        "colores": [
+            { "nombre": "Almendra · Beige 1029", "archivo": "silla-jolie", "muestra": "img/telas/tela-beige-1029.jpg" }
+        ],
         "specs": [
             [
                 "Tejido - Material",
@@ -473,6 +482,9 @@ const productos = [
         "etiqueta": "Sillas",
         "nombre": "Silla Gisele",
         "descripcion": "Una silla elegante por sus líneas curvas, esbeltas patas redondeadas y respaldo circular.",
+        "colores": [
+            { "nombre": "Ébano · Beige 1029", "archivo": "silla-gisele", "muestra": "img/telas/tela-beige-1029.jpg" }
+        ],
         "specs": [
             [
                 "Tejido - Material",
@@ -498,6 +510,10 @@ const productos = [
         "etiqueta": "Sillas",
         "nombre": "Silla Aike",
         "descripcion": "Líneas refinadas, formas suaves con bordes redondeados para llevar una expresión de comodidad y belleza.",
+        "colores": [
+            { "nombre": "Beige 1029", "archivo": "silla-aike-beige", "muestra": "img/telas/tela-beige-1029.jpg" },
+            { "nombre": "Klee Gray 1032", "archivo": "silla-aike-gris", "muestra": "img/telas/tela-gris-1032.jpg" }
+        ],
         "specs": [
             [
                 "Tejido - Material",
@@ -523,6 +539,9 @@ const productos = [
         "etiqueta": "Sillas",
         "nombre": "Silla Margot",
         "descripcion": "Es una silla extremadamente elegante. El diseño y la calidad reflejan el distinguido diseño italiano. La reedición de un clásico.",
+        "colores": [
+            { "nombre": "Beige 1029", "archivo": "silla-margot", "muestra": "img/telas/tela-beige-1029.jpg" }
+        ],
         "specs": [
             [
                 "Tejido - Material",
