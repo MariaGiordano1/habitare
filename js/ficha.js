@@ -143,6 +143,8 @@ if (producto) {
     miga.href = "catalogo.html?categoria=" + producto.categoria;
     document.getElementById("migas").hidden = false;
     document.getElementById("producto-nombre").textContent = producto.nombre;
+    // el botón lleva al formulario con el producto ya nombrado en el mensaje
+    document.getElementById("boton-consulta").href = "contacto.html?producto=" + encodeURIComponent(producto.nombre);
     document.getElementById("producto-descripcion").textContent = producto.descripcion;
 
     const lista = document.getElementById("producto-specs");

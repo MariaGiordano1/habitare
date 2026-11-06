@@ -20,3 +20,10 @@ document.querySelector("form").addEventListener("submit", function (evento) {
     evento.preventDefault();
     window.location.href = "gracias.html";
 });
+
+// Si llegás desde la ficha de un producto (contacto.html?producto=Mesa%20Stella),
+// el mensaje ya viene escrito.
+const productoConsulta = new URLSearchParams(window.location.search).get("producto");
+if (productoConsulta) {
+    document.getElementById("mensaje").value = "¡Hola! Quiero más información sobre " + productoConsulta.slice(0, 80);
+}
