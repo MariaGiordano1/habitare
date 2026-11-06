@@ -288,7 +288,12 @@
     display: flex;
     align-items: center;
     gap: 14px;
-    padding: 8px 20px 8px 8px;
+    box-sizing: border-box;
+    /* todas las tarjetas del mismo tamaño */
+    width: 210px;
+    height: 74px;
+    padding: 8px 14px 8px 8px;
+    line-height: 1.25;
     border: 1px solid rgba(111, 84, 57, 0.3);
     font-size: 14px;
     transition: border-color 0.3s ease, background-color 0.3s ease;

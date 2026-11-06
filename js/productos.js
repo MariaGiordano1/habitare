@@ -89,7 +89,7 @@ const productos = [
     {
         "id": "mesa-giulia",
         "combina": ["silla-elise", "silla-sophia", "silla-gisele"],
-        "zoomMiniatura": 1.5,
+        "zoomMiniatura": 2,
         "categoria": "mesas",
         "etiqueta": "Mesas",
         "nombre": "Mesa Giulia",
@@ -315,7 +315,7 @@ const productos = [
     {
         "id": "mesa-adriana",
         "combina": ["silla-aike", "silla-sophia", "silla-jolie", "silla-elise"],
-        "zoomMiniatura": 1.5,
+        "zoomMiniatura": 2,
         "categoria": "mesas",
         "etiqueta": "Mesas",
         "nombre": "Mesa Adriana",
