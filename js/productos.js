@@ -430,7 +430,7 @@ const productos = [
         "descripcion": "Sus líneas circulares, armoniosas y envolventes, consiguen un lenguaje contemporáneo, un diseño sofisticado y elegante.",
         "colores": [
             { "nombre": "Beige 1029", "archivo": "silla-sophia-beige", "muestra": "img/telas/tela-beige-1029.jpg" },
-            { "nombre": "Klee Gray 1032", "archivo": "silla-sophia-gris", "muestra": "img/telas/tela-gris-1032.jpg" }
+            { "nombre": "Klee Gray 1032", "fotos": ["silla-sophia-gris", "silla-sophia-gris-2", "silla-sophia-gris-4"], "muestra": "img/telas/tela-gris-1032.jpg" }
         ],
         "specs": [
             [
@@ -547,8 +547,7 @@ const productos = [
         "nombre": "Silla Margot",
         "descripcion": "Es una silla extremadamente elegante. El diseño y la calidad reflejan el distinguido diseño italiano. La reedición de un clásico.",
         "colores": [
-            { "nombre": "Beige 1029", "archivo": "silla-margot", "muestra": "img/telas/tela-beige-1029.jpg" },
-            { "nombre": "Klee Gray 1032", "fotos": ["silla-margot-gris"], "muestra": "img/telas/tela-gris-1032.jpg" }
+            { "nombre": "Beige 1029", "archivo": "silla-margot", "muestra": "img/telas/tela-beige-1029.jpg" }
         ],
         "specs": [
             [
