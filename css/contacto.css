@@ -37,7 +37,8 @@
 }
 
 .encabezado,
-form {
+form,
+.boton-gracias {
     width: 100%;
     max-width: 560px;
 }
@@ -182,7 +183,11 @@ input[type="checkbox"]:focus-visible {
     outline-offset: 2px;
 }
 
-form button {
+form button,
+.boton-gracias {
+    display: flex;
+    align-items: center;
+    justify-content: center;
     width: 100%;
     height: 54px;
     border: 0;
@@ -202,7 +207,8 @@ form button {
     transition: background-size 0.3s ease, color 0.3s ease;
 }
 
-form button:hover {
+form button:hover,
+.boton-gracias:hover {
     background-size: 100% 100%;
     color: var(--soft-white);
 }

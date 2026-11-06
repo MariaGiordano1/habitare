@@ -13,3 +13,10 @@ tipoNegocio.addEventListener("change", function () {
         inputRubro.value = "";
     }
 });
+
+// Al enviar (con todos los campos completos) se pasa a la página de agradecimiento.
+// Esa página es la que se usa para medir la conversión en Meta.
+document.querySelector("form").addEventListener("submit", function (evento) {
+    evento.preventDefault();
+    window.location.href = "gracias.html";
+});
