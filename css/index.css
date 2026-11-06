@@ -228,7 +228,8 @@
 
 /* debajo de la línea principal: centrada y más chica */
 .marca-mayorista {
-    font-size: clamp(10px, 1.8vw, 24px);
+    font-size: clamp(11px, 2.1vw, 28px);
+    color: var(--mostaza);
     letter-spacing: 0.08em;
     text-transform: uppercase;
     line-height: 1.2;
@@ -447,7 +448,7 @@
     }
 
     .marca-mayorista {
-        font-size: 15px;
+        font-size: 17px;
     }
 
     .categorias {
