@@ -226,8 +226,12 @@
     line-height: 1.12;
 }
 
-.marca-nombre {
-    font-weight: 600;
+/* debajo de la línea principal: centrada y más chica */
+.marca-mayorista {
+    font-size: clamp(10px, 1.8vw, 24px);
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+    line-height: 1.2;
 }
 
 /* 6 columnas: cada tarjeta ocupa 2 */
@@ -440,6 +444,10 @@
         font-size: 20px;
         white-space: normal;
         line-height: 1.5;
+    }
+
+    .marca-mayorista {
+        font-size: 15px;
     }
 
     .categorias {
