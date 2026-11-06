@@ -36,6 +36,12 @@ const panel = document.getElementById("filtros");
 const fondo = document.getElementById("filtros-fondo");
 const botonAbrir = document.getElementById("filtro-abrir");
 const textoActual = document.getElementById("filtro-actual");
+const botonQuitar = document.getElementById("filtro-quitar");
+
+// la cruz saca el filtro directamente
+botonQuitar.addEventListener("click", function () {
+    filtrar("todos", true);
+});
 
 function panelAbierto(abrir) {
     panel.classList.toggle("abierto", abrir);
@@ -66,6 +72,7 @@ function filtrar(categoria, conAnimacion) {
         }
     });
     panelAbierto(false);
+    botonQuitar.hidden = categoria === "todos";
     // el filtro queda anotado en la dirección (catalogo.html?categoria=mesas):
     // así, al volver atrás desde una ficha, la página vuelve con el mismo filtro
     const direccion = categoria === "todos" ? window.location.pathname : "?categoria=" + categoria;

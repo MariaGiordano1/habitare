@@ -36,11 +36,14 @@
 
     <main>
 
-        <button class="filtro-abrir" id="filtro-abrir" aria-expanded="false" aria-controls="filtros">
-            <svg viewBox="0 0 24 24" width="20" height="20" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" aria-hidden="true"><path d="M4 7h16M7 12h10M10 17h4"/></svg>
-            <span>Filtro</span>
-            <span class="filtro-actual" id="filtro-actual"></span>
-        </button>
+        <div class="filtro-barra">
+            <button class="filtro-abrir" id="filtro-abrir" aria-expanded="false" aria-controls="filtros">
+                <svg viewBox="0 0 24 24" width="20" height="20" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" aria-hidden="true"><path d="M4 7h16M7 12h10M10 17h4"/></svg>
+                <span>Filtro</span>
+                <span class="filtro-actual" id="filtro-actual"></span>
+            </button>
+            <button class="filtro-quitar" id="filtro-quitar" aria-label="Quitar filtro" hidden><svg viewBox="0 0 24 24" width="20" height="20" fill="none" stroke="currentColor" stroke-width="1.2" stroke-linecap="round" aria-hidden="true"><path d="M5 5l14 14M19 5L5 19"/></svg></button>
+        </div>
 
         <div class="filtros-fondo" id="filtros-fondo"></div>
 

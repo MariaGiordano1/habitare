@@ -1,3 +1,31 @@
+/* ===== Volver (arriba de la ficha) ===== */
+.migas {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    gap: 10px;
+    padding: 28px 40px 0 40px;
+    font-size: 12px;
+    font-weight: 500;
+    letter-spacing: 0.14em;
+    text-transform: uppercase;
+    color: rgba(111, 84, 57, 0.6);
+}
+
+.migas[hidden] {
+    display: none;
+}
+
+.migas a {
+    color: var(--brown);
+    border-bottom: 1px solid transparent;
+    transition: border-color 0.25s ease;
+}
+
+.migas a:hover {
+    border-bottom-color: var(--brown);
+}
+
 .ficha {
     display: grid;
     grid-template-columns: 1fr 1fr;
@@ -369,7 +397,7 @@
     .ficha {
         grid-template-columns: 1fr;
         gap: 40px;
-        padding: 32px 40px 72px 40px;
+        padding: 24px 40px 72px 40px;
     }
 
     /* miniaturas debajo de la foto principal */
@@ -402,8 +430,16 @@
 
 /* ===== Celular ===== */
 @media (max-width: 809.98px) {
+    .migas {
+        padding: 20px 24px 0 24px;
+        gap: 8px;
+        font-size: 10px;
+        letter-spacing: 0.08em;
+        white-space: nowrap;
+    }
+
     .ficha {
-        padding: 24px 24px 64px 24px;
+        padding: 20px 24px 64px 24px;
         gap: 32px;
     }
 
@@ -431,5 +467,17 @@
 
     .medida-valor {
         font-size: 22px;
+    }
+}
+
+/* celulares muy angostos: los dos enlaces van uno debajo del otro, sin el punto */
+@media (max-width: 389.98px) {
+    .migas {
+        white-space: normal;
+        gap: 6px 16px;
+    }
+
+    .migas span {
+        display: none;
     }
 }

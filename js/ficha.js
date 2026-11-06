@@ -136,6 +136,12 @@ if (producto) {
     }
 
     document.getElementById("producto-categoria").textContent = producto.etiqueta;
+
+    // Volver: a la categoría de este producto o a todo el catálogo
+    const miga = document.getElementById("miga-categoria");
+    miga.textContent = "\u2190 Volver a " + producto.etiqueta;
+    miga.href = "catalogo.html?categoria=" + producto.categoria;
+    document.getElementById("migas").hidden = false;
     document.getElementById("producto-nombre").textContent = producto.nombre;
     document.getElementById("producto-descripcion").textContent = producto.descripcion;
 
