@@ -226,6 +226,10 @@
     line-height: 1.12;
 }
 
+.marca-nombre {
+    font-weight: 600;
+}
+
 /* 6 columnas: cada tarjeta ocupa 2 */
 .categorias {
     display: grid;
