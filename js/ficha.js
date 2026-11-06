@@ -28,6 +28,9 @@ if (producto) {
         }, 350);
     }
 
+    // Fotos que están en la carpeta pero no se muestran (para volver a mostrarla, sacala de la lista)
+    const fotosOcultas = ["mesa-stella-para-marmol-3", "banqueta-gisele-3"];
+
     // Muestra las fotos de un grupo: base.jpg, base-2.jpg, base-3.jpg.
     // Si alguna foto no existe, su miniatura se borra sola.
     function mostrarFotos(base, conFundido) {
@@ -38,6 +41,7 @@ if (producto) {
             imgPrincipal.src = "img/productos/" + base + ".jpg";
         }
         ["", "-2", "-3"].forEach(function (sufijo) {
+            if (fotosOcultas.indexOf(base + sufijo) !== -1) return;
             const boton = document.createElement("button");
             const foto = document.createElement("img");
             foto.src = "img/productos/" + base + sufijo + ".jpg";
