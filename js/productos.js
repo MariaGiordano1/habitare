@@ -606,7 +606,7 @@ const productos = [
         "descripcion": "Diseño refinado y fuerte personalidad. Con sus líneas depuradas, cómodo asiento y respaldo envolvente.",
         "colores": [
             { "nombre": "Almendra · Beige 1029", "fotos": ["banqueta-gisele", "banqueta-gisele-2", "banqueta-gisele-beige-3"], "muestra": "img/telas/tela-beige-1029.jpg" },
-            { "nombre": "Almendra · Klee Gray 1032", "fotos": ["banqueta-gisele-gris-3"], "muestra": "img/telas/tela-gris-1032.jpg" },
+            { "nombre": "Almendra · Klee Gray 1032", "fotos": ["banqueta-gisele-gris", "banqueta-gisele-gris-2", "banqueta-gisele-gris-3"], "muestra": "img/telas/tela-gris-1032.jpg" },
             { "nombre": "Ébano · Beige 1029", "muestra": "img/telas/tela-beige-1029.jpg" }
         ],
         "specs": [
