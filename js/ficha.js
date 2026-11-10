@@ -174,7 +174,8 @@ if (producto) {
             circulo.setAttribute("aria-label", "Color " + color.nombre);
             // La muestra es la foto de la tela del catálogo.
             // (en las mesas la muestra es un color liso: "fondo")
-            if (color.fondo) circulo.style.backgroundColor = color.fondo;
+            // ("fondo" puede ser un color liso o un degradé de dos colores, ej. tapa y base distintas)
+            if (color.fondo) circulo.style[color.fondo.indexOf("gradient") !== -1 ? "backgroundImage" : "backgroundColor"] = color.fondo;
             else circulo.style.backgroundImage = "url(" + color.muestra + ")";
             circulo.addEventListener("click", function () {
                 const primera = grupo.botones.find(function (b) {

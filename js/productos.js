@@ -291,7 +291,8 @@ const productos = [
         "descripcion": "El mayor exponente del diseño orgánico minimalista, por su geometría de notable belleza, aporta ligereza y refinamiento.",
         "colores": [
             { "nombre": "Almendra", "archivo": "mesa-allegra-almendra", "fondo": "#D8C6AA" },
-            { "nombre": "Ébano", "archivo": "mesa-allegra-ebano", "fondo": "#2E2622" }
+            { "nombre": "Tapa almendra · Base ébano", "fotos": [], "fondo": "linear-gradient(135deg, #D8C6AA 50%, #2E2622 50%)" },
+            { "nombre": "Ébano", "archivo": "mesa-allegra-ebano", "fondo": "#2E2622", "combina": ["silla-jolie|silla-jolie-ebano", "silla-gisele"] }
         ],
         "specs": [
             [
