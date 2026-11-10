@@ -89,7 +89,7 @@ const productos = [
     },
     {
         "id": "mesa-giulia",
-        "combina": ["silla-elise", "silla-sophia", "silla-gisele"],
+        "combina": ["silla-elise", "silla-sophia", "silla-gisele|silla-gisele-beige"],
         "zoomMiniatura": 2,
         "categoria": "mesas",
         "etiqueta": "Mesas",
@@ -116,7 +116,7 @@ const productos = [
     },
     {
         "id": "mesa-ornella",
-        "combina": ["silla-sophia", "silla-jolie", "silla-gisele", "silla-margot"],
+        "combina": ["silla-sophia", "silla-jolie", "silla-gisele|silla-gisele-beige", "silla-margot"],
         "categoria": "mesas",
         "etiqueta": "Mesas",
         "nombre": "Mesa Ornella",
@@ -142,7 +142,7 @@ const productos = [
     },
     {
         "id": "mesa-ornella-polimero",
-        "combina": ["silla-sophia", "silla-gisele", "silla-jolie"],
+        "combina": ["silla-sophia", "silla-gisele|silla-gisele-beige", "silla-jolie"],
         "categoria": "mesas",
         "etiqueta": "Mesas",
         "nombre": "Mesa Ornella PP",
@@ -169,7 +169,7 @@ const productos = [
     },
     {
         "id": "mesa-folha",
-        "combina": ["silla-sophia", "silla-gisele", "silla-margot"],
+        "combina": ["silla-sophia", "silla-gisele|silla-gisele-beige", "silla-margot"],
         "categoria": "mesas",
         "etiqueta": "Mesas",
         "nombre": "Mesa Folha",
@@ -195,7 +195,7 @@ const productos = [
     },
     {
         "id": "mesa-agora",
-        "combina": ["silla-sophia", "silla-elise", "silla-jolie", "silla-aike", "silla-margot", "silla-gisele"],
+        "combina": ["silla-sophia", "silla-elise", "silla-jolie", "silla-aike", "silla-margot", "silla-gisele|silla-gisele-beige"],
         "categoria": "mesas",
         "etiqueta": "Mesas",
         "nombre": "Mesa Ágora",
@@ -252,7 +252,7 @@ const productos = [
     },
     {
         "id": "mesa-allegra",
-        "combina": ["silla-gisele", "silla-jolie", "silla-sophia"],
+        "combina": ["silla-gisele|silla-gisele-beige", "silla-jolie", "silla-sophia"],
         "categoria": "mesas",
         "etiqueta": "Mesas",
         "nombre": "Mesa Allegra",
