@@ -229,8 +229,8 @@ const productos = [
         "nombre": "Mesa Ágora",
         "descripcion": "Nuevo estándar del lujo contemporáneo: presencia escultural para espacios que hablan de éxito y serenidad.",
         "colores": [
-            { "nombre": "Almendra", "archivo": "mesa-agora-almendra", "fondo": "#D8C6AA" },
-            { "nombre": "Ébano", "archivo": "mesa-agora-ebano", "fondo": "#2E2622" }
+            { "nombre": "Almendra", "archivo": "mesa-agora-almendra", "fondo": "#D8C6AA", "combina": ["silla-sophia", "silla-elise", "silla-jolie", "silla-aike", "silla-margot", "silla-gisele|silla-gisele-beige"] },
+            { "nombre": "Ébano", "archivo": "mesa-agora-ebano", "fondo": "#2E2622", "combina": ["silla-jolie|silla-jolie-ebano", "silla-gisele"] }
         ],
         "specs": [
             [
@@ -259,6 +259,10 @@ const productos = [
         "etiqueta": "Mesas",
         "nombre": "Mesa Adriana Slim",
         "descripcion": "Materiales y formas se fusionan en perfecta armonía, se adapta con versatilidad a diferentes espacios y gustos.",
+        "colores": [
+            { "nombre": "Base almendra", "fotos": [], "fondo": "#D8C6AA", "combina": ["silla-sophia", "silla-aike", "silla-elise"] },
+            { "nombre": "Base ébano", "fotos": [], "fondo": "#2E2622", "combina": ["silla-jolie|silla-jolie-ebano", "silla-gisele"] }
+        ],
         "specs": [
             [
                 "Terminación de la mesa",
@@ -349,6 +353,10 @@ const productos = [
         "etiqueta": "Mesas",
         "nombre": "Mesa Adriana",
         "descripcion": "Es la expresión estilística que combina la elegancia de la tradición, con la evolución formal del diseño moderno.",
+        "colores": [
+            { "nombre": "Base almendra", "archivo": "mesa-adriana", "fondo": "#D8C6AA", "combina": ["silla-aike", "silla-sophia", "silla-jolie", "silla-elise"] },
+            { "nombre": "Base ébano", "fotos": [], "fondo": "#2E2622", "combina": ["silla-jolie|silla-jolie-ebano", "silla-gisele"] }
+        ],
         "specs": [
             [
                 "Terminación de la mesa",
@@ -376,6 +384,10 @@ const productos = [
         "etiqueta": "Mesas",
         "nombre": "Mesa Adriana vidrio titanium",
         "descripcion": "Una verdadera obra de arte, su gran tamaño invita a la convivencia, aporta elegancia y sofisticación.",
+        "colores": [
+            { "nombre": "Base almendra", "fotos": [], "fondo": "#D8C6AA", "combina": ["silla-jolie"] },
+            { "nombre": "Base ébano", "fotos": [], "fondo": "#2E2622", "combina": ["silla-jolie|silla-jolie-ebano", "silla-gisele"] }
+        ],
         "specs": [
             [
                 "Terminación de la mesa",

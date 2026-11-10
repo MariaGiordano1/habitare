@@ -138,6 +138,7 @@ if (producto) {
     // Al elegir un color (o una miniatura) se marca el color y se ve la foto de esa variante.
     // Cada color puede traer "fotos" (lista de archivos) o "archivo" (grupo base, base-2...).
     // Si una variante todavía no tiene fotos, deja un cuadrado "Foto próximamente".
+    let combinaActual = null;
     const contenedorColores = document.getElementById("producto-colores");
     if (producto.colores) {
         contenedorColores.hidden = false;
@@ -161,6 +162,9 @@ if (producto) {
             etiquetaColor.textContent = "Color: " + grupo.color.nombre;
             if (rutaFoto) cambiarFoto(rutaFoto);
             else mostrarPendiente();
+            // si este color trae su propia lista "combina", se cambia con él
+            combinaActual = grupo.color.combina || null;
+            mostrarCombinaciones(combinaActual);
         }
 
         grupos.forEach(function (grupo) {
@@ -212,7 +216,11 @@ if (producto) {
         });
 
         // arranca en la primera variante que ya tiene fotos (sin fundido)
+        // (o en el color que pida la dirección, ej. ?id=mesa-agora&color=Ébano)
+        const colorPedido = new URLSearchParams(window.location.search).get("color");
         const inicial = grupos.find(function (g) {
+            return g.color.nombre === colorPedido;
+        }) || grupos.find(function (g) {
             return g.nombres.length > 0;
         }) || grupos[0];
         if (inicial.nombres.length > 0) imgPrincipal.src = ruta(inicial.nombres[0]);
@@ -269,7 +277,7 @@ if (producto) {
     itemStock.append(tituloStock, valorStock);
     lista.append(itemStock);
 
-    mostrarCombinaciones();
+    mostrarCombinaciones(combinaActual);
 } else {
     document.getElementById("producto-nombre").textContent = "Producto no encontrado";
     document.getElementById("producto-descripcion").innerHTML = 'Volvé al <a href="catalogo.html">catálogo</a> para elegir otro.';
@@ -302,23 +310,35 @@ function mostrarMedidas(spec) {
 
 // "Combina con": los productos que se llevan bien con este. Cada producto trae una lista
 // (campo `combina` en productos.js) y además aparecen los que lo nombran a él en su lista.
-function mostrarCombinaciones() {
+function mostrarCombinaciones(listaPropia) {
     // una entrada puede ser "id" o "id|foto" (para mostrar otra variante en la miniatura)
-    function listaDe(p) {
-        return [].concat(p.combina || []).map(function (e) {
+    function ids(lista) {
+        return [].concat(lista || []).map(function (e) {
             return e.split("|")[0];
         });
     }
+    // todo lo que nombra un producto: su lista general y la de cada color
+    function listaDe(p) {
+        let todo = ids(p.combina);
+        (p.colores || []).forEach(function (c) {
+            todo = todo.concat(ids(c.combina));
+        });
+        return todo;
+    }
+    // si el color elegido trae su lista, se usa esa; si no, la general
+    const propia = listaPropia || producto.combina;
     const fotos = {};
-    [].concat(producto.combina || []).forEach(function (e) {
+    [].concat(propia || []).forEach(function (e) {
         const partes = e.split("|");
         if (partes[1]) fotos[partes[0]] = partes[1];
     });
-    const ids = listaDe(producto);
+    const lista = document.getElementById("producto-combina-lista");
+    lista.innerHTML = "";
+    const ids2 = ids(propia);
     productos.forEach(function (p) {
-        if (listaDe(p).indexOf(producto.id) !== -1 && ids.indexOf(p.id) === -1) ids.push(p.id);
+        if (listaDe(p).indexOf(producto.id) !== -1 && ids2.indexOf(p.id) === -1 && !listaPropia) ids2.push(p.id);
     });
-    const otros = ids
+    const otros = ids2
         .map(function (id) {
             return productos.find(function (p) {
                 return p.id === id;
@@ -327,8 +347,8 @@ function mostrarCombinaciones() {
         .filter(function (p) {
             return p && !p.oculto;
         });
+    document.getElementById("producto-combina").hidden = otros.length === 0;
     if (otros.length === 0) return;
-    const lista = document.getElementById("producto-combina-lista");
     otros.forEach(function (otro) {
         const item = document.createElement("li");
         const enlace = document.createElement("a");
