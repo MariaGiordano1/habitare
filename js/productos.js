@@ -518,8 +518,8 @@ const productos = [
         "nombre": "Silla Aike",
         "descripcion": "Líneas refinadas, formas suaves con bordes redondeados para llevar una expresión de comodidad y belleza.",
         "colores": [
-            { "nombre": "Beige 1029", "fotos": ["silla-aike", "silla-aike-beige-2", "silla-aike-beige-3"], "muestra": "img/telas/tela-beige-1029.jpg" },
-            { "nombre": "Klee Gray 1032", "fotos": ["silla-aike-2", "silla-aike-gris-2", "silla-aike-gris-3"], "muestra": "img/telas/tela-gris-1032.jpg" }
+            { "nombre": "Beige 1029", "fotos": ["silla-aike", "silla-aike-beige-3"], "muestra": "img/telas/tela-beige-1029.jpg" },
+            { "nombre": "Klee Gray 1032", "fotos": ["silla-aike-2", "silla-aike-gris-3"], "muestra": "img/telas/tela-gris-1032.jpg" }
         ],
         "specs": [
             [
