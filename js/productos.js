@@ -120,6 +120,34 @@ const productos = [
         "categoria": "mesas",
         "etiqueta": "Mesas",
         "nombre": "Mesa Ornella",
+        "subtitulo": "imitación mármol",
+        "descripcion": "Una verdadera obra de arte que invita a la convivencia, aporta elegancia y sofisticación.",
+        "specs": [
+            [
+                "Terminación de la mesa",
+                "Imitación mármol Rochedo - Placa de PP"
+            ],
+            [
+                "Medidas (m)",
+                "2,00 x 1,10 (8 personas) y 2,50 x 1,20 (8 personas)"
+            ],
+            [
+                "Terminación de las patas",
+                "Laca tono almendra"
+            ],
+            [
+                "Estructura de la mesa",
+                "Multilaminado enchapado Roble"
+            ]
+        ]
+    },
+    {
+        "id": "mesa-ornella-blanca",
+        "combina": ["silla-sophia", "silla-jolie", "silla-gisele|silla-gisele-beige", "silla-margot"],
+        "oculto": true,
+        "categoria": "mesas",
+        "etiqueta": "Mesas",
+        "nombre": "Mesa Ornella",
         "descripcion": "Una verdadera obra de arte que invita a la convivencia, aporta elegancia y sofisticación.",
         "specs": [
             [
