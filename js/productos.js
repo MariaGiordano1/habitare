@@ -459,7 +459,7 @@ const productos = [
         "descripcion": "Creada para ser la protagonista del salón: asiento y respaldo acolchados, combina comodidad y elegancia.",
         "colores": [
             { "nombre": "Almendra · Beige 1029", "archivo": "silla-jolie", "muestra": "img/telas/tela-beige-1029.jpg" },
-            { "nombre": "Almendra · Klee Gray 1032", "muestra": "img/telas/tela-gris-1032.jpg" },
+            { "nombre": "Almendra · Klee Gray 1032", "fotos": ["silla-jolie-gris", "silla-jolie-gris-3", "silla-jolie-gris-2"], "muestra": "img/telas/tela-gris-1032.jpg" },
             { "nombre": "Ébano · Beige 1029", "fotos": ["silla-jolie-ebano", "silla-jolie-ebano-3", "silla-jolie-ebano-2"], "muestra": "img/telas/tela-beige-1029.jpg" }
         ],
         "specs": [
