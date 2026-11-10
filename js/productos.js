@@ -488,7 +488,7 @@ const productos = [
         "nombre": "Silla Gisele",
         "descripcion": "Una silla elegante por sus líneas curvas, esbeltas patas redondeadas y respaldo circular.",
         "colores": [
-            { "nombre": "Almendra · Beige 1029", "muestra": "img/telas/tela-beige-1029.jpg" },
+            { "nombre": "Almendra · Beige 1029", "fotos": ["silla-gisele-beige", "silla-gisele-beige-2", "silla-gisele-beige-3"], "muestra": "img/telas/tela-beige-1029.jpg" },
             { "nombre": "Almendra · Klee Gray 1032", "fotos": ["silla-gisele-gris", "silla-gisele-gris-2", "silla-gisele-gris-3"], "muestra": "img/telas/tela-gris-1032.jpg" },
             { "nombre": "Ébano · Beige 1029", "archivo": "silla-gisele", "muestra": "img/telas/tela-beige-1029.jpg" }
         ],
