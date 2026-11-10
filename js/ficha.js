@@ -303,9 +303,17 @@ function mostrarMedidas(spec) {
 // "Combina con": los productos que se llevan bien con este. Cada producto trae una lista
 // (campo `combina` en productos.js) y además aparecen los que lo nombran a él en su lista.
 function mostrarCombinaciones() {
+    // una entrada puede ser "id" o "id|foto" (para mostrar otra variante en la miniatura)
     function listaDe(p) {
-        return [].concat(p.combina || []);
+        return [].concat(p.combina || []).map(function (e) {
+            return e.split("|")[0];
+        });
     }
+    const fotos = {};
+    [].concat(producto.combina || []).forEach(function (e) {
+        const partes = e.split("|");
+        if (partes[1]) fotos[partes[0]] = partes[1];
+    });
     const ids = listaDe(producto);
     productos.forEach(function (p) {
         if (listaDe(p).indexOf(producto.id) !== -1 && ids.indexOf(p.id) === -1) ids.push(p.id);
@@ -329,7 +337,7 @@ function mostrarCombinaciones() {
         enlace.href = "ficha-producto.html?id=" + otro.id;
         // si tiene varios colores y no hay foto con su nombre, usa la del primer color
         const base = otro.colores && otro.colores[0].fondo ? otro.colores[0].archivo : otro.id;
-        foto.src = "img/productos/" + base + ".jpg";
+        foto.src = "img/productos/" + (fotos[otro.id] || base) + ".jpg";
         foto.alt = "";
         // marco de tamaño fijo; "zoomMiniatura" acerca las fotos donde el producto se ve chico
         const marco = document.createElement("span");

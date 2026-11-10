@@ -3,7 +3,7 @@
 const productos = [
     {
         "id": "mesa-stella",
-        "combina": ["silla-allure", "silla-elise", "silla-gisele"],
+        "combina": ["silla-allure", "silla-elise", "silla-gisele|silla-gisele-beige", "silla-sophia"],
         "categoria": "mesas",
         "etiqueta": "Mesas",
         "nombre": "Mesa Stella",
@@ -29,7 +29,7 @@ const productos = [
     },
     {
         "id": "mesa-stella-para-marmol",
-        "combina": ["silla-allure", "silla-elise", "silla-gisele"],
+        "combina": ["silla-allure", "silla-elise", "silla-gisele|silla-gisele-beige", "silla-sophia"],
         "categoria": "mesas",
         "etiqueta": "Mesas",
         "nombre": "Mesa Stella para mármol",
