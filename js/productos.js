@@ -15,7 +15,7 @@ const productos = [
             ],
             [
                 "Medidas (m)",
-                "1,35 x 1,15 (5 personas) - 1,65 x 1,40 (6 personas)"
+                "1,35 x 1,15 (5 personas)"
             ],
             [
                 "Terminación de la base",
