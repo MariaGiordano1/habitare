@@ -612,7 +612,7 @@ const productos = [
         "specs": [
             [
                 "Tejido - Material",
-                "Beige 1029 - Gris 1032"
+                "Beige 1029 - Klee Gray 1032"
             ],
             [
                 "Medidas (cm)",
