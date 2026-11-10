@@ -634,6 +634,9 @@ const productos = [
         "etiqueta": "Poltronas",
         "nombre": "Poltrona Gisele",
         "descripcion": "Armonía visual y confort supremo: la exclusividad encuentra su forma.",
+        "colores": [
+            { "nombre": "Beige 1029", "archivo": "poltrona-gisele", "muestra": "img/telas/tela-beige-1029.jpg" }
+        ],
         "specs": [
             [
                 "Tejido - Material",
