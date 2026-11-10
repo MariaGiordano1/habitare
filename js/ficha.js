@@ -11,8 +11,21 @@ if (producto) {
     imgPrincipal.alt = producto.nombre;
     const miniaturas = document.getElementById("producto-miniaturas");
 
+    // Cuadrado que ocupa el lugar de una foto que todavía no está cargada
+    const fotoPendiente = document.createElement("div");
+    fotoPendiente.className = "foto-pendiente oculta";
+    fotoPendiente.textContent = "Foto próximamente";
+    imgPrincipal.after(fotoPendiente);
+
+    function mostrarPendiente() {
+        imgPrincipal.classList.add("oculta");
+        fotoPendiente.classList.remove("oculta");
+    }
+
     // Cambia la foto grande con un fundido suave
     function cambiarFoto(ruta) {
+        imgPrincipal.classList.remove("oculta");
+        fotoPendiente.classList.add("oculta");
         if (imgPrincipal.getAttribute("src") === ruta) return;
         imgPrincipal.classList.add("cambiando");
         // se espera a que la foto nueva esté cargada, así aparece con el fundido y no de golpe
@@ -38,22 +51,21 @@ if (producto) {
         });
     }
 
-    // Muestra una lista de fotos (nombres de archivo sin carpeta ni .jpg).
+    const ruta = function (nombre) {
+        return "img/productos/" + nombre + ".jpg";
+    };
+
+    const esVisible = function (nombre) {
+        return fotosOcultas.indexOf(nombre) === -1;
+    };
+
+    // Productos de un solo color: muestra su lista de fotos (nombres de archivo sin carpeta ni .jpg).
     // La primera visible es la grande. Si alguna no existe, su miniatura se borra sola.
-    function mostrarFotos(nombres, conFundido) {
-        const visibles = nombres.filter(function (n) {
-            return fotosOcultas.indexOf(n) === -1;
-        });
+    function mostrarFotos(nombres) {
+        const visibles = nombres.filter(esVisible);
         miniaturas.innerHTML = "";
         if (visibles.length === 0) return;
-        const ruta = function (n) {
-            return "img/productos/" + n + ".jpg";
-        };
-        if (conFundido) {
-            cambiarFoto(ruta(visibles[0]));
-        } else {
-            imgPrincipal.src = ruta(visibles[0]);
-        }
+        imgPrincipal.src = ruta(visibles[0]);
         visibles.forEach(function (nombre, i) {
             const boton = document.createElement("button");
             const foto = document.createElement("img");
@@ -63,7 +75,7 @@ if (producto) {
                 boton.remove();
             });
             boton.addEventListener("click", function () {
-                cambiarFoto(foto.src);
+                cambiarFoto(ruta(nombre));
                 miniaturas.querySelectorAll("button").forEach(function (b) {
                     b.classList.remove("activo");
                 });
@@ -122,38 +134,89 @@ if (producto) {
     });
 
     // Colores: productos con varios colores (producto.colores).
+    // Las miniaturas muestran SIEMPRE todas las fotos de todas las variantes, una variante detrás de otra.
+    // Al elegir un color (o una miniatura) se marca el color y se ve la foto de esa variante.
+    // Cada color puede traer "fotos" (lista de archivos) o "archivo" (grupo base, base-2...).
+    // Si una variante todavía no tiene fotos, deja un cuadrado "Foto próximamente".
     const contenedorColores = document.getElementById("producto-colores");
     if (producto.colores) {
         contenedorColores.hidden = false;
         const etiquetaColor = document.createElement("p");
         contenedorColores.append(etiquetaColor);
-        // Cada color puede tener "fotos" (lista de archivos) o "archivo" (grupo base, base-2...).
-        // Si todavía no tiene fotos, se avisa y quedan las del color anterior.
-        const tieneFotos = function (color) {
-            return !!(color.fotos || color.archivo);
-        };
-        let inicial = producto.colores.findIndex(tieneFotos);
-        if (inicial < 0) inicial = 0;
-        producto.colores.forEach(function (color, i) {
-            const boton = document.createElement("button");
-            boton.title = color.nombre;
-            boton.setAttribute("aria-label", "Color " + color.nombre);
+
+        const grupos = producto.colores.map(function (color) {
+            const nombres = color.fotos || (color.archivo ? nombresDeBase(color.archivo) : []);
+            return { color: color, nombres: nombres.filter(esVisible), botones: [], circulo: null };
+        });
+
+        function elegir(grupo, boton, rutaFoto) {
+            miniaturas.querySelectorAll("button").forEach(function (b) {
+                b.classList.remove("activo");
+            });
+            boton.classList.add("activo");
+            contenedorColores.querySelectorAll("button").forEach(function (b) {
+                b.classList.remove("activo");
+            });
+            grupo.circulo.classList.add("activo");
+            etiquetaColor.textContent = "Color: " + grupo.color.nombre;
+            if (rutaFoto) cambiarFoto(rutaFoto);
+            else mostrarPendiente();
+        }
+
+        grupos.forEach(function (grupo) {
+            const color = grupo.color;
+            const circulo = document.createElement("button");
+            circulo.title = color.nombre;
+            circulo.setAttribute("aria-label", "Color " + color.nombre);
             // La muestra es la foto de la tela del catálogo.
             // (en las mesas la muestra es un color liso: "fondo")
-            if (color.fondo) boton.style.backgroundColor = color.fondo;
-            else boton.style.backgroundImage = "url(" + color.muestra + ")";
-            boton.addEventListener("click", function () {
-                contenedorColores.querySelectorAll("button").forEach(function (b) {
-                    b.classList.remove("activo");
+            if (color.fondo) circulo.style.backgroundColor = color.fondo;
+            else circulo.style.backgroundImage = "url(" + color.muestra + ")";
+            circulo.addEventListener("click", function () {
+                const primera = grupo.botones.find(function (b) {
+                    return b.isConnected;
                 });
-                boton.classList.add("activo");
-                etiquetaColor.textContent = "Color: " + color.nombre + (tieneFotos(color) ? "" : " (foto próximamente)");
-                if (color.fotos) mostrarFotos(color.fotos, true);
-                else if (color.archivo) mostrarFotos(nombresDeBase(color.archivo), true);
+                if (primera) primera.click();
             });
-            contenedorColores.append(boton);
-            if (i === inicial) boton.click();
+            grupo.circulo = circulo;
+            contenedorColores.append(circulo);
+
+            if (grupo.nombres.length === 0) {
+                const boton = document.createElement("button");
+                const cuadrado = document.createElement("span");
+                cuadrado.className = "miniatura-pendiente";
+                boton.title = color.nombre + " (foto próximamente)";
+                boton.append(cuadrado);
+                boton.addEventListener("click", function () {
+                    elegir(grupo, boton, null);
+                });
+                grupo.botones.push(boton);
+                miniaturas.append(boton);
+                return;
+            }
+            grupo.nombres.forEach(function (nombre, i) {
+                const boton = document.createElement("button");
+                const foto = document.createElement("img");
+                foto.src = ruta(nombre);
+                foto.alt = producto.nombre + " " + color.nombre + " vista " + (i + 1);
+                foto.addEventListener("error", function () {
+                    boton.remove();
+                });
+                boton.addEventListener("click", function () {
+                    elegir(grupo, boton, ruta(nombre));
+                });
+                boton.append(foto);
+                grupo.botones.push(boton);
+                miniaturas.append(boton);
+            });
         });
+
+        // arranca en la primera variante que ya tiene fotos (sin fundido)
+        const inicial = grupos.find(function (g) {
+            return g.nombres.length > 0;
+        }) || grupos[0];
+        if (inicial.nombres.length > 0) imgPrincipal.src = ruta(inicial.nombres[0]);
+        inicial.botones[0].click();
     } else {
         mostrarFotos(nombresDeBase(producto.id));
     }

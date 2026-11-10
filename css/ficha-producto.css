@@ -51,6 +51,33 @@
     user-select: none;
 }
 
+/* cuadrado que ocupa el lugar de una foto que todavía no está cargada */
+.foto-pendiente {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 100%;
+    aspect-ratio: 1 / 1;
+    border: 1px dashed rgba(111, 84, 57, 0.4);
+    background-color: #f1ebe4;
+    color: var(--brown);
+    font-size: 14px;
+    letter-spacing: 0.04em;
+}
+
+.foto-principal.oculta,
+.foto-pendiente.oculta {
+    display: none;
+}
+
+.miniatura-pendiente {
+    display: block;
+    width: 100%;
+    aspect-ratio: 1 / 1;
+    border: 1px dashed rgba(111, 84, 57, 0.4);
+    background-color: #f1ebe4;
+}
+
 .foto-principal {
     display: block;
     width: 100%;
