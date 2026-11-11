@@ -291,7 +291,7 @@ const productos = [
         "descripcion": "El mayor exponente del diseño orgánico minimalista, por su geometría de notable belleza, aporta ligereza y refinamiento.",
         "colores": [
             { "nombre": "Almendra", "archivo": "mesa-allegra-almendra", "fondo": "#D8C6AA" },
-            { "nombre": "Tapa almendra · Base ébano", "fotos": [], "fondo": "linear-gradient(135deg, #D8C6AA 50%, #2E2622 50%)" },
+            { "nombre": "Tapa almendra · Base ébano", "fotos": ["mesa-allegra-tapa-almendra-base-ebano-3"], "fondo": "linear-gradient(135deg, #D8C6AA 50%, #2E2622 50%)" },
             { "nombre": "Ébano", "archivo": "mesa-allegra-ebano", "fondo": "#2E2622", "combina": ["silla-jolie|silla-jolie-ebano", "silla-gisele"] }
         ],
         "specs": [
@@ -356,7 +356,7 @@ const productos = [
         "descripcion": "Es la expresión estilística que combina la elegancia de la tradición, con la evolución formal del diseño moderno.",
         "colores": [
             { "nombre": "Base almendra", "archivo": "mesa-adriana", "fondo": "#D8C6AA", "combina": ["silla-aike", "silla-sophia", "silla-jolie", "silla-elise"] },
-            { "nombre": "Base ébano", "fotos": ["mesa-adriana-ebano-3"], "fondo": "#2E2622", "combina": ["silla-jolie|silla-jolie-ebano", "silla-gisele"] }
+            { "nombre": "Base ébano", "fotos": [], "fondo": "#2E2622", "combina": ["silla-jolie|silla-jolie-ebano", "silla-gisele"] }
         ],
         "specs": [
             [
