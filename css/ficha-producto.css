@@ -341,11 +341,21 @@
 }
 
 .combina-foto {
+    position: relative;
     display: block;
     width: 100%;
     aspect-ratio: 1 / 1;
     overflow: hidden;
     background-color: #f1ebe4;
+}
+
+/* la foto se ve completa (sin cortes); el fondo es la misma foto difuminada para rellenar los costados */
+.combina-foto::before {
+    content: "";
+    position: absolute;
+    inset: -12%;
+    background: var(--fondo-foto) center / cover no-repeat;
+    filter: blur(28px);
 }
 
 /* mesa que todavía no tiene foto */
@@ -361,10 +371,11 @@
 }
 
 .combina img {
+    position: relative;
     display: block;
     width: 100%;
     height: 100%;
-    object-fit: cover;
+    object-fit: contain;
     transition: transform 0.5s ease;
 }
 
@@ -671,5 +682,63 @@ body.ampliada-abierta {
     .ampliada,
     .ampliada img {
         transition: none;
+    }
+}
+
+/* ===== Celular: botón "Quiero más información" fijo abajo y flecha para volver arriba ===== */
+.volver-arriba {
+    display: none;
+}
+
+@media (max-width: 809.98px) {
+    .boton-consulta {
+        position: fixed;
+        left: 0;
+        right: 0;
+        bottom: 0;
+        z-index: 45;
+        height: 58px;
+        margin: 0;
+        border-bottom: 0;
+        background-color: var(--brown);
+        background-image: none;
+        color: var(--soft-white);
+        box-shadow: 0 -6px 20px rgba(55, 35, 19, 0.18);
+    }
+
+    /* para que el botón fijo no tape el final de la página */
+    body {
+        padding-bottom: 58px;
+    }
+
+    /* el botón de WhatsApp sube para no quedar tapado */
+    .whatsapp-flotante {
+        bottom: 82px;
+    }
+
+    .volver-arriba {
+        position: fixed;
+        left: 16px;
+        bottom: 74px;
+        z-index: 44;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        width: 46px;
+        height: 46px;
+        border: 1px solid rgba(111, 84, 57, 0.4);
+        border-radius: 50%;
+        background-color: var(--soft-white);
+        color: var(--brown);
+        box-shadow: 0 6px 18px rgba(55, 35, 19, 0.18);
+        cursor: pointer;
+        opacity: 0;
+        visibility: hidden;
+        transition: opacity 0.35s ease, visibility 0.35s;
+    }
+
+    .volver-arriba.visible {
+        opacity: 1;
+        visibility: visible;
     }
 }

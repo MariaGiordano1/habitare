@@ -218,6 +218,17 @@
     text-align: center;
 }
 
+/* toda la sección lleva al contacto */
+a.distribuidor-texto {
+    color: inherit;
+    transition: opacity 0.3s ease;
+}
+
+a.distribuidor-texto:hover,
+a.distribuidor-texto:focus-visible {
+    opacity: 0.65;
+}
+
 .marca {
     font-size: clamp(10px, 2.55vw, 34px);
     white-space: nowrap;
@@ -402,10 +413,23 @@
         height: 640px;
     }
 
+    /* en celular el texto va arriba y el velo es más suave, para que se aprecie el producto */
     .slide-texto {
         left: 24px;
         right: 24px;
-        bottom: 72px;
+        top: 36px;
+        bottom: auto;
+    }
+
+    .slide::after {
+        background: linear-gradient(180deg, rgba(55, 35, 19, 0.5) 0%, rgba(55, 35, 19, 0.24) 45%, rgba(55, 35, 19, 0.08) 100%);
+    }
+
+    /* el texto sube desde abajo, un poco más marcado */
+    .slide-etiqueta,
+    .slide-titulo,
+    .slide-link {
+        transform: translateY(32px);
     }
 
     /* botón más chico */

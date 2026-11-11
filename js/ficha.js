@@ -211,7 +211,24 @@ if (producto) {
             return { color: color, nombres: nombres.filter(esVisible), botones: [], circulo: null };
         });
 
+        // en celular, al cambiar de color las fotos de esa variante pasan a estar arriba
+        let grupoActual = null;
+        const esCelular = window.matchMedia("(max-width: 809.98px)");
+        function subirGrupo(grupo) {
+            const orden = [grupo].concat(grupos.filter(function (g) {
+                return g !== grupo;
+            }));
+            orden.forEach(function (g) {
+                g.botones.forEach(function (b) {
+                    if (b.isConnected) miniaturas.append(b);
+                });
+            });
+            suave(miniaturas);
+        }
+
         function elegir(grupo, boton, rutaFoto) {
+            if (esCelular.matches && grupoActual && grupoActual !== grupo) subirGrupo(grupo);
+            grupoActual = grupo;
             miniaturas.querySelectorAll("button").forEach(function (b) {
                 b.classList.remove("activo");
             });
@@ -251,7 +268,17 @@ if (producto) {
             // (en las mesas la muestra es un color liso: "fondo")
             // ("fondo" puede ser un color liso o un degradé de dos colores, ej. tapa y base distintas)
             if (color.fondo) circulo.style[color.fondo.indexOf("gradient") !== -1 ? "backgroundImage" : "backgroundColor"] = color.fondo;
-            else circulo.style.backgroundImage = "url(" + color.muestra + ")";
+            else {
+                circulo.style.backgroundImage = "url(" + color.muestra + ")";
+                // si el nombre empieza con la madera ("Almendra · Beige 1029"), el círculo va partido:
+                // mitad color liso de la estructura, mitad tela del tapizado
+                const madera = color.nombre.match(/^(Almendra|Ébano)\s*·/);
+                if (madera) {
+                    const liso = madera[1] === "Ébano" ? "#2E2622" : "#D8C6AA";
+                    circulo.style.backgroundImage = "linear-gradient(90deg, " + liso + " 50%, transparent 50%), url(" + color.muestra + ")";
+                    circulo.style.backgroundSize = "100% 100%, cover";
+                }
+            }
             circulo.addEventListener("click", function () {
                 const primera = grupo.botones.find(function (b) {
                     return b.isConnected;
@@ -473,6 +500,7 @@ function mostrarCombinaciones(listaPropia) {
         // marco de tamaño fijo; "zoomMiniatura" acerca las fotos donde el producto se ve chico
         const marco = document.createElement("span");
         marco.className = "combina-foto";
+        if (foto.getAttribute("src")) marco.style.setProperty("--fondo-foto", "url('" + foto.src + "')");
         if (otro.zoomMiniatura) foto.style.transform = "scale(" + otro.zoomMiniatura + ")";
         if (foto.getAttribute("src")) marco.append(foto);
         nombre.textContent = otro.nombreCompleto || otro.nombre;
@@ -486,4 +514,17 @@ function mostrarCombinaciones(listaPropia) {
     });
     document.getElementById("producto-combina").hidden = false;
     suave(lista);
+}
+
+
+// Flecha para volver al inicio de la ficha (celular): aparece al bajar un poco
+const flechaArriba = document.getElementById("volver-arriba");
+if (flechaArriba) {
+    window.addEventListener("scroll", function () {
+        flechaArriba.classList.toggle("visible", window.scrollY > 500);
+    }, { passive: true });
+    flechaArriba.addEventListener("click", function () {
+        const quieto = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
+        window.scrollTo({ top: 0, behavior: quieto ? "auto" : "smooth" });
+    });
 }

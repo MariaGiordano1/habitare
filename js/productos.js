@@ -128,6 +128,10 @@ const productos = [
                 "Imitación mármol Rochedo - Placa de PP"
             ],
             [
+                "Características de la placa",
+                "Soporta 180 grados - Alta resistencia al impacto - Superficie texturada"
+            ],
+            [
                 "Medidas (m)",
                 "2,00 x 1,10 (8 personas) y 2,50 x 1,20 (8 personas)"
             ],
@@ -179,7 +183,11 @@ const productos = [
         "specs": [
             [
                 "Terminación de la mesa",
-                "Placa de PP Nero Black o Rochedo"
+                "Placa de PP (Polímero) Nero Black"
+            ],
+            [
+                "Características de la placa",
+                "Soporta 180 grados - Alta resistencia al impacto - Superficie texturada"
             ],
             [
                 "Medidas (m)",
@@ -254,7 +262,6 @@ const productos = [
     {
         "id": "mesa-adriana-slim",
         "combina": ["silla-sophia", "silla-aike", "silla-elise"],
-        "zoomMiniatura": 2,
         "categoria": "mesas",
         "etiqueta": "Mesas",
         "nombre": "Mesa Adriana",
@@ -351,7 +358,6 @@ const productos = [
     {
         "id": "mesa-adriana",
         "combina": ["silla-aike", "silla-sophia", "silla-jolie", "silla-elise"],
-        "zoomMiniatura": 2,
         "categoria": "mesas",
         "etiqueta": "Mesas",
         "nombre": "Mesa Adriana",
@@ -382,7 +388,6 @@ const productos = [
     {
         "id": "mesa-adriana-gran-tamano",
         "combina": ["silla-aike", "silla-sophia", "silla-jolie", "silla-elise"],
-        "zoomMiniatura": 2,
         "categoria": "mesas",
         "etiqueta": "Mesas",
         "nombre": "Mesa Adriana",
