@@ -495,12 +495,19 @@ function mostrarCombinaciones(listaPropia) {
         const primero = otro.colores && otro.colores[0].fondo ? otro.colores[0] : null;
         const colorFoto = colorQueCombina || primero;
         const base = colorFoto ? colorFoto.archivo || (colorFoto.fotos && colorFoto.fotos[0]) || null : otro.id;
-        if (fotos[otro.id] || base) foto.src = "img/productos/" + (fotos[otro.id] || base) + ".jpg";
+        if (fotos[otro.id] || base) {
+            // miniatura cuadrada con el fondo extendido (img/combina); si no existe, usa la foto original
+            const nombreFoto = fotos[otro.id] || base;
+            foto.addEventListener("error", function alFallar() {
+                foto.removeEventListener("error", alFallar);
+                foto.src = "img/productos/" + nombreFoto + ".jpg";
+            });
+            foto.src = "img/combina/" + nombreFoto + ".jpg";
+        }
         foto.alt = "";
         // marco de tamaño fijo; "zoomMiniatura" acerca las fotos donde el producto se ve chico
         const marco = document.createElement("span");
         marco.className = "combina-foto";
-        if (foto.getAttribute("src")) marco.style.setProperty("--fondo-foto", "url('" + foto.src + "')");
         if (otro.zoomMiniatura) foto.style.transform = "scale(" + otro.zoomMiniatura + ")";
         if (foto.getAttribute("src")) marco.append(foto);
         nombre.textContent = otro.nombreCompleto || otro.nombre;

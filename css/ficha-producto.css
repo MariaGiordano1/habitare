@@ -349,14 +349,6 @@
     background-color: #f1ebe4;
 }
 
-/* la foto se ve completa (sin cortes); el fondo es la misma foto difuminada para rellenar los costados */
-.combina-foto::before {
-    content: "";
-    position: absolute;
-    inset: -12%;
-    background: var(--fondo-foto) center / cover no-repeat;
-    filter: blur(28px);
-}
 
 /* mesa que todavía no tiene foto */
 .combina-foto.pendiente {
@@ -371,11 +363,10 @@
 }
 
 .combina img {
-    position: relative;
     display: block;
     width: 100%;
     height: 100%;
-    object-fit: contain;
+    object-fit: cover;
     transition: transform 0.5s ease;
 }
 
