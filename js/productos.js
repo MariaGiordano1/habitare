@@ -261,7 +261,7 @@ const productos = [
         "descripcion": "Materiales y formas se fusionan en perfecta armonía, se adapta con versatilidad a diferentes espacios y gustos.",
         "colores": [
             { "nombre": "Base almendra", "fotos": ["mesa-adriana-slim-almendra"], "fondo": "#D8C6AA", "combina": ["silla-sophia", "silla-aike", "silla-elise"] },
-            { "nombre": "Base ébano", "fotos": ["mesa-adriana-slim-base-ebano"], "fondo": "#2E2622", "combina": ["silla-jolie|silla-jolie-ebano", "silla-gisele"] }
+            { "nombre": "Base ébano", "fotos": ["mesa-adriana-slim-base-ebano-hq"], "fondo": "#2E2622", "combina": ["silla-jolie|silla-jolie-ebano", "silla-gisele"] }
         ],
         "specs": [
             [
@@ -356,7 +356,7 @@ const productos = [
         "descripcion": "Es la expresión estilística que combina la elegancia de la tradición, con la evolución formal del diseño moderno.",
         "colores": [
             { "nombre": "Base almendra", "fotos": ["mesa-adriana", "mesa-adriana-2", "mesa-adriana-gran-tamano-3", "mesa-adriana-slim-almendra"], "fondo": "#D8C6AA", "combina": ["silla-aike", "silla-sophia", "silla-jolie", "silla-elise"] },
-            { "nombre": "Base ébano", "fotos": ["mesa-adriana-gran-tamano-ebano", "mesa-adriana-slim-base-ebano", "mesa-adriana-ebano-ambiente"], "fondo": "#2E2622", "combina": ["silla-jolie|silla-jolie-ebano", "silla-gisele"] }
+            { "nombre": "Base ébano", "fotos": ["mesa-adriana-gran-tamano-ebano", "mesa-adriana-slim-base-ebano-hq", "mesa-adriana-ebano-ambiente"], "fondo": "#2E2622", "combina": ["silla-jolie|silla-jolie-ebano", "silla-gisele"] }
         ],
         "specs": [
             [
