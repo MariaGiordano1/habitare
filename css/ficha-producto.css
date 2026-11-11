@@ -298,9 +298,10 @@
     line-height: 1.4;
 }
 
-/* ===== Combina con (sección propia, debajo de la ficha) ===== */
+/* ===== Combina con (en la columna de info, debajo del botón) ===== */
 .combina {
-    padding: 56px 40px 96px 40px;
+    margin-top: 48px;
+    padding-top: 32px;
     border-top: 1px solid rgba(111, 84, 57, 0.2);
 }
 
@@ -309,16 +310,16 @@
 }
 
 .combina h2 {
-    margin-bottom: 32px;
-    font-size: 32px;
+    margin-bottom: 24px;
+    font-size: 28px;
     font-weight: 400;
     color: var(--brown);
 }
 
 .combina ul {
     display: grid;
-    grid-template-columns: repeat(auto-fill, minmax(240px, 1fr));
-    gap: 24px;
+    grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
+    gap: 20px;
 }
 
 .combina a {
@@ -520,7 +521,8 @@
     }
 
     .combina {
-        padding: 40px 24px 72px 24px;
+        margin-top: 40px;
+        padding-top: 28px;
     }
 
     .combina h2 {

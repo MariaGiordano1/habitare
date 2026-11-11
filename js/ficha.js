@@ -364,7 +364,8 @@ function mostrarCombinaciones(listaPropia) {
         const nombre = document.createElement("span");
         enlace.href = "ficha-producto.html?id=" + otro.id;
         // si tiene varios colores y no hay foto con su nombre, usa la del primer color
-        const base = otro.colores && otro.colores[0].fondo ? otro.colores[0].archivo : otro.id;
+        const primero = otro.colores && otro.colores[0].fondo ? otro.colores[0] : null;
+        const base = primero ? primero.archivo || (primero.fotos && primero.fotos[0]) || otro.id : otro.id;
         foto.src = "img/productos/" + (fotos[otro.id] || base) + ".jpg";
         foto.alt = "";
         // marco de tamaño fijo; "zoomMiniatura" acerca las fotos donde el producto se ve chico
