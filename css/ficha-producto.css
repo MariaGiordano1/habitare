@@ -87,6 +87,10 @@
     transition: opacity 0.35s ease;
 }
 
+.foto-principal.completa {
+    object-fit: contain;
+}
+
 /* flechas para pasar de foto (solo en pantalla de computadora) */
 .foto-flecha {
     position: absolute;

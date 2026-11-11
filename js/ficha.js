@@ -22,6 +22,13 @@ if (producto) {
         fotoPendiente.classList.remove("oculta");
     }
 
+    // Fotos horizontales que se muestran completas (sin recortar los costados) dentro del cuadrado.
+    const fotosCompletas = ["mesa-allegra-almendra-3"];
+    imgPrincipal.addEventListener("load", function () {
+        const nombre = (imgPrincipal.getAttribute("src") || "").split("/").pop().replace(".jpg", "");
+        imgPrincipal.classList.toggle("completa", fotosCompletas.indexOf(nombre) !== -1);
+    });
+
     // Cambia la foto grande con un fundido suave
     function cambiarFoto(ruta) {
         imgPrincipal.classList.remove("oculta");
