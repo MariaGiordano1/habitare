@@ -356,7 +356,7 @@ const productos = [
         "descripcion": "Es la expresión estilística que combina la elegancia de la tradición, con la evolución formal del diseño moderno.",
         "colores": [
             { "nombre": "Base almendra", "fotos": ["mesa-adriana-general-hq", "mesa-adriana-detalle-vetas-sq", "mesa-adriana-gran-tamano-almendra-ambiente-v2", "mesa-adriana-slim-almendra", "mesa-adriana-slim-almendra-detalle-sq", "mesa-adriana-slim-almendra-ambiente-2"], "fondo": "#D8C6AA", "combina": ["silla-aike", "silla-sophia", "silla-jolie", "silla-elise"] },
-            { "nombre": "Base ébano", "fotos": ["mesa-adriana-gran-tamano-ebano-general-v2", "mesa-adriana-gran-tamano-ebano-detalle-sq", "mesa-adriana-slim-base-ebano-hq", "mesa-adriana-slim-ebano-detalle", "mesa-adriana-ebano-ambiente"], "fondo": "#2E2622", "combina": ["silla-jolie|silla-jolie-ebano", "silla-gisele"] }
+            { "nombre": "Base ébano", "fotos": ["mesa-adriana-gran-tamano-ebano-general-v2", "mesa-adriana-gran-tamano-ebano-detalle-sq", "mesa-adriana-slim-base-ebano-hq", "mesa-adriana-slim-ebano-detalle-sq", "mesa-adriana-ebano-ambiente"], "fondo": "#2E2622", "combina": ["silla-jolie|silla-jolie-ebano", "silla-gisele"] }
         ],
         "specs": [
             [
