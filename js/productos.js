@@ -90,7 +90,6 @@ const productos = [
     {
         "id": "mesa-giulia",
         "combina": ["silla-elise", "silla-sophia", "silla-gisele|silla-gisele-beige"],
-        "zoomMiniatura": 2,
         "categoria": "mesas",
         "etiqueta": "Mesas",
         "nombre": "Mesa Giulia",
