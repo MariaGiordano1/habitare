@@ -232,7 +232,17 @@ if (producto) {
             mostrarCombinaciones(combinaActual);
         }
 
-        grupos.forEach(function (grupo) {
+        // Mesas que se abren con un color pedido (?color=Ébano): la ficha muestra solo esa variante,
+        // sin las fotos ni los círculos de las demás (cada variante tiene su propia tarjeta en el catálogo)
+        const colorPedido = new URLSearchParams(window.location.search).get("color");
+        const soloEsta = producto.categoria === "mesas" && grupos.some(function (g) {
+            return g.color.nombre === colorPedido;
+        });
+        const gruposAMostrar = soloEsta ? grupos.filter(function (g) {
+            return g.color.nombre === colorPedido;
+        }) : grupos;
+
+        gruposAMostrar.forEach(function (grupo) {
             const color = grupo.color;
             const circulo = document.createElement("button");
             circulo.title = color.nombre;
@@ -249,7 +259,7 @@ if (producto) {
                 if (primera) primera.click();
             });
             grupo.circulo = circulo;
-            contenedorColores.append(circulo);
+            if (!soloEsta) contenedorColores.append(circulo);
 
             if (grupo.nombres.length === 0) {
                 const boton = document.createElement("button");
@@ -283,7 +293,6 @@ if (producto) {
 
         // arranca en la primera variante que ya tiene fotos (sin fundido)
         // (o en el color que pida la dirección, ej. ?id=mesa-agora&color=Ébano)
-        const colorPedido = new URLSearchParams(window.location.search).get("color");
         const inicial = grupos.find(function (g) {
             return g.color.nombre === colorPedido;
         }) || grupos.find(function (g) {
