@@ -355,7 +355,7 @@ const productos = [
         "nombre": "Mesa Adriana",
         "descripcion": "Es la expresión estilística que combina la elegancia de la tradición, con la evolución formal del diseño moderno.",
         "colores": [
-            { "nombre": "Base almendra", "fotos": ["mesa-adriana-general-hq", "mesa-adriana-2", "mesa-adriana-gran-tamano-3", "mesa-adriana-slim-almendra"], "fondo": "#D8C6AA", "combina": ["silla-aike", "silla-sophia", "silla-jolie", "silla-elise"] },
+            { "nombre": "Base almendra", "fotos": ["mesa-adriana-general-hq", "mesa-adriana-detalle-vetas", "mesa-adriana-gran-tamano-3", "mesa-adriana-slim-almendra"], "fondo": "#D8C6AA", "combina": ["silla-aike", "silla-sophia", "silla-jolie", "silla-elise"] },
             { "nombre": "Base ébano", "fotos": ["mesa-adriana-gran-tamano-ebano-hq", "mesa-adriana-slim-base-ebano-hq", "mesa-adriana-ebano-ambiente"], "fondo": "#2E2622", "combina": ["silla-jolie|silla-jolie-ebano", "silla-gisele"] }
         ],
         "specs": [
