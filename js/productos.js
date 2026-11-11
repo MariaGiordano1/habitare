@@ -292,7 +292,7 @@ const productos = [
         "colores": [
             { "nombre": "Almendra", "fotos": ["mesa-allegra-almendra", "mesa-allegra-almendra-3"], "fondo": "#D8C6AA" },
             { "nombre": "Tapa almendra · Base ébano", "fotos": ["mesa-allegra-tapa-almendra-base-ebano", "mesa-allegra-tapa-almendra-base-ebano-3"], "fondo": "linear-gradient(135deg, #D8C6AA 50%, #2E2622 50%)" },
-            { "nombre": "Ébano", "archivo": "mesa-allegra-ebano", "fondo": "#2E2622", "combina": ["silla-jolie|silla-jolie-ebano", "silla-gisele"] }
+            { "nombre": "Ébano", "fotos": ["mesa-allegra-ebano", "mesa-allegra-ebano-detalle", "mesa-allegra-ebano-3"], "fondo": "#2E2622", "combina": ["silla-jolie|silla-jolie-ebano", "silla-gisele"] }
         ],
         "specs": [
             [
