@@ -443,7 +443,7 @@ const productos = [
         "nombre": "Silla Elise",
         "descripcion": "Combina comodidad, solidez y elegancia atemporal. Notable comodidad por su respaldo ergonómico en arco.",
         "colores": [
-            { "nombre": "Beige 1029", "archivo": "silla-elise", "muestra": "img/telas/tela-beige-1029.jpg" }
+            { "nombre": "Beige 1029", "fotos": ["silla-elise-2", "silla-elise", "silla-elise-3", "silla-elise-4"], "muestra": "img/telas/tela-beige-1029.jpg" }
         ],
         "specs": [
             [
@@ -500,9 +500,9 @@ const productos = [
         "nombre": "Silla Jolie",
         "descripcion": "Creada para ser la protagonista del salón: asiento y respaldo acolchados, combina comodidad y elegancia.",
         "colores": [
-            { "nombre": "Almendra · Beige 1029", "archivo": "silla-jolie", "muestra": "img/telas/tela-beige-1029.jpg" },
-            { "nombre": "Almendra · Klee Gray 1032", "fotos": ["silla-jolie-gris", "silla-jolie-gris-3", "silla-jolie-gris-2"], "muestra": "img/telas/tela-gris-1032.jpg" },
-            { "nombre": "Ébano · Beige 1029", "fotos": ["silla-jolie-ebano", "silla-jolie-ebano-3", "silla-jolie-ebano-2"], "muestra": "img/telas/tela-beige-1029.jpg" }
+            { "nombre": "Almendra · Beige 1029", "fotos": ["silla-jolie-2", "silla-jolie", "silla-jolie-3", "silla-jolie-4"], "muestra": "img/telas/tela-beige-1029.jpg" },
+            { "nombre": "Almendra · Klee Gray 1032", "fotos": ["silla-jolie-gris-3", "silla-jolie-gris", "silla-jolie-gris-2"], "muestra": "img/telas/tela-gris-1032.jpg" },
+            { "nombre": "Ébano · Beige 1029", "fotos": ["silla-jolie-ebano-3", "silla-jolie-ebano", "silla-jolie-ebano-2"], "muestra": "img/telas/tela-beige-1029.jpg" }
         ],
         "specs": [
             [
@@ -530,9 +530,9 @@ const productos = [
         "nombre": "Silla Gisele",
         "descripcion": "Una silla elegante por sus líneas curvas, esbeltas patas redondeadas y respaldo circular.",
         "colores": [
-            { "nombre": "Almendra · Beige 1029", "fotos": ["silla-gisele-beige", "silla-gisele-beige-2", "silla-gisele-beige-3"], "muestra": "img/telas/tela-beige-1029.jpg" },
-            { "nombre": "Almendra · Klee Gray 1032", "fotos": ["silla-gisele-gris", "silla-gisele-gris-2", "silla-gisele-gris-3"], "muestra": "img/telas/tela-gris-1032.jpg" },
-            { "nombre": "Ébano · Beige 1029", "archivo": "silla-gisele", "muestra": "img/telas/tela-beige-1029.jpg" }
+            { "nombre": "Almendra · Beige 1029", "fotos": ["silla-gisele-beige-2", "silla-gisele-beige", "silla-gisele-beige-3"], "muestra": "img/telas/tela-beige-1029.jpg" },
+            { "nombre": "Almendra · Klee Gray 1032", "fotos": ["silla-gisele-gris-2", "silla-gisele-gris", "silla-gisele-gris-3"], "muestra": "img/telas/tela-gris-1032.jpg" },
+            { "nombre": "Ébano · Beige 1029", "fotos": ["silla-gisele-2", "silla-gisele", "silla-gisele-3"], "muestra": "img/telas/tela-beige-1029.jpg" }
         ],
         "specs": [
             [
