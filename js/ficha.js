@@ -148,6 +148,45 @@ if (producto) {
         inicioX = null;
     });
 
+    // ---- Ampliar la foto: al tocar la foto principal se ve grande, completa y sin recorte ----
+    const ampliada = document.getElementById("ampliada");
+    const ampliadaImg = document.getElementById("ampliada-img");
+    let arrastrando = false;
+    marco.addEventListener("pointerdown", function () {
+        arrastrando = false;
+    });
+    marco.addEventListener("pointermove", function (evento) {
+        if (inicioX !== null && Math.abs(evento.clientX - inicioX) > 10) arrastrando = true;
+    });
+
+    function ampliar(abrir) {
+        if (abrir) {
+            ampliadaImg.src = imgPrincipal.getAttribute("src");
+            ampliadaImg.alt = imgPrincipal.alt;
+            ampliada.hidden = false;
+            ampliada.setAttribute("aria-hidden", "false");
+            // un instante después, para que se note el fundido
+            requestAnimationFrame(function () {
+                ampliada.classList.add("abierta");
+            });
+        } else {
+            ampliada.classList.remove("abierta");
+            ampliada.setAttribute("aria-hidden", "true");
+        }
+        document.body.classList.toggle("ampliada-abierta", abrir);
+    }
+
+    imgPrincipal.addEventListener("click", function () {
+        if (arrastrando || imgPrincipal.classList.contains("oculta")) return;
+        ampliar(true);
+    });
+    ampliada.addEventListener("click", function () {
+        ampliar(false);
+    });
+    document.addEventListener("keydown", function (evento) {
+        if (evento.key === "Escape") ampliar(false);
+    });
+
     // Colores: productos con varios colores (producto.colores).
     // Las miniaturas muestran SIEMPRE todas las fotos de todas las variantes, una variante detrás de otra.
     // Al elegir un color (o una miniatura) se marca el color y se ve la foto de esa variante.

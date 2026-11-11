@@ -3,7 +3,7 @@
 const productos = [
     {
         "id": "mesa-stella",
-        "combina": ["silla-allure", "silla-elise", "silla-gisele|silla-gisele-beige", "silla-sophia"],
+        "combina": ["silla-allure", "silla-elise", "silla-gisele|silla-gisele-beige"],
         "categoria": "mesas",
         "etiqueta": "Mesas",
         "nombre": "Mesa Stella",
@@ -29,7 +29,7 @@ const productos = [
     },
     {
         "id": "mesa-stella-para-marmol",
-        "combina": ["silla-allure", "silla-elise", "silla-gisele|silla-gisele-beige", "silla-sophia"],
+        "combina": ["silla-allure", "silla-elise", "silla-gisele|silla-gisele-beige"],
         "categoria": "mesas",
         "etiqueta": "Mesas",
         "nombre": "Mesa Stella para mármol",
@@ -170,7 +170,7 @@ const productos = [
     },
     {
         "id": "mesa-ornella-polimero",
-        "combina": ["silla-sophia", "silla-gisele|silla-gisele-beige", "silla-jolie"],
+        "combina": ["silla-gisele|silla-gisele-beige", "silla-jolie"],
         "categoria": "mesas",
         "etiqueta": "Mesas",
         "nombre": "Mesa Ornella PP",
@@ -223,13 +223,13 @@ const productos = [
     },
     {
         "id": "mesa-agora",
-        "combina": ["silla-sophia", "silla-elise", "silla-jolie", "silla-aike", "silla-margot", "silla-gisele|silla-gisele-beige"],
+        "combina": ["silla-sophia", "silla-elise", "silla-jolie", "silla-aike", "silla-margot"],
         "categoria": "mesas",
         "etiqueta": "Mesas",
         "nombre": "Mesa Ágora",
         "descripcion": "Nuevo estándar del lujo contemporáneo: presencia escultural para espacios que hablan de éxito y serenidad.",
         "colores": [
-            { "nombre": "Almendra", "archivo": "mesa-agora-almendra", "fondo": "#D8C6AA", "combina": ["silla-sophia", "silla-elise", "silla-jolie", "silla-aike", "silla-margot", "silla-gisele|silla-gisele-beige"] },
+            { "nombre": "Almendra", "archivo": "mesa-agora-almendra", "fondo": "#D8C6AA", "combina": ["silla-sophia", "silla-elise", "silla-jolie", "silla-aike", "silla-margot"] },
             { "nombre": "Ébano", "archivo": "mesa-agora-ebano", "fondo": "#2E2622", "combina": ["silla-jolie|silla-jolie-ebano", "silla-gisele"] }
         ],
         "specs": [
@@ -292,7 +292,7 @@ const productos = [
         "colores": [
             { "nombre": "Almendra", "fotos": ["mesa-allegra-almendra-general", "mesa-allegra-almendra-detalle-hq", "mesa-allegra-almendra-3"], "fondo": "#D8C6AA" },
             { "nombre": "Tapa almendra · Base ébano", "fotos": ["mesa-allegra-tapa-almendra-base-ebano", "mesa-allegra-tapa-almendra-base-ebano-detalle", "mesa-allegra-tapa-almendra-base-ebano-3"], "fondo": "linear-gradient(135deg, #D8C6AA 50%, #2E2622 50%)" },
-            { "nombre": "Ébano", "fotos": ["mesa-allegra-ebano", "mesa-allegra-ebano-detalle", "mesa-allegra-ebano-ambiente"], "fondo": "#2E2622", "combina": ["silla-jolie|silla-jolie-ebano", "silla-gisele"] }
+            { "nombre": "Ébano", "fotos": ["mesa-allegra-ebano", "mesa-allegra-ebano-detalle", "mesa-allegra-ebano-ambiente"], "fondo": "#2E2622", "combina": ["silla-gisele|silla-gisele-gris", "silla-jolie|silla-jolie-gris", "silla-sophia|silla-sophia-gris"] }
         ],
         "specs": [
             [
