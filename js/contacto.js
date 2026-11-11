@@ -40,7 +40,7 @@ if (productoConsulta) {
 // Las medidas salen de productos.js: "2,00 x 1,10 (8 personas) y 2,50 x 1,20 (8 personas)".
 if (productoConsulta) {
     const mesa = productos.find(function (p) {
-        return p.nombre === productoConsulta && p.categoria === "mesas";
+        return (p.nombreCompleto || p.nombre) === productoConsulta && p.categoria === "mesas";
     });
     const specMedidas = mesa && mesa.specs.find(function (s) {
         return s[0].indexOf("Medidas") === 0;

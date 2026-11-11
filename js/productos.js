@@ -253,15 +253,17 @@ const productos = [
     },
     {
         "id": "mesa-adriana-slim",
-        "combina": ["silla-sophia", "silla-aike"],
-        "oculto": true,
+        "combina": ["silla-sophia", "silla-aike", "silla-elise"],
+        "zoomMiniatura": 2,
         "categoria": "mesas",
         "etiqueta": "Mesas",
-        "nombre": "Mesa Adriana Slim",
+        "nombre": "Mesa Adriana",
+        "subtitulo": "Slim",
+        "nombreCompleto": "Mesa Adriana Slim",
         "descripcion": "Materiales y formas se fusionan en perfecta armonía, se adapta con versatilidad a diferentes espacios y gustos.",
         "colores": [
-            { "nombre": "Base almendra", "fotos": ["mesa-adriana-slim-almendra"], "fondo": "#D8C6AA", "combina": ["silla-sophia", "silla-aike", "silla-elise"] },
-            { "nombre": "Base ébano", "fotos": ["mesa-adriana-slim-base-ebano-hq"], "fondo": "#2E2622", "combina": ["silla-jolie|silla-jolie-ebano", "silla-gisele"] }
+            { "nombre": "Base almendra", "fotos": ["mesa-adriana-slim-almendra", "mesa-adriana-slim-almendra-detalle-sq", "mesa-adriana-slim-almendra-ambiente-2"], "fondo": "#D8C6AA", "combina": ["silla-sophia", "silla-aike", "silla-elise"] },
+            { "nombre": "Base ébano", "fotos": ["mesa-adriana-slim-base-ebano-hq", "mesa-adriana-slim-ebano-detalle-sq"], "fondo": "#2E2622", "combina": ["silla-jolie|silla-jolie-ebano", "silla-gisele"] }
         ],
         "specs": [
             [
@@ -273,8 +275,8 @@ const productos = [
                 "2,20 x 1,10 (8 personas) y 2,50 x 1,20 (8 personas)"
             ],
             [
-                "Terminación de la base",
-                "Laca tono almendra"
+                "Terminación de las bases",
+                "Laca tono almendra o ébano"
             ],
             [
                 "Estructura de la base",
@@ -355,8 +357,8 @@ const productos = [
         "nombre": "Mesa Adriana",
         "descripcion": "Es la expresión estilística que combina la elegancia de la tradición, con la evolución formal del diseño moderno.",
         "colores": [
-            { "nombre": "Base almendra", "fotos": ["mesa-adriana-general-hq", "mesa-adriana-detalle-vetas-sq", "mesa-adriana-gran-tamano-almendra-ambiente-v2", "mesa-adriana-slim-almendra", "mesa-adriana-slim-almendra-detalle-sq", "mesa-adriana-slim-almendra-ambiente-2"], "fondo": "#D8C6AA", "combina": ["silla-aike", "silla-sophia", "silla-jolie", "silla-elise"] },
-            { "nombre": "Base ébano", "fotos": ["mesa-adriana-gran-tamano-ebano-general-v2", "mesa-adriana-gran-tamano-ebano-detalle-sq", "mesa-adriana-slim-base-ebano-hq", "mesa-adriana-slim-ebano-detalle-sq", "mesa-adriana-ebano-ambiente"], "fondo": "#2E2622", "combina": ["silla-jolie|silla-jolie-ebano", "silla-gisele"] }
+            { "nombre": "Base almendra", "fotos": [], "fondo": "#D8C6AA", "combina": ["silla-aike", "silla-sophia", "silla-jolie", "silla-elise"] },
+            { "nombre": "Base ébano", "fotos": [], "fondo": "#2E2622", "combina": ["silla-jolie|silla-jolie-ebano", "silla-gisele"] }
         ],
         "specs": [
             [
@@ -365,7 +367,40 @@ const productos = [
             ],
             [
                 "Medidas (m)",
-                "Slim: 2,20 x 1,10 (8 personas) y Slim: 2,50 x 1,20 (8 personas) y 3,00 x 1,30 (10-12 personas) y Gran tamaño: 3,60 x 1,35 (12-14 personas)"
+                "3,00 x 1,30 (10-12 personas)"
+            ],
+            [
+                "Terminación de las bases",
+                "Laca tono almendra o ébano"
+            ],
+            [
+                "Estructura de la base",
+                "Multilaminado enchapado Roble"
+            ]
+        ]
+    },
+    {
+        "id": "mesa-adriana-gran-tamano",
+        "combina": ["silla-aike", "silla-sophia", "silla-jolie", "silla-elise"],
+        "zoomMiniatura": 2,
+        "categoria": "mesas",
+        "etiqueta": "Mesas",
+        "nombre": "Mesa Adriana",
+        "subtitulo": "gran tamaño",
+        "nombreCompleto": "Mesa Adriana gran tamaño",
+        "descripcion": "Es la expresión estilística que combina la elegancia de la tradición, con la evolución formal del diseño moderno.",
+        "colores": [
+            { "nombre": "Base almendra", "fotos": ["mesa-adriana-general-hq", "mesa-adriana-detalle-vetas-sq", "mesa-adriana-gran-tamano-almendra-ambiente-v2"], "fondo": "#D8C6AA", "combina": ["silla-aike", "silla-sophia", "silla-jolie", "silla-elise"] },
+            { "nombre": "Base ébano y vidrio ébano", "fotos": ["mesa-adriana-gran-tamano-ebano-general-v2", "mesa-adriana-gran-tamano-ebano-detalle-sq", "mesa-adriana-ebano-ambiente"], "fondo": "#2E2622", "combina": ["silla-jolie|silla-jolie-ebano", "silla-gisele"] }
+        ],
+        "specs": [
+            [
+                "Terminación de la mesa",
+                "Laca antimancha - Tono almendra"
+            ],
+            [
+                "Medidas (m)",
+                "3,60 x 1,35 (12-14 personas)"
             ],
             [
                 "Terminación de las bases",

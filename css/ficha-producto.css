@@ -348,6 +348,18 @@
     background-color: #f1ebe4;
 }
 
+/* mesa que todavía no tiene foto */
+.combina-foto.pendiente {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border: 1px dashed rgba(111, 84, 57, 0.4);
+    color: var(--brown);
+    font-size: 11px;
+    letter-spacing: 0.04em;
+    text-align: center;
+}
+
 .combina img {
     display: block;
     width: 100%;
