@@ -11,6 +11,9 @@ const producto = productos.find(function (p) {
     return p.id === id;
 });
 
+// categoría desde la que se llegó (se arrastra al saltar entre "Combina con")
+const origen = new URLSearchParams(window.location.search).get("desde") || (producto && producto.categoria);
+
 if (producto) {
     document.title = producto.nombre + " - Habitare";
 
@@ -291,9 +294,13 @@ if (producto) {
     document.getElementById("producto-categoria").textContent = producto.etiqueta;
 
     // Volver: a la categoría de este producto o a todo el catálogo
+    // Si llegaste tocando un "Combina con", el volver sigue apuntando a la categor\u00eda de origen
     const miga = document.getElementById("miga-categoria");
-    miga.textContent = "\u2190 Volver a " + producto.etiqueta;
-    miga.href = "catalogo.html?categoria=" + producto.categoria;
+    const conEtiqueta = productos.find(function (p) {
+        return p.categoria === origen;
+    }) || producto;
+    miga.textContent = "\u2190 Volver a " + conEtiqueta.etiqueta;
+    miga.href = "catalogo.html?categoria=" + conEtiqueta.categoria;
     document.getElementById("migas").hidden = false;
     const titulo = document.getElementById("producto-nombre");
     titulo.textContent = producto.nombre;
@@ -423,7 +430,7 @@ function mostrarCombinaciones(listaPropia) {
         const enlace = document.createElement("a");
         const foto = document.createElement("img");
         const nombre = document.createElement("span");
-        enlace.href = "ficha-producto.html?id=" + otro.id;
+        enlace.href = "ficha-producto.html?id=" + otro.id + "&desde=" + origen;
         // si tiene varios colores y no hay foto con su nombre, usa la del primer color
         const primero = otro.colores && otro.colores[0].fondo ? otro.colores[0] : null;
         const base = primero ? primero.archivo || (primero.fotos && primero.fotos[0]) || otro.id : otro.id;
