@@ -265,6 +265,15 @@
     letter-spacing: -0.02em;
 }
 
+.medida-etiqueta {
+    padding: 2px 8px;
+    border: 1px solid var(--mostaza);
+    font-size: 10px;
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
+    color: var(--mostaza);
+}
+
 .medida-personas {
     font-size: 13px;
     color: var(--mostaza);

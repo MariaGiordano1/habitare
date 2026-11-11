@@ -349,8 +349,12 @@ function mostrarMedidas(spec) {
     const contenedor = document.getElementById("producto-medidas");
     const listaMedidas = document.getElementById("producto-medidas-lista");
     document.getElementById("producto-medidas-titulo").textContent = spec[0];
-    spec[1].split(/\s+y\s+(?=\d)|\s+-\s+(?=\d|Puff)/).forEach(function (texto) {
+    // una medida puede empezar con una etiqueta ("Slim: 2,20 x 1,10 (8 personas)")
+    spec[1].split(/\s+y\s+(?=\d|Slim:|Gran tamaño:)|\s+-\s+(?=\d|Puff)/).forEach(function (texto) {
         const item = document.createElement("li");
+        const conEtiqueta = texto.match(/^(Slim|Gran tamaño):\s*(.*)$/);
+        const etiqueta = conEtiqueta ? conEtiqueta[1] : "";
+        if (conEtiqueta) texto = conEtiqueta[2];
         const partes = texto.match(/^(.*?)\s*(\(.*\))?$/);
         const medida = document.createElement("span");
         medida.className = "medida-valor";
@@ -361,6 +365,12 @@ function mostrarMedidas(spec) {
             personas.className = "medida-personas";
             personas.textContent = partes[2];
             item.append(personas);
+        }
+        if (etiqueta) {
+            const tag = document.createElement("span");
+            tag.className = "medida-etiqueta";
+            tag.textContent = etiqueta;
+            item.append(tag);
         }
         listaMedidas.append(item);
     });

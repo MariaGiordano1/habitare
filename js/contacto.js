@@ -47,11 +47,15 @@ if (productoConsulta) {
     });
     if (specMedidas) {
         const selectTamano = document.getElementById("tamano");
-        specMedidas[1].split(/\s+y\s+(?=\d)|\s+-\s+(?=\d)/).forEach(function (texto) {
+        specMedidas[1].split(/\s+y\s+(?=\d|Slim:|Gran tamaño:)|\s+-\s+(?=\d)/).forEach(function (texto) {
+            // si trae etiqueta ("Slim: 2,20 x 1,10 (8 personas)"), va adelante
+            const conEtiqueta = texto.match(/^(Slim|Gran tamaño):\s*(.*)$/);
+            const prefijo = conEtiqueta ? conEtiqueta[1] + " · " : "";
+            if (conEtiqueta) texto = conEtiqueta[2];
             const partes = texto.match(/^(.*?)\s*\((.*)\)$/);
             const opcion = document.createElement("option");
-            opcion.value = texto;
-            opcion.textContent = partes ? partes[1] + " m (" + partes[2] + ")" : texto + " m";
+            opcion.value = prefijo + texto;
+            opcion.textContent = prefijo + (partes ? partes[1] + " m (" + partes[2] + ")" : texto + " m");
             selectTamano.append(opcion);
         });
         document.getElementById("campo-tamano").hidden = false;
