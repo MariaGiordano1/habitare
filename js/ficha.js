@@ -11,8 +11,12 @@ const producto = productos.find(function (p) {
     return p.id === id;
 });
 
-// categoría desde la que se llegó (se arrastra al saltar entre "Combina con")
-const origen = new URLSearchParams(window.location.search).get("desde") || (producto && producto.categoria);
+// categorías por las que se fue pasando (ej. "mesas,sillas"): cada "Combina con" suma un volver nuevo
+const recorrido = (function () {
+    const lista = (new URLSearchParams(window.location.search).get("desde") || "").split(",").filter(Boolean);
+    if (producto && lista.indexOf(producto.categoria) === -1) lista.push(producto.categoria);
+    return lista;
+})();
 
 if (producto) {
     document.title = producto.nombre + " - Habitare";
@@ -294,13 +298,29 @@ if (producto) {
     document.getElementById("producto-categoria").textContent = producto.etiqueta;
 
     // Volver: a la categoría de este producto o a todo el catálogo
-    // Si llegaste tocando un "Combina con", el volver sigue apuntando a la categor\u00eda de origen
-    const miga = document.getElementById("miga-categoria");
-    const conEtiqueta = productos.find(function (p) {
-        return p.categoria === origen;
-    }) || producto;
-    miga.textContent = "\u2190 Volver a " + conEtiqueta.etiqueta;
-    miga.href = "catalogo.html?categoria=" + conEtiqueta.categoria;
+    // Un "Volver a ..." por cada categoría del recorrido, y al final "Ver todo el catálogo"
+    const migas = document.getElementById("migas");
+    migas.innerHTML = "";
+    recorrido.concat("todo").forEach(function (cat, i) {
+        const ejemplo = productos.find(function (p) {
+            return p.categoria === cat;
+        });
+        const enlace = document.createElement("a");
+        if (cat === "todo") {
+            enlace.textContent = "Ver todo el cat\u00e1logo";
+            enlace.href = "catalogo.html";
+        } else {
+            enlace.textContent = "\u2190 Volver a " + ejemplo.etiqueta;
+            enlace.href = "catalogo.html?categoria=" + cat;
+        }
+        if (i > 0) {
+            const guion = document.createElement("span");
+            guion.setAttribute("aria-hidden", "true");
+            guion.textContent = "-";
+            migas.append(guion);
+        }
+        migas.append(enlace);
+    });
     document.getElementById("migas").hidden = false;
     const titulo = document.getElementById("producto-nombre");
     titulo.textContent = producto.nombre;
@@ -430,7 +450,7 @@ function mostrarCombinaciones(listaPropia) {
         const enlace = document.createElement("a");
         const foto = document.createElement("img");
         const nombre = document.createElement("span");
-        enlace.href = "ficha-producto.html?id=" + otro.id + "&desde=" + origen;
+        enlace.href = "ficha-producto.html?id=" + otro.id + "&desde=" + recorrido.join(",");
         // si tiene varios colores y no hay foto con su nombre, usa la del primer color
         const primero = otro.colores && otro.colores[0].fondo ? otro.colores[0] : null;
         const base = primero ? primero.archivo || (primero.fotos && primero.fotos[0]) || otro.id : otro.id;
