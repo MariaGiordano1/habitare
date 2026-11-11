@@ -260,7 +260,7 @@ const productos = [
         "nombre": "Mesa Adriana Slim",
         "descripcion": "Materiales y formas se fusionan en perfecta armonía, se adapta con versatilidad a diferentes espacios y gustos.",
         "colores": [
-            { "nombre": "Base almendra", "fotos": [], "fondo": "#D8C6AA", "combina": ["silla-sophia", "silla-aike", "silla-elise"] },
+            { "nombre": "Base almendra", "fotos": ["mesa-adriana-slim"], "fondo": "#D8C6AA", "combina": ["silla-sophia", "silla-aike", "silla-elise"] },
             { "nombre": "Base ébano", "fotos": ["mesa-adriana-slim-ebano-3"], "fondo": "#2E2622", "combina": ["silla-jolie|silla-jolie-ebano", "silla-gisele"] }
         ],
         "specs": [
