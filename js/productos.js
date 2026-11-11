@@ -315,7 +315,6 @@ const productos = [
     },
     {
         "id": "mesa-allegra-para-marmol",
-        "oculto": true,
         "categoria": "mesas",
         "etiqueta": "Mesas",
         "nombre": "Mesa Allegra para mármol",
