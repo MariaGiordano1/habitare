@@ -495,6 +495,17 @@
 
 /* ===== Celular ===== */
 @media (max-width: 809.98px) {
+    /* miniaturas en filas de 3, más grandes */
+    .miniaturas {
+        display: grid;
+        grid-template-columns: repeat(3, minmax(0, 1fr));
+        gap: 8px;
+    }
+
+    .miniaturas button {
+        width: 100%;
+    }
+
     .migas {
         padding: 20px 24px 0 24px;
         gap: 8px;
