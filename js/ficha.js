@@ -31,7 +31,7 @@ if (producto) {
     }
 
     // Fotos horizontales que se muestran completas (sin recortar los costados) dentro del cuadrado.
-    const fotosCompletas = ["mesa-allegra-almendra-3", "mesa-adriana-detalle-vetas", "mesa-adriana-gran-tamano-ebano-detalle", "mesa-adriana-slim-ebano-detalle", "mesa-adriana-slim-almendra-detalle"];
+    const fotosCompletas = ["mesa-allegra-almendra-3", "mesa-adriana-slim-ebano-detalle", "mesa-adriana-slim-almendra-detalle"];
     imgPrincipal.addEventListener("load", function () {
         const nombre = (imgPrincipal.getAttribute("src") || "").split("/").pop().replace(".jpg", "");
         imgPrincipal.classList.toggle("completa", fotosCompletas.indexOf(nombre) !== -1);
