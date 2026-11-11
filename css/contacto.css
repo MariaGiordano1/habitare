@@ -145,6 +145,11 @@ select:required:invalid {
     color: rgba(111, 84, 57, 0.6);
 }
 
+/* El tamaño es opcional: mientras no se elige, se ve como un placeholder */
+select:has(option[value=""]:checked) {
+    color: rgba(111, 84, 57, 0.6);
+}
+
 option {
     color: var(--brown);
 }

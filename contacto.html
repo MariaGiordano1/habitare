@@ -14,6 +14,7 @@
     <link rel="apple-touch-icon" href="img/favicon-180.png">
     <title>Contacto - Habitare</title>
     <script src="js/animaciones.js"></script>
+    <script src="js/productos.js" defer></script>
     <script src="js/contacto.js" defer></script>
 </head>
 
@@ -88,6 +89,13 @@
                     <div class="campo">
                         <label class="sr-only" for="mensaje">¿En qué producto/s estás interesado?</label>
                         <textarea id="mensaje" name="mensaje" placeholder="¿En qué producto/s estás interesado?"></textarea>
+                    </div>
+
+                    <div class="campo" id="campo-tamano" hidden>
+                        <label class="sr-only" for="tamano">Tamaño de la mesa</label>
+                        <select id="tamano" name="tamano">
+                            <option value="">Tamaño de la mesa (opcional)</option>
+                        </select>
                     </div>
 
                     <div class="check">

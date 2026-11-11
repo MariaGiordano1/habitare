@@ -27,3 +27,25 @@ const productoConsulta = new URLSearchParams(window.location.search).get("produc
 if (productoConsulta) {
     document.getElementById("mensaje").value = "¡Hola! Quiero más información sobre " + productoConsulta.slice(0, 80);
 }
+
+// Si el producto es una mesa, aparece un campo para elegir el tamaño (con las personas).
+// Las medidas salen de productos.js: "2,00 x 1,10 (8 personas) y 2,50 x 1,20 (8 personas)".
+if (productoConsulta) {
+    const mesa = productos.find(function (p) {
+        return p.nombre === productoConsulta && p.categoria === "mesas";
+    });
+    const specMedidas = mesa && mesa.specs.find(function (s) {
+        return s[0].indexOf("Medidas") === 0;
+    });
+    if (specMedidas) {
+        const selectTamano = document.getElementById("tamano");
+        specMedidas[1].split(/\s+y\s+(?=\d)|\s+-\s+(?=\d)/).forEach(function (texto) {
+            const partes = texto.match(/^(.*?)\s*\((.*)\)$/);
+            const opcion = document.createElement("option");
+            opcion.value = texto;
+            opcion.textContent = partes ? partes[1] + " m (" + partes[2] + ")" : texto + " m";
+            selectTamano.append(opcion);
+        });
+        document.getElementById("campo-tamano").hidden = false;
+    }
+}
