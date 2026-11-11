@@ -290,7 +290,7 @@ const productos = [
         "nombre": "Mesa Allegra",
         "descripcion": "El mayor exponente del diseño orgánico minimalista, por su geometría de notable belleza, aporta ligereza y refinamiento.",
         "colores": [
-            { "nombre": "Almendra", "fotos": ["mesa-allegra-almendra", "mesa-allegra-almendra-detalle", "mesa-allegra-almendra-3"], "fondo": "#D8C6AA" },
+            { "nombre": "Almendra", "fotos": ["mesa-allegra-almendra-general", "mesa-allegra-almendra-detalle", "mesa-allegra-almendra-3"], "fondo": "#D8C6AA" },
             { "nombre": "Tapa almendra · Base ébano", "fotos": ["mesa-allegra-tapa-almendra-base-ebano", "mesa-allegra-tapa-almendra-base-ebano-detalle", "mesa-allegra-tapa-almendra-base-ebano-3"], "fondo": "linear-gradient(135deg, #D8C6AA 50%, #2E2622 50%)" },
             { "nombre": "Ébano", "fotos": ["mesa-allegra-ebano", "mesa-allegra-ebano-detalle", "mesa-allegra-ebano-ambiente"], "fondo": "#2E2622", "combina": ["silla-jolie|silla-jolie-ebano", "silla-gisele"] }
         ],
