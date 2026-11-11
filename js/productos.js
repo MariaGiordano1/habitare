@@ -356,7 +356,7 @@ const productos = [
         "descripcion": "Es la expresión estilística que combina la elegancia de la tradición, con la evolución formal del diseño moderno.",
         "colores": [
             { "nombre": "Base almendra", "archivo": "mesa-adriana", "fondo": "#D8C6AA", "combina": ["silla-aike", "silla-sophia", "silla-jolie", "silla-elise"] },
-            { "nombre": "Base ébano", "fotos": [], "fondo": "#2E2622", "combina": ["silla-jolie|silla-jolie-ebano", "silla-gisele"] }
+            { "nombre": "Base ébano", "fotos": ["mesa-adriana-ebano-3"], "fondo": "#2E2622", "combina": ["silla-jolie|silla-jolie-ebano", "silla-gisele"] }
         ],
         "specs": [
             [
