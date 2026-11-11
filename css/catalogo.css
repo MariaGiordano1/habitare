@@ -215,6 +215,17 @@
         display: none;
     }
 
+    /* la cruz aparece con un fundido suave */
+    .filtro-quitar:not([hidden]) {
+        animation: cruz-aparece 0.35s ease;
+    }
+
+    @keyframes cruz-aparece {
+        from {
+            opacity: 0;
+        }
+    }
+
     .filtro-abrir {
         display: flex;
         align-items: center;

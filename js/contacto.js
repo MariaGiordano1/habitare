@@ -18,7 +18,15 @@ tipoNegocio.addEventListener("change", function () {
 // Esa página es la que se usa para medir la conversión en Meta.
 document.querySelector("form").addEventListener("submit", function (evento) {
     evento.preventDefault();
-    window.location.href = "gracias.html";
+    // la página se desvanece antes de pasar a la de agradecimiento (igual que al cambiar de página)
+    if (!window.matchMedia("(prefers-reduced-motion: reduce)").matches) {
+        document.body.classList.add("saliendo");
+        setTimeout(function () {
+            window.location.href = "gracias.html";
+        }, 300);
+    } else {
+        window.location.href = "gracias.html";
+    }
 });
 
 // Si llegás desde la ficha de un producto (contacto.html?producto=Mesa%20Stella),

@@ -457,6 +457,24 @@
     }
 }
 
+/* Fundido suave cuando cambia algo de la vista (color elegido, "Combina con", foto próximamente) */
+@keyframes cambio-suave {
+    from {
+        opacity: 0;
+        transform: translateY(6px);
+    }
+}
+
+.cambio-suave {
+    animation: cambio-suave 0.45s ease;
+}
+
+@media (prefers-reduced-motion: reduce) {
+    .cambio-suave {
+        animation: none;
+    }
+}
+
 /* ===== Tablet ===== */
 @media (max-width: 1199.98px) {
     .ficha {

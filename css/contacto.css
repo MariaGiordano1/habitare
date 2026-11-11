@@ -85,7 +85,8 @@ form {
 }
 
 /* el campo "rubro" aparece con un fundido suave */
-.campo-rubro:not([hidden]) {
+.campo-rubro:not([hidden]),
+#campo-tamano:not([hidden]) {
     animation: aparece 0.35s ease;
 }
 

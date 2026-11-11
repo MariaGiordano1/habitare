@@ -1,3 +1,10 @@
+// Fundido suave cuando algo cambia en pantalla (reinicia la animación aunque ya se haya usado)
+function suave(elemento) {
+    elemento.classList.remove("cambio-suave");
+    void elemento.offsetWidth;
+    elemento.classList.add("cambio-suave");
+}
+
 // Lee el producto de la dirección (?id=silla-allure) y completa la ficha.
 const id = new URLSearchParams(window.location.search).get("id");
 const producto = productos.find(function (p) {
@@ -20,6 +27,7 @@ if (producto) {
     function mostrarPendiente() {
         imgPrincipal.classList.add("oculta");
         fotoPendiente.classList.remove("oculta");
+        suave(fotoPendiente);
     }
 
     // Fotos horizontales que se muestran completas (sin recortar los costados) dentro del cuadrado.
@@ -166,7 +174,11 @@ if (producto) {
                 b.classList.remove("activo");
             });
             grupo.circulo.classList.add("activo");
-            etiquetaColor.textContent = "Color: " + grupo.color.nombre;
+            const textoColor = "Color: " + grupo.color.nombre;
+            if (etiquetaColor.textContent !== textoColor) {
+                etiquetaColor.textContent = textoColor;
+                suave(etiquetaColor);
+            }
             if (rutaFoto) cambiarFoto(rutaFoto);
             else mostrarPendiente();
             // si este color trae su propia lista "combina", se cambia con él
@@ -379,4 +391,5 @@ function mostrarCombinaciones(listaPropia) {
         lista.append(item);
     });
     document.getElementById("producto-combina").hidden = false;
+    suave(lista);
 }
