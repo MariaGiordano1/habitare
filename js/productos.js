@@ -365,7 +365,7 @@ const productos = [
             ],
             [
                 "Medidas (m)",
-                "3,00 x 1,30 (10-12 personas) y 3,60 x 1,35 (12-14 personas)"
+                "2,20 x 1,10 (8 personas) y 2,50 x 1,20 (8 personas) y 3,00 x 1,30 (10-12 personas) y 3,60 x 1,35 (12-14 personas)"
             ],
             [
                 "Terminación de las bases",
