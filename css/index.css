@@ -249,16 +249,12 @@ a.distribuidor-texto:focus-visible {
 /* Tendencias: más aire respecto de las categorías; título y botón con borde inferior */
 .tendencias-texto {
     margin-top: 56px;
-    gap: 28px;
+    gap: 8px;
     padding: 0;
 }
 
-.marca-pedido {
-    display: inline-block;
-    color: var(--mostaza);
-}
-
 .boton-tendencias {
+    margin-top: 22px;
     padding-bottom: 6px;
     border-bottom: 1px solid var(--brown);
     font-family: "Inter", sans-serif;
@@ -517,7 +513,7 @@ a.distribuidor-texto:focus-visible {
 
     .tendencias-texto {
         margin-top: 32px;
-        gap: 22px;
+        gap: 8px;
     }
 
     .categorias {
