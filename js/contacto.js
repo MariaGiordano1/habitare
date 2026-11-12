@@ -14,10 +14,55 @@ tipoNegocio.addEventListener("change", function () {
     }
 });
 
-// Al enviar (con todos los campos completos) se pasa a la página de agradecimiento.
-// Esa página es la que se usa para medir la conversión en Meta.
+// ===== Envío de la consulta =====
+// Por ahora la consulta se manda por WhatsApp. Cuando esté el CRM, solo hay que
+// cambiar esta función (por ejemplo, para mandar los datos a un webhook).
+const NUMERO_WHATSAPP = "5491131698686";
+
+function armarMensaje(datos) {
+    const lineas = ["¡Hola! Quiero solicitar el catálogo de Habitare.", ""];
+    lineas.push("Nombre: " + datos.nombre);
+    lineas.push("Teléfono: " + datos.telefono);
+    lineas.push("Ciudad: " + datos.ciudad);
+    lineas.push("Tipo de negocio: " + datos.negocio);
+    if (datos.rubro) lineas.push("Rubro: " + datos.rubro);
+    if (datos.nombreNegocio) lineas.push("Nombre del negocio: " + datos.nombreNegocio);
+    if (datos.mensaje) lineas.push("Interés: " + datos.mensaje);
+    if (datos.tamano) lineas.push("Tamaño de la mesa: " + datos.tamano);
+    lineas.push("Permite llamada telefónica: " + (datos.llamada ? "Sí" : "No"));
+    return lineas.join("\n");
+}
+
+// Devuelve true si pudo abrir WhatsApp en una pestaña nueva.
+function enviarConsulta(datos) {
+    const url = "https://wa.me/" + NUMERO_WHATSAPP + "?text=" + encodeURIComponent(armarMensaje(datos));
+    const ventana = window.open(url, "_blank");
+    if (!ventana) {
+        // el navegador bloqueó la pestaña nueva: se abre WhatsApp en esta misma
+        window.location.href = url;
+        return false;
+    }
+    return true;
+}
+
+// Al enviar (con todos los campos completos) se abre WhatsApp con el mensaje armado
+// y esta página pasa a la de agradecimiento (la que se usa para medir la conversión en Meta).
 document.querySelector("form").addEventListener("submit", function (evento) {
     evento.preventDefault();
+    const valor = function (id) { return document.getElementById(id).value.trim(); };
+    const selectNegocio = document.getElementById("negocio");
+    const abrio = enviarConsulta({
+        nombre: valor("nombre"),
+        telefono: valor("telefono"),
+        ciudad: valor("ciudad"),
+        negocio: selectNegocio.options[selectNegocio.selectedIndex].text,
+        rubro: valor("rubro"),
+        nombreNegocio: valor("nombre-negocio"),
+        mensaje: valor("mensaje"),
+        tamano: document.getElementById("tamano").value,
+        llamada: document.getElementById("checkbox").checked
+    });
+    if (!abrio) return;
     // la página se desvanece antes de pasar a la de agradecimiento (igual que al cambiar de página)
     if (!window.matchMedia("(prefers-reduced-motion: reduce)").matches) {
         document.body.classList.add("saliendo");
