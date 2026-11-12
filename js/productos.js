@@ -571,7 +571,7 @@ const productos = [
         "colores": [
             { "nombre": "Almendra · Beige 1029", "fotos": ["silla-gisele-beige-2", "silla-gisele-beige", "silla-gisele-beige-3"], "muestra": "img/telas/tela-beige-1029.jpg" },
             { "nombre": "Almendra · Klee Gray 1032", "fotos": ["silla-gisele-gris-2", "silla-gisele-gris", "silla-gisele-gris-3"], "muestra": "img/telas/tela-gris-1032.jpg" },
-            { "nombre": "Ébano · Beige 1029", "fotos": ["silla-gisele-2", "silla-gisele", "silla-gisele-3"], "muestra": "img/telas/tela-beige-1029.jpg" }
+            { "nombre": "Ébano · Beige 1029", "fotos": ["silla-gisele-2-alejada", "silla-gisele", "silla-gisele-3"], "muestra": "img/telas/tela-beige-1029.jpg" }
         ],
         "specs": [
             [
