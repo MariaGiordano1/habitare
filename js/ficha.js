@@ -272,7 +272,7 @@ if (producto) {
                 circulo.style.backgroundImage = "url(" + color.muestra + ")";
                 // si el nombre empieza con la madera ("Almendra · Beige 1029"), el círculo va partido:
                 // mitad color liso de la estructura, mitad tela del tapizado
-                const madera = color.nombre.match(/^(Almendra|Ébano)\s*·/);
+                const madera = color.nombre.match(/^(Almendra|Ébano)\s*·/) || (producto.estructura ? [null, producto.estructura] : null);
                 if (madera) {
                     const liso = madera[1] === "Ébano" ? "#2E2622" : "#D8C6AA";
                     circulo.style.backgroundImage = "linear-gradient(90deg, " + liso + " 50%, transparent 50%), url(" + color.muestra + ")";

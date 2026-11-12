@@ -449,6 +449,7 @@ const productos = [
     },
     {
         "id": "silla-allure",
+        "estructura": "Almendra",
         "categoria": "sillas",
         "etiqueta": "Sillas",
         "nombre": "Silla Allure",
@@ -477,6 +478,7 @@ const productos = [
     },
     {
         "id": "silla-elise",
+        "estructura": "Almendra",
         "categoria": "sillas",
         "etiqueta": "Sillas",
         "nombre": "Silla Elise",
@@ -505,6 +507,7 @@ const productos = [
     },
     {
         "id": "silla-sophia",
+        "estructura": "Almendra",
         "categoria": "sillas",
         "etiqueta": "Sillas",
         "nombre": "Silla Sophia",
@@ -594,6 +597,7 @@ const productos = [
     },
     {
         "id": "silla-aike",
+        "estructura": "Almendra",
         "categoria": "sillas",
         "etiqueta": "Sillas",
         "nombre": "Silla Aike",
@@ -623,6 +627,7 @@ const productos = [
     },
     {
         "id": "silla-margot",
+        "estructura": "Almendra",
         "categoria": "sillas",
         "etiqueta": "Sillas",
         "nombre": "Silla Margot",
