@@ -666,7 +666,7 @@ const productos = [
         "colores": [
             { "nombre": "Almendra · Beige 1029", "archivo": "banqueta-jolie-beige", "muestra": "img/telas/tela-beige-1029.jpg" },
             { "nombre": "Almendra · Klee Gray 1032", "archivo": "banqueta-jolie-gris", "muestra": "img/telas/tela-gris-1032.jpg" },
-            { "nombre": "Ébano · Beige 1029", "fotos": ["banqueta-jolie-ebano", "banqueta-jolie-ebano-2"], "muestra": "img/telas/tela-beige-1029.jpg" }
+            { "nombre": "Ébano · Beige 1029", "fotos": ["banqueta-jolie-ebano", "banqueta-jolie-ebano-2", "banqueta-jolie-ebano-3"], "muestra": "img/telas/tela-beige-1029.jpg" }
         ],
         "specs": [
             [
