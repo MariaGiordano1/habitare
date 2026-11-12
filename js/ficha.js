@@ -5,6 +5,9 @@ function suave(elemento) {
     elemento.classList.add("cambio-suave");
 }
 
+// color elegido en la ficha (lo usa "Combina con")
+let colorElegido = null;
+
 // Lee el producto de la dirección (?id=silla-allure) y completa la ficha.
 const id = new URLSearchParams(window.location.search).get("id");
 const producto = productos.find(function (p) {
@@ -246,6 +249,7 @@ if (producto) {
             else mostrarPendiente();
             // si este color trae su propia lista "combina", se cambia con él
             combinaActual = grupo.color.combina || null;
+            colorElegido = grupo.color.nombre;
             mostrarCombinaciones(combinaActual);
         }
 
@@ -479,17 +483,27 @@ function mostrarCombinaciones(listaPropia) {
         .filter(function (p) {
             return p && !p.oculto;
         });
-    document.getElementById("producto-combina").hidden = otros.length === 0;
-    if (otros.length === 0) return;
-    otros.forEach(function (otro) {
+    // silla en versión ébano: solo se muestran las mesas en versión ébano (ébano solo combina con ébano)
+    const soloEbano = producto.categoria === "sillas" && colorElegido && /^Ébano/.test(colorElegido);
+    function colorEbanoQueCombina(mesa) {
+        return (mesa.colores || []).find(function (c) {
+            return /ébano/i.test(c.nombre) && c.combina && ids(c.combina).indexOf(producto.id) !== -1;
+        });
+    }
+    const mostrar = soloEbano ? otros.filter(function (m) {
+        return m.categoria === "mesas" && colorEbanoQueCombina(m);
+    }) : otros;
+    document.getElementById("producto-combina").hidden = mostrar.length === 0;
+    if (mostrar.length === 0) return;
+    mostrar.forEach(function (otro) {
         const item = document.createElement("li");
         const enlace = document.createElement("a");
         const foto = document.createElement("img");
         const nombre = document.createElement("span");
         // si la mesa tiene colores, se abre en el que combina con esta silla (la ficha muestra solo esa variante)
-        const colorQueCombina = otro.categoria === "mesas" && otro.colores ? otro.colores.find(function (c) {
+        const colorQueCombina = otro.categoria === "mesas" && otro.colores ? (soloEbano ? colorEbanoQueCombina(otro) : otro.colores.find(function (c) {
             return c.combina && ids(c.combina).indexOf(producto.id) !== -1;
-        }) : null;
+        })) : null;
         enlace.href = "ficha-producto.html?id=" + otro.id + (colorQueCombina ? "&color=" + encodeURIComponent(colorQueCombina.nombre) : "") + "&desde=" + recorrido.join(",");
         // si tiene varios colores y no hay foto con su nombre, usa la del primer color
         const primero = otro.colores && otro.colores[0].fondo ? otro.colores[0] : null;
