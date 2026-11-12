@@ -38,7 +38,7 @@ if (producto) {
     }
 
     // Fotos horizontales que se muestran completas (sin recortar los costados) dentro del cuadrado.
-    const fotosCompletas = ["mesa-allegra-almendra-3", "banqueta-jolie-gris-3"];
+    const fotosCompletas = ["mesa-allegra-almendra-3"];
     imgPrincipal.addEventListener("load", function () {
         const nombre = (imgPrincipal.getAttribute("src") || "").split("/").pop().replace(".jpg", "");
         imgPrincipal.classList.toggle("completa", fotosCompletas.indexOf(nombre) !== -1);
