@@ -303,6 +303,18 @@ a.distribuidor-texto:focus-visible {
     transition: padding-left 0.3s ease;
 }
 
+.categoria-tarjeta span small {
+    margin-left: 10px;
+    font-size: 11px;
+    letter-spacing: 0.04em;
+    text-transform: none;
+    color: rgba(51, 38, 31, 0.6);
+}
+
+.categorias li[hidden] {
+    display: none;
+}
+
 .categoria-tarjeta:hover span {
     padding-left: 12px;
 }

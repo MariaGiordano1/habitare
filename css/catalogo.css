@@ -19,6 +19,17 @@
     transition: border-color 0.2s ease, font-weight 0.2s ease;
 }
 
+.filtro-boton[hidden] {
+    display: none;
+}
+
+.filtro-boton small {
+    margin-left: 6px;
+    font-size: 0.7em;
+    opacity: 0.6;
+    text-transform: none;
+}
+
 .filtro-boton:hover,
 .filtro-boton.activo {
     border-bottom-color: var(--brown);
