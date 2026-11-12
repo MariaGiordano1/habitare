@@ -27,45 +27,60 @@
 }
 
 .tend-book {
-    padding: 24px 40px 40px 40px;
+    padding: 24px 0 0 0;
 }
 
-.tend-fila {
-    margin: 0 auto 72px auto;
+/* igual que los banners del final del inicio: pantalla ancha, se van apilando al scrollear */
+.tend-panel {
+    position: sticky;
+    top: var(--alto-header, 80px);
+    height: 760px;
+    display: flex;
+    overflow: hidden;
+    background-color: #f6f3ee;
 }
 
-.tend-tres {
-    display: grid;
-    grid-template-columns: repeat(3, 1fr);
-    gap: 24px;
-    align-items: start;
-    max-width: 1200px;
+.tend-panel::after {
+    content: "";
+    position: absolute;
+    inset: 0;
+    pointer-events: none;
+    background: linear-gradient(180deg, rgba(55, 35, 19, 0.15) 0%, rgba(55, 35, 19, 0.7) 100%);
 }
 
-.tend-solo {
-    max-width: 820px;
+.tend-item {
+    margin: 0;
+    position: relative;
+    flex: 1;
+    min-width: 0;
+    overflow: hidden;
 }
 
 .tend-item img {
     display: block;
     width: 100%;
-    height: auto;
-    background-color: #f6f3ee;
+    height: 100%;
+    object-fit: cover;
 }
 
-/* nombre de los productos, discreto debajo de la foto */
+/* nombre de los productos, discreto sobre la foto */
 .tend-item figcaption {
-    margin-top: 12px;
+    position: absolute;
+    left: 24px;
+    bottom: 22px;
+    z-index: 2;
     font-size: 11px;
-    letter-spacing: 0.08em;
+    letter-spacing: 0.1em;
     text-transform: uppercase;
-    color: rgba(51, 38, 31, 0.6);
+    color: rgba(255, 253, 252, 0.85);
 }
 
 .tend-cta {
+    position: relative;
+    background: var(--soft-white);
     display: flex;
     justify-content: center;
-    padding: 0 40px 96px 40px;
+    padding: 72px 40px 96px 40px;
 }
 
 .tend-cta .boton-consulta {
@@ -92,6 +107,12 @@
     color: var(--soft-white);
 }
 
+@media (max-width: 1199.98px) {
+    .tend-panel {
+        height: 560px;
+    }
+}
+
 @media (max-width: 809.98px) {
     .tend-intro {
         padding: 48px 20px 16px 20px;
@@ -106,17 +127,32 @@
         margin: 8px 0 0 0;
     }
 
-    .tend-book {
-        padding: 16px 20px 24px 20px;
+    /* en celular cada foto es su propio banner, una sobre otra */
+    .tend-panel {
+        display: contents;
     }
 
-    /* las 3 fotos se pasan una debajo de otra */
-    .tend-tres {
-        grid-template-columns: 1fr;
-        gap: 28px;
+    .tend-panel::after {
+        display: none;
     }
 
-    .tend-fila {
-        margin-bottom: 44px;
+    .tend-item {
+        position: sticky;
+        top: var(--alto-header, 80px);
+        flex: none;
+        height: 440px;
+    }
+
+    .tend-item::after {
+        content: "";
+        position: absolute;
+        inset: 0;
+        pointer-events: none;
+        background: linear-gradient(180deg, rgba(55, 35, 19, 0.15) 0%, rgba(55, 35, 19, 0.7) 100%);
+    }
+
+    .tend-item figcaption {
+        left: 16px;
+        bottom: 16px;
     }
 }

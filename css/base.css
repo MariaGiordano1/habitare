@@ -180,18 +180,21 @@ footer {
 }
 
 /* fotos de ambiente: además de aparecer, se acomodan con un zoom suave */
-.js .ambiente img.reveal {
+.js .ambiente img.reveal,
+.js .tend-item img.reveal {
     transform: scale(1.08);
     transition-duration: 0.9s;
 }
 
-.js .ambiente img.reveal.visible {
+.js .ambiente img.reveal.visible,
+.js .tend-item img.reveal.visible {
     transform: none;
 }
 
 @media (prefers-reduced-motion: reduce) {
     .js .reveal,
-    .js .ambiente img.reveal {
+    .js .ambiente img.reveal,
+    .js .tend-item img.reveal {
         opacity: 1;
         transform: none;
         transition: none;

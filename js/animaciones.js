@@ -13,13 +13,13 @@ document.addEventListener("DOMContentLoaded", function () {
         ".ambiente img",
         ".cta > *",
         ".tarjeta",
-        ".tend-item"
+        ".tend-item img"
     ];
     aAnimar.forEach(function (selector) {
         document.querySelectorAll(selector).forEach(function (elemento, i) {
             elemento.classList.add("reveal");
             // las tarjetas de una misma fila entran una atrás de otra
-            if (selector === ".tarjeta" || selector === ".categorias li" || selector === ".tend-item") {
+            if (selector === ".tarjeta" || selector === ".categorias li" || selector === ".tend-item img") {
                 elemento.style.transitionDelay = (i % 3) * 60 + "ms";
             }
         });
