@@ -246,6 +246,13 @@ a.distribuidor-texto:focus-visible {
     line-height: 1.2;
 }
 
+/* Tendencias: más aire respecto de las categorías y borde inferior */
+.tendencias-texto {
+    margin-top: 56px;
+    padding: 0 0 28px 0;
+    border-bottom: 1px solid var(--brown);
+}
+
 /* 6 columnas: cada tarjeta ocupa 2 */
 .categorias {
     display: grid;
@@ -485,6 +492,11 @@ a.distribuidor-texto:focus-visible {
 
     .marca-mayorista {
         font-size: 14px;
+    }
+
+    .tendencias-texto {
+        margin-top: 32px;
+        padding-bottom: 24px;
     }
 
     .categorias {
