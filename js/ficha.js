@@ -328,7 +328,7 @@ if (producto) {
         if (inicial.nombres.length > 0) imgPrincipal.src = ruta(inicial.nombres[0]);
         inicial.botones[0].click();
     } else {
-        mostrarFotos(nombresDeBase(producto.id));
+        mostrarFotos(producto.fotos || nombresDeBase(producto.id));
     }
 
     document.getElementById("producto-categoria").textContent = producto.etiqueta;

@@ -120,6 +120,7 @@ const productos = [
         "etiqueta": "Mesas",
         "nombre": "Mesa Ornella",
         "subtitulo": "imitación mármol",
+        "nombreCompleto": "Mesa Ornella imitación mármol",
         "descripcion": "Una verdadera obra de arte que invita a la convivencia, aporta elegancia y sofisticación.",
         "specs": [
             [
@@ -147,10 +148,12 @@ const productos = [
     {
         "id": "mesa-ornella-blanca",
         "combina": ["silla-sophia", "silla-jolie", "silla-gisele|silla-gisele-beige", "silla-margot"],
-        "oculto": true,
         "categoria": "mesas",
         "etiqueta": "Mesas",
         "nombre": "Mesa Ornella",
+        "subtitulo": "con vidrio",
+        "nombreCompleto": "Mesa Ornella con vidrio",
+        "fotos": ["mesa-ornella-blanca-3"],
         "descripcion": "Una verdadera obra de arte que invita a la convivencia, aporta elegancia y sofisticación.",
         "specs": [
             [
