@@ -12,13 +12,14 @@ document.addEventListener("DOMContentLoaded", function () {
         ".categorias li",
         ".ambiente img",
         ".cta > *",
-        ".tarjeta"
+        ".tarjeta",
+        ".tend-item"
     ];
     aAnimar.forEach(function (selector) {
         document.querySelectorAll(selector).forEach(function (elemento, i) {
             elemento.classList.add("reveal");
             // las tarjetas de una misma fila entran una atrás de otra
-            if (selector === ".tarjeta" || selector === ".categorias li") {
+            if (selector === ".tarjeta" || selector === ".categorias li" || selector === ".tend-item") {
                 elemento.style.transitionDelay = (i % 3) * 60 + "ms";
             }
         });
