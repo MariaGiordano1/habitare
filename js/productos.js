@@ -124,11 +124,11 @@ const productos = [
         "specs": [
             [
                 "Terminación de la mesa",
-                "Imitación mármol Rochedo - Placa de PP"
+                "Imitación mármol Rochedo - Revestimiento PP (placa de polímero de alta resistencia)"
             ],
             [
                 "Características de la placa",
-                "Soporta 180 grados - Alta resistencia al impacto - Superficie texturada"
+                "Soporta 200 grados - Alto impacto - No se mancha"
             ],
             [
                 "Medidas (m)",
@@ -136,7 +136,7 @@ const productos = [
             ],
             [
                 "Terminación de las patas",
-                "Laca tono almendra"
+                "Laca poro abierto tono almendra"
             ],
             [
                 "Estructura de la mesa",
@@ -163,7 +163,7 @@ const productos = [
             ],
             [
                 "Terminación de las patas",
-                "Laca tono almendra"
+                "Laca poro abierto tono almendra"
             ],
             [
                 "Estructura de la mesa",
