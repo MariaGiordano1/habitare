@@ -153,7 +153,7 @@ const productos = [
         "nombre": "Mesa Ornella",
         "subtitulo": "con vidrio",
         "nombreCompleto": "Mesa Ornella con vidrio",
-        "fotos": ["mesa-ornella-blanca", "mesa-ornella-blanca-3"],
+        "fotos": ["mesa-ornella-blanca", "mesa-ornella-blanca-2", "mesa-ornella-blanca-3"],
         "descripcion": "Una verdadera obra de arte que invita a la convivencia, aporta elegancia y sofisticación.",
         "specs": [
             [
