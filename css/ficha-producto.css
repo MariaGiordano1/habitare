@@ -691,10 +691,22 @@ body.ampliada-abierta {
         height: 58px;
         margin: 0;
         border-bottom: 0;
-        background-color: var(--brown);
+        border-top: 1px solid var(--brown);
+        background-color: var(--soft-white);
         background-image: none;
-        color: var(--soft-white);
-        box-shadow: 0 -6px 20px rgba(55, 35, 19, 0.18);
+        color: var(--brown);
+        box-shadow: none;
+    }
+
+    .boton-consulta:hover {
+        color: var(--brown);
+    }
+
+    /* sin línea ni hueco donde estaba el botón */
+    .combina {
+        margin-top: 24px;
+        padding-top: 0;
+        border-top: 0;
     }
 
     /* para que el botón fijo no tape el final de la página */
