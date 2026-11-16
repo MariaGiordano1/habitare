@@ -521,7 +521,7 @@ function mostrarCombinaciones(listaPropia) {
             });
             foto.src = "img/combina/" + nombreFoto + ".jpg";
         }
-        foto.alt = "";
+        foto.alt = (otro.nombreCompleto || otro.nombre) + (colorQueCombina ? ", " + colorQueCombina.nombre : "");
         // marco de tamaño fijo; "zoomMiniatura" acerca las fotos donde el producto se ve chico
         const marco = document.createElement("span");
         marco.className = "combina-foto";
