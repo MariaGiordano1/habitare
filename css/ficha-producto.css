@@ -331,12 +331,21 @@
     opacity: 0.6;
 }
 
-/* ===== Combina con (en la columna de info, debajo del botón) ===== */
+/* ===== Combina con (en computadora: columna izquierda, debajo de la foto principal) ===== */
 .combina {
+    grid-column: 1;
     scroll-margin-top: 100px;
-    margin-top: 48px;
-    padding-top: 32px;
-    border-top: 1px solid rgba(111, 84, 57, 0.2);
+}
+
+/* la información ocupa las dos filas de la derecha */
+.ficha-info {
+    grid-column: 2;
+    grid-row: 1 / span 2;
+}
+
+.ficha-galeria {
+    grid-column: 1;
+    grid-row: 1;
 }
 
 .combina[hidden] {
@@ -531,6 +540,14 @@
         padding: 24px 40px 72px 40px;
     }
 
+    /* una sola columna: foto, información y al final "Combina con" */
+    .ficha-galeria,
+    .ficha-info,
+    .combina {
+        grid-column: 1;
+        grid-row: auto;
+    }
+
     /* miniaturas debajo de la foto principal */
     .ficha-galeria {
         flex-direction: column;
@@ -601,10 +618,6 @@
         border-top: 0;
     }
 
-    .combina {
-        margin-top: 40px;
-        padding-top: 28px;
-    }
 
     .combina h2 {
         font-size: 26px;
@@ -731,12 +744,6 @@ body.ampliada-abierta {
         color: var(--brown);
     }
 
-    /* sin línea ni hueco donde estaba el botón */
-    .combina {
-        margin-top: 24px;
-        padding-top: 0;
-        border-top: 0;
-    }
 
     /* para que el botón fijo no tape el final de la página */
     body {
