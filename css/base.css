@@ -111,24 +111,58 @@ footer {
     letter-spacing: 0.04em;
 }
 
+.footer-top {
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-start;
+    gap: 48px;
+}
+
+.footer-columnas {
+    display: flex;
+    gap: 96px;
+    padding-top: 14px;
+}
+
+.footer-col {
+    display: flex;
+    flex-direction: column;
+    gap: 16px;
+}
+
+.footer-col ul {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+}
+
+.footer-titulo {
+    font-size: 11px;
+    font-weight: 500;
+    letter-spacing: 0.16em;
+    text-transform: uppercase;
+    color: var(--mostaza);
+}
+
+.footer-col a {
+    font-size: 15px;
+    transition: opacity 0.3s ease;
+}
+
+.footer-col a:hover,
+.footer-col a:focus-visible {
+    opacity: 0.6;
+}
+
 .footer-info {
     display: flex;
     justify-content: space-between;
     align-items: center;
+    padding-top: 24px;
+    border-top: 1px solid rgba(111, 84, 57, 0.25);
     font-size: 10px;
     letter-spacing: 1.4px;
     text-transform: uppercase;
-}
-
-.footer-mail {
-    text-transform: none;
-    letter-spacing: 0.06em;
-    transition: opacity 0.3s ease;
-}
-
-.footer-mail:hover,
-.footer-mail:focus-visible {
-    opacity: 0.6;
 }
 
 .redes {
@@ -172,9 +206,19 @@ footer {
         font-size: 44px;
     }
 
-    .footer-info {
+    .footer-top {
         flex-direction: column;
-        gap: 8px;
+        gap: 36px;
+    }
+
+    .footer-columnas {
+        flex-wrap: wrap;
+        gap: 32px 56px;
+        padding-top: 0;
+    }
+
+    .footer-info {
+        justify-content: center;
         text-align: center;
     }
 }
@@ -250,13 +294,6 @@ footer {
     background-color: var(--brown);
     color: var(--soft-white);
     box-shadow: 0 8px 24px rgba(55, 35, 19, 0.28);
-    transition: background-color 0.25s ease, color 0.25s ease;
-}
-
-.whatsapp-flotante:hover,
-.whatsapp-flotante:focus-visible {
-    background-color: var(--soft-white);
-    color: var(--brown);
 }
 
 /* globo de viñeta: esquinas redondeadas y colita que apunta al botón */
