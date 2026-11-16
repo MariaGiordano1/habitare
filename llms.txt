@@ -1,0 +1,62 @@
+# Habitare
+
+> Habitare es el distribuidor exclusivo en Argentina de J.Marcon. Vende muebles de diseño (mesas, sillas, banquetas, poltronas y complementos) bajo modalidad mayorista, para mueblerías y estudios de interiorismo. Los productos están en stock inmediato y se consulta sin precios publicados.
+
+## Contacto
+
+- Mail: habitare@habitaremuebles.com
+- WhatsApp: +54 9 11 3169-8686 (https://wa.me/5491131698686)
+- Formulario: https://habitaremuebles.com/contacto
+- Sitio: https://habitaremuebles.com/
+
+## Páginas principales
+
+- [Catálogo](https://habitaremuebles.com/catalogo): todos los productos por categoría
+- [Tendencias](https://habitaremuebles.com/tendencias): productos disponibles a pedido
+- [Contacto](https://habitaremuebles.com/contacto): solicitud de catálogo para mueblerías e interioristas
+
+## Mesas
+
+- [Mesa Stella](https://habitaremuebles.com/productos/mesa-stella): El diseño de formas orgánicas combina belleza con funcionalidad, distinción para realzar el comedor.
+- [Mesa Stella para mármol](https://habitaremuebles.com/productos/mesa-stella-para-marmol): El mármol veteado y la madera curva se unen en una pieza sublime que refleja distinción y armonía en cada detalle.
+- [Mesa Stella Drink](https://habitaremuebles.com/productos/mesa-stella-drink): Diseño orgánico: la elegancia y el confort del lujo silencioso.
+- [Mesa Giulia](https://habitaremuebles.com/productos/mesa-giulia): La geometría de las patas la convierte en una mesa de estilo contemporáneo, original y con estilo.
+- [Mesa Ornella imitación mármol](https://habitaremuebles.com/productos/mesa-ornella): Una verdadera obra de arte que invita a la convivencia, aporta elegancia y sofisticación.
+- [Mesa Ornella con vidrio](https://habitaremuebles.com/productos/mesa-ornella-blanca): Una verdadera obra de arte que invita a la convivencia, aporta elegancia y sofisticación.
+- [Mesa Ornella PP](https://habitaremuebles.com/productos/mesa-ornella-polimero): Una verdadera obra de arte que invita a la convivencia, aporta elegancia y sofisticación.
+- [Mesa Folha](https://habitaremuebles.com/productos/mesa-folha): Arte y naturaleza: su acabado a poro abierto en forma de hoja, preserva la textura viva de la madera, elegancia y refinamiento.
+- [Mesa Ágora](https://habitaremuebles.com/productos/mesa-agora): Nuevo estándar del lujo contemporáneo: presencia escultural para espacios que hablan de éxito y serenidad.
+- [Mesa Adriana Slim](https://habitaremuebles.com/productos/mesa-adriana-slim): Materiales y formas se fusionan en perfecta armonía, se adapta con versatilidad a diferentes espacios y gustos.
+- [Mesa Allegra](https://habitaremuebles.com/productos/mesa-allegra): El mayor exponente del diseño orgánico minimalista, por su geometría de notable belleza, aporta ligereza y refinamiento.
+- [Mesa Allegra para mármol](https://habitaremuebles.com/productos/mesa-allegra-para-marmol): Una declaración de lujo silencioso donde la exclusividad reside en la armonía de sus formas y materiales, mármol y madera.
+- [Mesa Adriana](https://habitaremuebles.com/productos/mesa-adriana): Es la expresión estilística que combina la elegancia de la tradición, con la evolución formal del diseño moderno.
+- [Mesa Adriana gran tamaño](https://habitaremuebles.com/productos/mesa-adriana-gran-tamano): Es la expresión estilística que combina la elegancia de la tradición, con la evolución formal del diseño moderno.
+
+## Sillas
+
+- [Silla Allure](https://habitaremuebles.com/productos/silla-allure): Con un lenguaje contemporáneo y minimalista, pero a la vez elegante y sensual.
+- [Silla Elise](https://habitaremuebles.com/productos/silla-elise): Combina comodidad, solidez y elegancia atemporal. Notable comodidad por su respaldo ergonómico en arco.
+- [Silla Sophia](https://habitaremuebles.com/productos/silla-sophia): Sus líneas circulares, armoniosas y envolventes, consiguen un lenguaje contemporáneo, un diseño sofisticado y elegante.
+- [Silla Jolie](https://habitaremuebles.com/productos/silla-jolie): Creada para ser la protagonista del salón: asiento y respaldo acolchados, combina comodidad y elegancia.
+- [Silla Gisele](https://habitaremuebles.com/productos/silla-gisele): Una silla elegante por sus líneas curvas, esbeltas patas redondeadas y respaldo circular.
+- [Silla Aike](https://habitaremuebles.com/productos/silla-aike): Líneas refinadas, formas suaves con bordes redondeados para llevar una expresión de comodidad y belleza.
+- [Silla Margot](https://habitaremuebles.com/productos/silla-margot): Es una silla extremadamente elegante. El diseño y la calidad reflejan el distinguido diseño italiano. La reedición de un clásico.
+
+## Banquetas
+
+- [Banqueta Jolie](https://habitaremuebles.com/productos/banqueta-jolie): Un icono del diseño aplicado al confort. La suavidad y ergonomía garantizan una experiencia inigualable.
+- [Banqueta Gisele](https://habitaremuebles.com/productos/banqueta-gisele): Diseño refinado y fuerte personalidad. Con sus líneas depuradas, cómodo asiento y respaldo envolvente.
+
+## Poltronas
+
+- [Poltrona Gisele](https://habitaremuebles.com/productos/poltrona-gisele): Armonía visual y confort supremo: la exclusividad encuentra su forma.
+- [Poltrona Nest](https://habitaremuebles.com/productos/poltrona-nest): Sólida estructura, apoyabrazos de líneas limpias enmarcan un delicado respaldo de esterilla, cojines de cuero de tacto suave.
+- [Poltrona Bubble con reposapiés](https://habitaremuebles.com/productos/poltrona-bubble-con-reposapies): Con sus delicados pies de roble, asiento mullido y respaldo de diseño envolvente resulta cómodo y acogedor.
+- [Poltrona Dolphin giratoria](https://habitaremuebles.com/productos/poltrona-dolphin-giratoria): Su confort se caracteriza por el respaldo envolvente y el asiento circular de acolchado suave. Giratoria, con apoyabrazos.
+
+## Complementos
+
+- [Puff Nest](https://habitaremuebles.com/productos/puff-nest): Funciona también como un asiento auxiliar, transforma la poltrona Nest en una experiencia de confort absoluta.
+- [Mesa de centro y puff Harmonie](https://habitaremuebles.com/productos/mesa-de-centro-y-puff-harmonie): Elegantes elementos funcionales que aportan practicidad y una estética muy distintiva.
+- [Mesitas laterales Minion](https://habitaremuebles.com/productos/mesitas-laterales-minion): Juego de mesitas auxiliares para aportar soluciones atractivas.
+

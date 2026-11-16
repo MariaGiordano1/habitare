@@ -9,7 +9,8 @@ function suave(elemento) {
 let colorElegido = null;
 
 // Lee el producto de la dirección (?id=silla-allure) y completa la ficha.
-const id = new URLSearchParams(window.location.search).get("id");
+// (en las páginas por producto el id viene en <html data-producto="...">; en la dirección sigue andando ?id=)
+const id = document.documentElement.dataset.producto || new URLSearchParams(window.location.search).get("id");
 const producto = productos.find(function (p) {
     return p.id === id;
 });
@@ -22,7 +23,7 @@ const recorrido = (function () {
 })();
 
 if (producto) {
-    document.title = producto.nombre + " - Habitare";
+    document.title = (producto.nombreCompleto || producto.nombre) + " | Habitare";
 
     const imgPrincipal = document.getElementById("producto-img");
     imgPrincipal.alt = producto.nombre;
@@ -375,6 +376,7 @@ if (producto) {
     document.getElementById("producto-descripcion").textContent = producto.descripcion;
 
     const lista = document.getElementById("producto-specs");
+    lista.innerHTML = ""; // la página ya viene con los datos escritos (para buscadores); se rearman acá
     producto.specs.forEach(function (spec) {
         // Las medidas van destacadas, en un bloque aparte
         if (spec[0].indexOf("Medidas") === 0) {
@@ -505,7 +507,7 @@ function mostrarCombinaciones(listaPropia) {
         const colorQueCombina = otro.categoria === "mesas" && otro.colores ? (soloEbano ? colorEbanoQueCombina(otro) : otro.colores.find(function (c) {
             return c.combina && ids(c.combina).indexOf(producto.id) !== -1;
         })) : null;
-        enlace.href = "ficha-producto.html?id=" + otro.id + (colorQueCombina ? "&color=" + encodeURIComponent(colorQueCombina.nombre) : "") + "&desde=" + recorrido.join(",");
+        enlace.href = "productos/" + otro.id + ".html?desde=" + recorrido.join(",") + (colorQueCombina ? "&color=" + encodeURIComponent(colorQueCombina.nombre) : "");
         // si tiene varios colores y no hay foto con su nombre, usa la del primer color
         const primero = otro.colores && otro.colores[0].fondo ? otro.colores[0] : null;
         const colorFoto = colorQueCombina || primero;
