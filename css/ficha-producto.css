@@ -237,8 +237,7 @@
     display: flex;
     flex-direction: column;
     gap: 14px;
-    padding: 24px 28px;
-    background-color: #f6f1ea;
+    padding: 4px 0 8px;
 }
 
 .medidas[hidden] {
@@ -291,6 +290,10 @@
     flex-direction: column;
     gap: 6px;
     padding: 16px 0;
+    border-bottom: 1px solid rgba(111, 84, 57, 0.25);
+}
+
+.specs li:nth-child(-n+2) {
     border-top: 1px solid rgba(111, 84, 57, 0.25);
 }
 
@@ -307,8 +310,30 @@
     line-height: 1.4;
 }
 
+/* aviso sutil debajo de las medidas: lleva a "Combina con" */
+.combina-aviso {
+    align-self: flex-start;
+    padding-bottom: 3px;
+    border-bottom: 1px solid var(--mostaza);
+    font-size: 12px;
+    letter-spacing: 0.14em;
+    text-transform: uppercase;
+    color: var(--mostaza);
+    transition: opacity 0.3s ease;
+}
+
+.combina-aviso[hidden] {
+    display: none;
+}
+
+.combina-aviso:hover,
+.combina-aviso:focus-visible {
+    opacity: 0.6;
+}
+
 /* ===== Combina con (en la columna de info, debajo del botón) ===== */
 .combina {
+    scroll-margin-top: 100px;
     margin-top: 48px;
     padding-top: 32px;
     border-top: 1px solid rgba(111, 84, 57, 0.2);
@@ -409,7 +434,7 @@
 
 /* "Stock inmediato" dentro de los datos */
 .spec-stock {
-    font-weight: 600;
+    font-weight: 400;
 }
 
 /* ===== Colores de la silla ===== */
@@ -570,6 +595,10 @@
 
     .specs {
         grid-template-columns: 1fr;
+    }
+
+    .specs li:nth-child(2) {
+        border-top: 0;
     }
 
     .combina {

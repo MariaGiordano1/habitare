@@ -494,6 +494,7 @@ function mostrarCombinaciones(listaPropia) {
         return m.categoria === "mesas" && colorEbanoQueCombina(m);
     }) : otros;
     document.getElementById("producto-combina").hidden = mostrar.length === 0;
+    document.getElementById("producto-combina-aviso").hidden = mostrar.length === 0;
     if (mostrar.length === 0) return;
     mostrar.forEach(function (otro) {
         const item = document.createElement("li");
@@ -549,3 +550,10 @@ if (flechaArriba) {
         window.scrollTo({ top: 0, behavior: quieto ? "auto" : "smooth" });
     });
 }
+
+// El aviso "Ver con qué combina" baja suavemente a la sección (si no se pidió reducir el movimiento).
+document.getElementById("producto-combina-aviso").addEventListener("click", function (evento) {
+    if (window.matchMedia("(prefers-reduced-motion: reduce)").matches) return;
+    evento.preventDefault();
+    document.getElementById("producto-combina").scrollIntoView({ behavior: "smooth", block: "start" });
+});
