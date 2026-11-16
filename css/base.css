@@ -120,6 +120,17 @@ footer {
     text-transform: uppercase;
 }
 
+.footer-mail {
+    text-transform: none;
+    letter-spacing: 0.06em;
+    transition: opacity 0.3s ease;
+}
+
+.footer-mail:hover,
+.footer-mail:focus-visible {
+    opacity: 0.6;
+}
+
 .redes {
     display: flex;
     gap: 0.9em;
@@ -163,6 +174,7 @@ footer {
 
     .footer-info {
         flex-direction: column;
+        gap: 8px;
         text-align: center;
     }
 }
