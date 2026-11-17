@@ -47,8 +47,69 @@ function enviarConsulta(datos) {
 
 // Al enviar (con todos los campos completos) se abre WhatsApp con el mensaje armado
 // y esta página pasa a la de agradecimiento (la que se usa para medir la conversión en Meta).
+// ===== Validación =====
+// Todos los campos son obligatorios. En vez de la burbuja del navegador, el aviso
+// aparece debajo del campo con el estilo de Habitare (ver .aviso-campo en contacto.css).
+function mostrarAviso(campo, texto) {
+    const control = campo.querySelector("input, select, textarea");
+    let aviso = campo.querySelector(".aviso-campo");
+    if (!aviso) {
+        aviso = document.createElement("p");
+        aviso.className = "aviso-campo";
+        aviso.id = "aviso-" + control.id;
+        aviso.setAttribute("role", "alert");
+        campo.append(aviso);
+    }
+    aviso.textContent = texto;
+    void aviso.offsetHeight; // para que el aviso aparezca con fundido y no de golpe
+    campo.classList.add("con-error");
+    control.setAttribute("aria-invalid", "true");
+    control.setAttribute("aria-describedby", aviso.id);
+}
+
+function quitarAviso(campo) {
+    const control = campo.querySelector("input, select, textarea");
+    campo.classList.remove("con-error");
+    control.removeAttribute("aria-invalid");
+    control.removeAttribute("aria-describedby");
+}
+
+// Devuelve el primer campo con error (o null si está todo completo).
+function validarFormulario(formulario) {
+    let primero = null;
+    formulario.querySelectorAll(".campo").forEach(function (campo) {
+        if (campo.hidden) return; // por ejemplo "rubro" o "tamaño" cuando no corresponden
+        const control = campo.querySelector("input, select, textarea");
+        const vacio = control.value.trim() === "";
+        if (vacio) {
+            mostrarAviso(campo, control.tagName === "SELECT" ? "Elegí una opción" : "Completá este campo");
+            if (!primero) primero = control;
+        } else {
+            quitarAviso(campo);
+        }
+    });
+    return primero;
+}
+
+// El aviso desaparece apenas la persona corrige el campo
+document.querySelectorAll(".campo").forEach(function (campo) {
+    const control = campo.querySelector("input, select, textarea");
+    ["input", "change"].forEach(function (tipo) {
+        control.addEventListener(tipo, function () {
+            if (campo.classList.contains("con-error") && control.value.trim() !== "") {
+                quitarAviso(campo);
+            }
+        });
+    });
+});
+
 document.querySelector("form").addEventListener("submit", function (evento) {
     evento.preventDefault();
+    const sinCompletar = validarFormulario(evento.target);
+    if (sinCompletar) {
+        sinCompletar.focus();
+        return;
+    }
     const valor = function (id) { return document.getElementById(id).value.trim(); };
     const selectNegocio = document.getElementById("negocio");
     const abrio = enviarConsulta({

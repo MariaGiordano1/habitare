@@ -60,7 +60,7 @@
                     <p class="intro">Dejanos tus datos y te contactamos para enviarte el catálogo y resolver tus consultas.</p>
                 </div>
 
-                <form>
+                <form novalidate>
                     <div class="fila">
                         <div class="campo">
                             <label class="etiqueta-campo" for="nombre">Nombre completo</label>
@@ -90,23 +90,23 @@
 
                     <div class="campo campo-rubro" id="campo-rubro" hidden>
                         <label class="etiqueta-campo" for="rubro">¿Cuál es tu rubro?</label>
-                        <input type="text" id="rubro" name="rubro" placeholder="¿Cuál es tu rubro?">
+                        <input type="text" id="rubro" name="rubro" placeholder="¿Cuál es tu rubro?" required>
                     </div>
 
                     <div class="campo">
-                        <label class="etiqueta-campo" for="nombre-negocio">Nombre del negocio (opcional)</label>
-                        <input type="text" id="nombre-negocio" name="nombre-negocio" placeholder="Nombre del negocio (opcional)">
+                        <label class="etiqueta-campo" for="nombre-negocio">Nombre del negocio</label>
+                        <input type="text" id="nombre-negocio" name="nombre-negocio" placeholder="Nombre del negocio" required>
                     </div>
 
                     <div class="campo">
                         <label class="etiqueta-campo" for="mensaje">¿En qué producto/s estás interesado?</label>
-                        <textarea id="mensaje" name="mensaje" placeholder="¿En qué producto/s estás interesado?"></textarea>
+                        <textarea id="mensaje" name="mensaje" placeholder="¿En qué producto/s estás interesado?" required></textarea>
                     </div>
 
                     <div class="campo" id="campo-tamano" hidden>
-                        <label class="etiqueta-campo" for="tamano">Tamaño de la mesa (opcional)</label>
-                        <select id="tamano" name="tamano">
-                            <option value="">Tamaño de la mesa (opcional)</option>
+                        <label class="etiqueta-campo" for="tamano">Tamaño de la mesa</label>
+                        <select id="tamano" name="tamano" required>
+                            <option value="">Tamaño de la mesa</option>
                         </select>
                     </div>
 
