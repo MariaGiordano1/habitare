@@ -126,6 +126,65 @@ textarea:focus {
     opacity: 1;
 }
 
+/* ---------- Etiqueta flotante ----------
+   La etiqueta hace de placeholder. Al entrar al campo (o si ya tiene algo
+   escrito) sube y se achica, para que se recuerde qué va ahí. */
+.campo {
+    position: relative;
+}
+
+.etiqueta-campo {
+    position: absolute;
+    left: 0;
+    top: 19px;
+    font-size: 13px;
+    color: rgba(111, 84, 57, 0.6);
+    pointer-events: none;
+    transform-origin: left top;
+    transition: top 0.25s ease, font-size 0.25s ease, color 0.25s ease;
+}
+
+/* el placeholder deja de verse: lo reemplaza la etiqueta */
+.campo input::placeholder,
+.campo textarea::placeholder {
+    color: transparent;
+}
+
+.campo input,
+.campo select,
+.campo textarea {
+    padding-top: 22px;
+    padding-bottom: 6px;
+}
+
+.campo textarea {
+    padding-top: 26px;
+}
+
+/* etiqueta arriba: al enfocar, o con texto escrito, o con una opción elegida */
+.campo:focus-within .etiqueta-campo,
+.campo:has(input:not(:placeholder-shown)) .etiqueta-campo,
+.campo:has(textarea:not(:placeholder-shown)) .etiqueta-campo,
+.campo:has(select option[value=""]:not(:checked)) .etiqueta-campo {
+    top: 4px;
+    font-size: 10.5px;
+}
+
+.campo:focus-within .etiqueta-campo {
+    color: var(--brown);
+}
+
+/* en los select vacíos el texto de la opción vacía no se muestra (ya lo dice la etiqueta) */
+.campo select:has(option[value=""]:checked) {
+    color: transparent;
+}
+
+@media (prefers-reduced-motion: reduce) {
+    .etiqueta-campo {
+        transition: none;
+    }
+}
+
 textarea {
     height: 110px;
     padding: 16px 0 12px 0;
