@@ -33,6 +33,35 @@ function armarMensaje(datos) {
     return lineas.join("\n");
 }
 
+// ===== CRM (GoHighLevel) =====
+// Interruptor: dejar en false hasta activar el CRM. Con true, además de abrir WhatsApp,
+// los datos se mandan a /api/lead (función de Vercel que usa la variable GHL_WEBHOOK_URL).
+const USAR_CRM = true;
+
+// Envío en segundo plano: si falla, no frena el WhatsApp ni la página de gracias.
+function enviarAlCRM(datos) {
+    if (!USAR_CRM) return;
+    const params = new URLSearchParams(window.location.search);
+    const extra = {
+        producto: params.get("producto") || "",
+        utm_source: params.get("utm_source") || "",
+        utm_medium: params.get("utm_medium") || "",
+        utm_campaign: params.get("utm_campaign") || "",
+        utm_content: params.get("utm_content") || "",
+        utm_term: params.get("utm_term") || "",
+        pagina: window.location.href,
+        website: document.getElementById("website").value // trampa para bots: debe ir vacío
+    };
+    try {
+        fetch("/api/lead", {
+            method: "POST",
+            headers: { "Content-Type": "application/json" },
+            body: JSON.stringify(Object.assign({}, datos, extra)),
+            keepalive: true
+        }).catch(function () {});
+    } catch (e) {}
+}
+
 // Devuelve true si pudo abrir WhatsApp en una pestaña nueva.
 function enviarConsulta(datos) {
     const url = "https://wa.me/" + NUMERO_WHATSAPP + "?text=" + encodeURIComponent(armarMensaje(datos));
@@ -112,7 +141,7 @@ document.querySelector("form").addEventListener("submit", function (evento) {
     }
     const valor = function (id) { return document.getElementById(id).value.trim(); };
     const selectNegocio = document.getElementById("negocio");
-    const abrio = enviarConsulta({
+    const datos = {
         nombre: valor("nombre"),
         telefono: valor("telefono"),
         ciudad: valor("ciudad"),
@@ -122,7 +151,9 @@ document.querySelector("form").addEventListener("submit", function (evento) {
         mensaje: valor("mensaje"),
         tamano: document.getElementById("tamano").value,
         llamada: document.getElementById("checkbox").checked
-    });
+    };
+    enviarAlCRM(datos);
+    const abrio = enviarConsulta(datos);
     if (!abrio) return;
     // la página se desvanece antes de pasar a la de agradecimiento (igual que al cambiar de página)
     if (!window.matchMedia("(prefers-reduced-motion: reduce)").matches) {
