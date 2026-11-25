@@ -18,5 +18,5 @@ Eso regenera las páginas de producto, `sitemap.xml` y `llms.txt`.
 - `ficha-producto.html?id=...` (dirección vieja) redirige a la página nueva.
 
 ## Medición
-`js/analitica.js`: completar `ID_GA4` y `ID_PIXEL_META` (vacíos = no carga nada).
+`js/analitica.js`: `ID_GA4` (vacío = no carga) e `ID_PIXEL_META` (ya cargado). Ahí también se guardan los datos del anuncio (UTM, ad_id, fbclid) 30 días, se mide Contact en WhatsApp y ViewContent en el catálogo. El Lead lo dispara `js/contacto.js` cuando `/api/lead` confirma el envío. Variables en Vercel: GHL_WEBHOOK_URL, META_PIXEL_ID, META_CAPI_TOKEN, META_TEST_EVENT_CODE (borrar antes de lanzar), QUALIFIED_SECRET.
 Eventos: `generate_lead`/`Lead` (página de gracias), clics en WhatsApp y mail.

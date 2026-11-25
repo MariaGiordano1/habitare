@@ -33,45 +33,94 @@ function armarMensaje(datos) {
     return lineas.join("\n");
 }
 
-// ===== CRM (GoHighLevel) =====
-// Interruptor: dejar en false hasta activar el CRM. Con true, además de abrir WhatsApp,
-// los datos se mandan a /api/lead (función de Vercel que usa la variable GHL_WEBHOOK_URL).
-const USAR_CRM = true;
+// ===== CRM (GoHighLevel) y Meta =====
+// Los datos van a /api/lead (función de Vercel). Esa función los manda a GoHighLevel
+// y a la API de conversiones de Meta. La dirección del webhook y el token de Meta
+// quedan escondidos en Vercel (variables de entorno), nunca en este archivo.
 
-// Envío en segundo plano: si falla, no frena el WhatsApp ni la página de gracias.
-function enviarAlCRM(datos) {
-    if (!USAR_CRM) return;
-    const params = new URLSearchParams(window.location.search);
-    const extra = {
-        producto: params.get("producto") || "",
-        utm_source: params.get("utm_source") || "",
-        utm_medium: params.get("utm_medium") || "",
-        utm_campaign: params.get("utm_campaign") || "",
-        utm_content: params.get("utm_content") || "",
-        utm_term: params.get("utm_term") || "",
-        pagina: window.location.href,
-        website: document.getElementById("website").value // trampa para bots: debe ir vacío
-    };
-    try {
-        fetch("/api/lead", {
-            method: "POST",
-            headers: { "Content-Type": "application/json" },
-            body: JSON.stringify(Object.assign({}, datos, extra)),
-            keepalive: true
-        }).catch(function () {});
-    } catch (e) {}
+// Identificador único de esta consulta. Se usa igual en el navegador y en el servidor
+// para que Meta cuente un solo Lead aunque le lleguen dos avisos.
+function nuevoEventId() {
+    if (window.crypto && crypto.randomUUID) return crypto.randomUUID();
+    return Date.now() + "-" + Math.random().toString(36).slice(2);
 }
 
-// Devuelve true si pudo abrir WhatsApp en una pestaña nueva.
-function enviarConsulta(datos) {
-    const url = "https://wa.me/" + NUMERO_WHATSAPP + "?text=" + encodeURIComponent(armarMensaje(datos));
-    const ventana = window.open(url, "_blank");
-    if (!ventana) {
-        // el navegador bloqueó la pestaña nueva: se abre WhatsApp en esta misma
-        window.location.href = url;
+// Completa los campos ocultos del formulario con los datos del anuncio y las cookies de Meta.
+function completarOcultos(formulario, eventId) {
+    const anuncio = window.habitareAtribucion ? window.habitareAtribucion() : {};
+    const cookie = window.habitareCookie || function () { return ""; };
+    const valores = {
+        utm_source: anuncio.utm_source,
+        utm_campaign: anuncio.utm_campaign,
+        utm_content: anuncio.utm_content,
+        ad_id: anuncio.ad_id,
+        adset_id: anuncio.adset_id,
+        campaign_id: anuncio.campaign_id,
+        fbclid: anuncio.fbclid,
+        fbp: cookie("_fbp"),
+        fbc: cookie("_fbc"),
+        event_id: eventId,
+        page_url: window.location.href
+    };
+    Object.keys(valores).forEach(function (nombre) {
+        formulario.elements[nombre].value = valores[nombre] || "";
+    });
+    // utm_medium y utm_term no tienen campo oculto, pero se mandan igual al CRM
+    return Object.assign({}, valores, {
+        utm_medium: anuncio.utm_medium || "",
+        utm_term: anuncio.utm_term || "",
+        landing_url: anuncio.landing_url || ""
+    });
+}
+
+// Manda la consulta y espera la respuesta. Devuelve true solo si llegó bien a GoHighLevel.
+function enviarAlCRM(datos, ocultos) {
+    const params = new URLSearchParams(window.location.search);
+    const cuerpo = Object.assign({}, datos, ocultos, {
+        producto: params.get("producto") || "",
+        pagina: window.location.href,
+        website: document.getElementById("website").value // trampa para bots: debe ir vacío
+    });
+    const controlador = window.AbortController ? new AbortController() : null;
+    const corte = setTimeout(function () { if (controlador) controlador.abort(); }, 10000);
+    return fetch("/api/lead", {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify(cuerpo),
+        keepalive: true,
+        signal: controlador ? controlador.signal : undefined
+    }).then(function (r) {
+        return r.ok;
+    }).catch(function () {
         return false;
-    }
-    return true;
+    }).finally(function () {
+        clearTimeout(corte);
+    });
+}
+
+// Dispara el Lead del píxel (solo después de que /api/lead respondió OK).
+// Espera un momento a que termine de cargar el píxel para no perder el evento al cambiar de página.
+function dispararLead(eventId, tipoNegocio) {
+    return new Promise(function (listo) {
+        if (!window.fbq) return listo();
+        const inicio = Date.now();
+        (function esperar() {
+            const cargado = typeof window.fbq.callMethod === "function";
+            if (cargado || Date.now() - inicio > 1500) {
+                fbq("track", "Lead", { content_category: tipoNegocio }, { eventID: eventId });
+                setTimeout(listo, 300);
+            } else {
+                setTimeout(esperar, 100);
+            }
+        })();
+    });
+}
+
+function urlWhatsApp(datos) {
+    let texto = armarMensaje(datos);
+    const ref = window.habitareRef ? window.habitareRef() : "";
+    if (ref) texto += "\n" + ref;
+    return "https://wa.me/" + NUMERO_WHATSAPP + "?text=" + encodeURIComponent(texto);
 }
 
 // Al enviar (con todos los campos completos) se abre WhatsApp con el mensaje armado
@@ -103,6 +152,14 @@ function quitarAviso(campo) {
     control.removeAttribute("aria-describedby");
 }
 
+// Teléfono: solo puede tener números, espacios, +, guiones y paréntesis,
+// y entre 8 y 15 números (ej. 11 3169-8686 o +54 9 11 3169 8686).
+function telefonoValido(texto) {
+    if (!/^[0-9+()\-\s.]+$/.test(texto)) return false;
+    const numeros = texto.replace(/\D/g, "").length;
+    return numeros >= 8 && numeros <= 15;
+}
+
 // Devuelve el primer campo con error (o null si está todo completo).
 function validarFormulario(formulario) {
     let primero = null;
@@ -112,6 +169,9 @@ function validarFormulario(formulario) {
         const vacio = control.value.trim() === "";
         if (vacio) {
             mostrarAviso(campo, control.tagName === "SELECT" ? "Elegí una opción" : "Completá este campo");
+            if (!primero) primero = control;
+        } else if (control.id === "telefono" && !telefonoValido(control.value)) {
+            mostrarAviso(campo, "Revisá el número (con código de área)");
             if (!primero) primero = control;
         } else {
             quitarAviso(campo);
@@ -132,9 +192,12 @@ document.querySelectorAll(".campo").forEach(function (campo) {
     });
 });
 
+let enviando = false;
 document.querySelector("form").addEventListener("submit", function (evento) {
     evento.preventDefault();
-    const sinCompletar = validarFormulario(evento.target);
+    if (enviando) return; // evita que un doble clic mande la consulta dos veces
+    const formulario = evento.target;
+    const sinCompletar = validarFormulario(formulario);
     if (sinCompletar) {
         sinCompletar.focus();
         return;
@@ -152,18 +215,35 @@ document.querySelector("form").addEventListener("submit", function (evento) {
         tamano: document.getElementById("tamano").value,
         llamada: document.getElementById("checkbox").checked
     };
-    enviarAlCRM(datos);
-    const abrio = enviarConsulta(datos);
-    if (!abrio) return;
-    // la página se desvanece antes de pasar a la de agradecimiento (igual que al cambiar de página)
-    if (!window.matchMedia("(prefers-reduced-motion: reduce)").matches) {
-        document.body.classList.add("saliendo");
-        setTimeout(function () {
+    enviando = true;
+    const boton = formulario.querySelector("button[type='submit']");
+    boton.disabled = true;
+
+    const eventId = nuevoEventId();
+    const ocultos = completarOcultos(formulario, eventId);
+
+    // WhatsApp se abre en el momento del clic (si se espera, el navegador bloquea la pestaña nueva)
+    const urlWsp = urlWhatsApp(datos);
+    const ventana = window.open(urlWsp, "_blank");
+
+    enviarAlCRM(datos, ocultos).then(function (ok) {
+        return ok ? dispararLead(eventId, datos.negocio) : null;
+    }).then(function () {
+        if (!ventana) {
+            // el navegador bloqueó la pestaña nueva: se abre WhatsApp en esta misma
+            window.location.href = urlWsp;
+            return;
+        }
+        // la página se desvanece antes de pasar a la de agradecimiento (igual que al cambiar de página)
+        if (!window.matchMedia("(prefers-reduced-motion: reduce)").matches) {
+            document.body.classList.add("saliendo");
+            setTimeout(function () {
+                window.location.href = "gracias.html";
+            }, 300);
+        } else {
             window.location.href = "gracias.html";
-        }, 300);
-    } else {
-        window.location.href = "gracias.html";
-    }
+        }
+    });
 });
 
 // Si llegás desde la ficha de un producto (contacto.html?producto=Mesa%20Stella),
