@@ -14,25 +14,6 @@ tipoNegocio.addEventListener("change", function () {
     }
 });
 
-// ===== Envío de la consulta =====
-// Por ahora la consulta se manda por WhatsApp. Cuando esté el CRM, solo hay que
-// cambiar esta función (por ejemplo, para mandar los datos a un webhook).
-const NUMERO_WHATSAPP = "5491131698686";
-
-function armarMensaje(datos) {
-    const lineas = ["¡Hola! Quiero solicitar el catálogo de Habitare.", ""];
-    lineas.push("Nombre: " + datos.nombre);
-    lineas.push("Teléfono: " + datos.telefono);
-    lineas.push("Ciudad: " + datos.ciudad);
-    lineas.push("Tipo de negocio: " + datos.negocio);
-    if (datos.rubro) lineas.push("Rubro: " + datos.rubro);
-    if (datos.nombreNegocio) lineas.push("Nombre del negocio: " + datos.nombreNegocio);
-    if (datos.mensaje) lineas.push("Interés: " + datos.mensaje);
-    if (datos.tamano) lineas.push("Tamaño de la mesa: " + datos.tamano);
-    lineas.push("Permite llamada telefónica: " + (datos.llamada ? "Sí" : "No"));
-    return lineas.join("\n");
-}
-
 // ===== CRM (GoHighLevel) y Meta =====
 // Los datos van a /api/lead (función de Vercel). Esa función los manda a GoHighLevel
 // y a la API de conversiones de Meta. La dirección del webhook y el token de Meta
@@ -116,15 +97,6 @@ function dispararLead(eventId, tipoNegocio) {
     });
 }
 
-function urlWhatsApp(datos) {
-    let texto = armarMensaje(datos);
-    const ref = window.habitareRef ? window.habitareRef() : "";
-    if (ref) texto += "\n" + ref;
-    return "https://wa.me/" + NUMERO_WHATSAPP + "?text=" + encodeURIComponent(texto);
-}
-
-// Al enviar (con todos los campos completos) se abre WhatsApp con el mensaje armado
-// y esta página pasa a la de agradecimiento (la que se usa para medir la conversión en Meta).
 // ===== Validación =====
 // Todos los campos son obligatorios. En vez de la burbuja del navegador, el aviso
 // aparece debajo del campo con el estilo de Habitare (ver .aviso-campo en contacto.css).
@@ -222,29 +194,47 @@ document.querySelector("form").addEventListener("submit", function (evento) {
     const eventId = nuevoEventId();
     const ocultos = completarOcultos(formulario, eventId);
 
-    // WhatsApp se abre en el momento del clic (si se espera, el navegador bloquea la pestaña nueva)
-    const urlWsp = urlWhatsApp(datos);
-    const ventana = window.open(urlWsp, "_blank");
-
     enviarAlCRM(datos, ocultos).then(function (ok) {
-        return ok ? dispararLead(eventId, datos.negocio) : null;
-    }).then(function () {
-        if (!ventana) {
-            // el navegador bloqueó la pestaña nueva: se abre WhatsApp en esta misma
-            window.location.href = urlWsp;
+        if (!ok) {
+            // no llegó al CRM: se avisa y se puede volver a intentar (no se pierde lo escrito)
+            enviando = false;
+            boton.disabled = false;
+            mostrarErrorEnvio(formulario);
             return;
         }
-        // la página se desvanece antes de pasar a la de agradecimiento (igual que al cambiar de página)
-        if (!window.matchMedia("(prefers-reduced-motion: reduce)").matches) {
-            document.body.classList.add("saliendo");
-            setTimeout(function () {
+        quitarErrorEnvio(formulario);
+        dispararLead(eventId, datos.negocio).then(function () {
+            // la página se desvanece antes de pasar a la de agradecimiento (igual que al cambiar de página)
+            if (!window.matchMedia("(prefers-reduced-motion: reduce)").matches) {
+                document.body.classList.add("saliendo");
+                setTimeout(function () {
+                    window.location.href = "gracias.html";
+                }, 300);
+            } else {
                 window.location.href = "gracias.html";
-            }, 300);
-        } else {
-            window.location.href = "gracias.html";
-        }
+            }
+        });
     });
 });
+
+// Aviso debajo del botón si la consulta no se pudo enviar (aparece con fundido, ver .aviso-envio en contacto.css)
+function mostrarErrorEnvio(formulario) {
+    let aviso = formulario.querySelector(".aviso-envio");
+    if (!aviso) {
+        aviso = document.createElement("p");
+        aviso.className = "aviso-envio";
+        aviso.setAttribute("role", "alert");
+        aviso.textContent = "No pudimos enviar tu consulta. Probá de nuevo en unos segundos.";
+        formulario.append(aviso);
+        void aviso.offsetHeight;
+    }
+    aviso.classList.add("visible");
+}
+
+function quitarErrorEnvio(formulario) {
+    const aviso = formulario.querySelector(".aviso-envio");
+    if (aviso) aviso.classList.remove("visible");
+}
 
 // Si llegás desde la ficha de un producto (contacto.html?producto=Mesa%20Stella),
 // el mensaje ya viene escrito.
