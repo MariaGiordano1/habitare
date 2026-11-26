@@ -207,28 +207,9 @@ textarea:focus {
     color: var(--brown);
 }
 
-/* aviso si la consulta no se pudo enviar (lo agrega js/contacto.js) */
-.aviso-envio {
-    max-height: 0;
-    margin: 0;
-    overflow: hidden;
-    opacity: 0;
-    font-size: 11.5px;
-    letter-spacing: 0.3px;
-    color: var(--brown);
-    transition: max-height 0.3s ease, margin-top 0.3s ease, opacity 0.3s ease;
-}
-
-.aviso-envio.visible {
-    max-height: 40px;
-    margin-top: 12px;
-    opacity: 1;
-}
-
 @media (prefers-reduced-motion: reduce) {
     .etiqueta-campo,
-    .aviso-campo,
-    .aviso-envio {
+    .aviso-campo {
         transition: none;
     }
 }

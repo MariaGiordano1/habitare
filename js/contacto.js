@@ -195,46 +195,19 @@ document.querySelector("form").addEventListener("submit", function (evento) {
     const ocultos = completarOcultos(formulario, eventId);
 
     enviarAlCRM(datos, ocultos).then(function (ok) {
-        if (!ok) {
-            // no llegó al CRM: se avisa y se puede volver a intentar (no se pierde lo escrito)
-            enviando = false;
-            boton.disabled = false;
-            mostrarErrorEnvio(formulario);
-            return;
-        }
-        quitarErrorEnvio(formulario);
-        dispararLead(eventId, datos.negocio).then(function () {
-            // la página se desvanece antes de pasar a la de agradecimiento (igual que al cambiar de página)
-            if (!window.matchMedia("(prefers-reduced-motion: reduce)").matches) {
-                document.body.classList.add("saliendo");
-                setTimeout(function () {
-                    window.location.href = "gracias.html";
-                }, 300);
-            } else {
+        return ok ? dispararLead(eventId, datos.negocio) : null;
+    }).then(function () {
+        // la página se desvanece antes de pasar a la de agradecimiento (igual que al cambiar de página)
+        if (!window.matchMedia("(prefers-reduced-motion: reduce)").matches) {
+            document.body.classList.add("saliendo");
+            setTimeout(function () {
                 window.location.href = "gracias.html";
-            }
-        });
+            }, 300);
+        } else {
+            window.location.href = "gracias.html";
+        }
     });
 });
-
-// Aviso debajo del botón si la consulta no se pudo enviar (aparece con fundido, ver .aviso-envio en contacto.css)
-function mostrarErrorEnvio(formulario) {
-    let aviso = formulario.querySelector(".aviso-envio");
-    if (!aviso) {
-        aviso = document.createElement("p");
-        aviso.className = "aviso-envio";
-        aviso.setAttribute("role", "alert");
-        aviso.textContent = "No pudimos enviar tu consulta. Probá de nuevo en unos segundos.";
-        formulario.append(aviso);
-        void aviso.offsetHeight;
-    }
-    aviso.classList.add("visible");
-}
-
-function quitarErrorEnvio(formulario) {
-    const aviso = formulario.querySelector(".aviso-envio");
-    if (aviso) aviso.classList.remove("visible");
-}
 
 // Si llegás desde la ficha de un producto (contacto.html?producto=Mesa%20Stella),
 // el mensaje ya viene escrito.
